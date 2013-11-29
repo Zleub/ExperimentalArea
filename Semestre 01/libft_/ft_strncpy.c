@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
-/*   Updated: 2013/11/27 12:38:22 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/29 01:42:41 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strncpy(char *s1, const char *s2, size_t n)
 
 	i = 0;
 	tmp = n;
-	while(s2[i] != '\0' && i < n)
+	while (s2[i] != '\0' && i < n)
 	{
 		s1[i] = s2[i];
 		i = i + 1;

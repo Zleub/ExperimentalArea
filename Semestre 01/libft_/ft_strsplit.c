@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
-/*   Updated: 2013/11/27 12:38:04 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/29 01:35:03 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int 	ft_word_nbr(char const *s, char c)
 		return (i);
 }
 
-static int 	ft_word_size(char const *s, char c)
+static int  	ft_word_size(char const *s, char c)
 {
 	int 	j;
 	int 	k;
@@ -65,7 +65,7 @@ static int 	ft_word_size(char const *s, char c)
 	return (j);
 }
 
-static char	**ft_fill_it(char **_array, char const *s, char c)
+static char 	**ft_fill_it(char **_array, char const *s, char c)
 {
 	int 	l;
 	int 	m;
@@ -92,7 +92,7 @@ static char	**ft_fill_it(char **_array, char const *s, char c)
 	return (_array);
 }
 
-char		**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
 	char	**tmp;
 	int 	word_nbr;

@@ -68,7 +68,7 @@ SRC = 	ft_memset.c \
 
 OBJ = $(subst .c,.o,$(SRC))
 
-CC = cc
+CC = gcc
 CCFLAGS = -Werror -Wall -Wextra
 
 .PHONY: all clean fclean re

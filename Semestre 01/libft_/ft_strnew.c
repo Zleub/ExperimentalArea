@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
-/*   Updated: 2013/11/27 12:38:12 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/29 01:42:28 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strnew(size_t size)
 {
 	char	*str;
 
-	if(size)
+	if (size)
 	{
 		str = malloc(sizeof(char) * (size + 1));
 		if (!str)

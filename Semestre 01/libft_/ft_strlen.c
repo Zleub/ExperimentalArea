@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/28 03:42:33 by adebray           #+#    #+#             */
-/*   Updated: 2013/11/28 15:07:30 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/29 01:43:01 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_strlen(const char *s)
 	i = 0;
 	if (s == NULL)
 		return (0);
-	while(s[i])
+	while (s[i])
 		i++;
-	return(i);
+	return (i);
 }

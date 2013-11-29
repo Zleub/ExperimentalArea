@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
-/*   Updated: 2013/11/27 12:37:40 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/29 00:34:47 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_toupper(int c)
+int 	ft_toupper(int c)
 {
 	if (96 < c && c < 123)
 	{

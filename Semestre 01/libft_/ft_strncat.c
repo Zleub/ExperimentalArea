@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
-/*   Updated: 2013/11/27 12:38:28 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/29 01:42:50 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strncat(char *s1, const char* s2, size_t n)
 	while (s1[i])
 		i = i + 1;
 	j = 0;
-	while(s2[j] && n--)
+	while (s2[j] && n--)
 	{
 		s1[i] = s2[j];
 		i = i + 1;
