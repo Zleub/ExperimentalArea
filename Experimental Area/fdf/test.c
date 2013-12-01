@@ -26,7 +26,7 @@ typedef struct 	s_draw_data
 	int 	x;
 	int 	y;
 	int 	z;
-}				t_draw_data;
+}		t_draw_data;
 
 //void	get_key(int keycode, void param);
 
