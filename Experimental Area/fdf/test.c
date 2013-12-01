@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 00:03:37 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/01 02:12:29 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/01 07:34:05 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,20 @@ int 	do_the_cheat(int y)
 {
 	y = (HEIGHT_SIZE - y);
 	return (y);
+}
+
+int 	do_some_math_x(t_draw_data 	*data, int cst)
+{
+	int x;
+
+	x = (data->x + data->x_start) + (cst * data->z);
+	return (data->x);
+}
+
+int 	do_some_math_y(t_draw_data 	*data, int cst)
+{
+	data->y = data->y + (cst / 2) * data->z;
+	return (data->y);
 }
 
 int 	ft_sqrt(int nb)
@@ -103,6 +117,7 @@ int 	ft_sqrt(int nb)
 	// }
 
 	// MATRIFICATION X Y Z
+	int 	cst = 0.82;
 	matrification = malloc(sizeof(t_draw_data));
 	matrification->x = 0;
 	matrification->y = 0;
@@ -110,47 +125,55 @@ int 	ft_sqrt(int nb)
 	printf("matrifie : x =: %d | y =: %d | z : %d.\n", matrification->x, matrification->y, matrification->z);
 
 
-	color = 0xff00ff;
-
-	// HORITONZALE MULTI-LINEAGE
-	color = 0xff00ff;
-	matrification->x_start = 250;
+	matrification->x_start = 200;
+	matrification->y_start = 200;
+	matrification->z_start = 200;
 	matrification->x = 0;
-	while (matrification->x <= 256)
+	matrification->y = 0;
+	matrification->z = 0;
+	while (matrification->x < 100)
 	{
-		matrification->y_start = 250;
-		matrification->y = 0;
-		while (matrification->y <= 256)
-		{
-			mlx_pixel_put(init_mlx, window_mlx, (matrification->x_start + matrification->x), (matrification->y_start + matrification->y), color);
-			// printf("y + y_start : %d\n", (matrification->y_start + matrification->y));
-			// printf("x + x_start : %d\n", (matrification->x_start + matrification->x));
-			matrification->y += 32;
-		}
-		matrification->x += 10;
+		mlx_pixel_put(init_mlx, window_mlx, do_some_math_x(matrification, cst), do_some_math_y(matrification, cst), color);
+		printf("01x : %d\n", do_some_math_x(matrification, cst));
+		printf("01y : %d\n", do_some_math_y(matrification, cst));
+		matrification->x += 1;
+	}
+	matrification->x = 0;
+	matrification->y = 0;
+	matrification->z = 0;
+	matrification->x_start = 200;
+	matrification->y_start = 300;
+	matrification->z_start = 200;
+	while (matrification->x < 100)
+	{
+		mlx_pixel_put(init_mlx, window_mlx, do_some_math_x(matrification, cst), (matrification->y_start + matrification->y), color);
+		matrification->x += 1;
+	}
+	matrification->x_start = 200;
+	matrification->y_start = 200;
+	matrification->z_start = 200;
+	matrification->x = 0;
+	matrification->y = 0;
+	matrification->z = 0;
+	while (matrification->y < 100)
+	{
+		mlx_pixel_put(init_mlx, window_mlx, (matrification->x_start + matrification->x), (matrification->y_start + matrification->y), color);
+		matrification->y += 1;
+	}
+	matrification->x_start = 300;
+	matrification->y_start = 200;
+	matrification->z_start = 200;
+	matrification->x = 0;
+	matrification->y = 0;
+	matrification->z = 0;
+	while (matrification->y < 100)
+	{
+		mlx_pixel_put(init_mlx, window_mlx, (matrification->x_start + matrification->x), (matrification->y_start + matrification->y), color);
+		matrification->y += 1;
 	}
 
-	// VERTICALE MULTI-LINEAGE
-	color = 0xffff00;
-	matrification->x_start = 250;
-	matrification->x = 0;
-	while (matrification->x <= 256)
-	{
-		matrification->y_start = 250;
-		matrification->y = 0;
-		while (matrification->y <= 256)
-		{
-			mlx_pixel_put(init_mlx, window_mlx, (matrification->x_start + matrification->x), (matrification->y_start + matrification->y), color);
-			// printf("y + y_start : %d\n", (matrification->y_start + matrification->y));
-			// printf("x + x_start : %d\n", (matrification->x_start + matrification->x));
-			matrification->y += 10;
-		}
-		matrification->x += 32;
-	}
-
-
-	matrification->x = 0.7071 * (matrification->x - matrification->y);
-	matrification->y = 0.8164 * matrification->z - 0.4082 * (matrification->x + matrification->y);
+//	matrification->x = 0.7071 * (matrification->x - matrification->y);
+//	matrification->y = 0.8164 * matrification->z - 0.4082 * (matrification->x + matrification->y);
 	printf("matrifie : x =: %d | y =: %d | z : %d.\n", matrification->x, matrification->y, matrification->z);
 
 	// // HORITONZALE MULTI-LINEAGE
