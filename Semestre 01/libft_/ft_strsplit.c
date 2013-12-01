@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/11/29 01:35:03 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/30 00:16:25 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/01 04:50:40 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,77 +37,30 @@ static int 	ft_word_nbr(char const *s, char c)
 		return (i);
 }
 
-static int  	ft_word_size(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
-	int 	j;
-	int 	k;
+	char			**tab;
+	unsigned int	cmp[3];
 
-	j = k = 0;
-	while (*s)
+	if (s == NULL)
+		return (0);
+	tab = (char**)malloc(sizeof(char*) * ft_word_nbr(s, c) + 1);
+	if (!tab)
+		return (0);
+	cmp[0] = cmp[3] = 0;
+	tab[ft_word_nbr(s, c)] = 0;
+	while (cmp[3] < ft_word_nbr(s, c))
 	{
-		if (*s == c)
+		cmp[1] = 0;
+		while (s[cmp[0]] == c)
+			++cmp[0];
+		while (s[cmp[0]] != c)
 		{
-			while (*s == c)
-				s++;
+			++cmp[0];
+			++cmp[1];
 		}
-		else
-		{
-			j = 0;
-			while (*s != c)
-			{
-				j = j + 1;
-				s++;
-			}
-			if (j > k)
-				k = j;
-		}
+		tab[cmp[3]] = ft_strsub(s, cmp[0] - cmp[1], cmp[1]);
+		++cmp[3];
 	}
-	return (j);
-}
-
-static char 	**ft_fill_it(char **_array, char const *s, char c)
-{
-	int 	l;
-	int 	m;
-
-	l = m = 0;
-	while (*s)
-	{
-		if (*s == c)
-		{
-			while (*s == c)
-				s++;
-		}
-		else
-		{
-			m = 0;
-			while (*s != c)
-			{
-				_array[l][m] = *s++;
-				m = m + 1;
-			}
-			l = l + 1;
-		}
-	}
-	return (_array);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
-	char	**tmp;
-	int 	word_nbr;
-	int 	word_size;
-	int 	i;
-
-	word_nbr = ft_word_nbr(s, c);
-	word_size = ft_word_size(s, c);
-	tmp = (char**) malloc(sizeof(char*) * word_nbr);
-	i = 0;
-	while (i < word_nbr)
-	{
-		tmp[i] = (char*)malloc(sizeof(char) * word_size);
-		i = i + 1;
-	}
-	ft_fill_it(tmp, s, c);
-	return (tmp);
+	return (tab);
 }

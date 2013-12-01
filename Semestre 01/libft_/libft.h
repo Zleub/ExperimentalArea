@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/25 16:49:20 by adebray           #+#    #+#             */
-/*   Updated: 2013/11/25 17:20:44 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/30 00:03:36 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/30 00:31:36 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-
-typedef struct	s_list
-{
-	void*			content;
-	size_t			content_size;
-	struct s_list	*next;
-}				t_list;
 
 int 		ft_atoi(const char *str);
 void		ft_bzero(void *s, size_t n);
