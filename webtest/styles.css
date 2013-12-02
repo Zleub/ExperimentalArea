@@ -1,0 +1,238 @@
+body 
+{
+	background-image: url(img/bg_big_40.png);
+	background-position-x: -20px;
+	background-position-y: -20px;
+	background-repeat: repeat;
+	background-attachment:fixed;
+
+}
+
+div.global 
+{
+	width: 810px;
+	margin-left: auto ;
+	margin-right: auto ;
+}
+
+div.article 
+{
+	width: inherit;
+	background-color: white;
+	font-family: "Courier New";
+	position: relative;
+	top: 25px;
+
+}
+
+p.horaire 
+{
+	text-align: right;
+	color:rgba(0,0,0,0.35);
+}
+
+div.connexion 
+{
+	position: relative;
+	top:250px;
+	background-color: white;
+	width: 250px;
+}
+
+/* Game Style */
+
+div.main 
+{
+	width: 1100px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.header 
+{
+	clear:both;
+}
+
+div.right 
+{
+	clear:right;
+	float:left;
+	background-color: white;
+}
+
+div.img_box 
+{
+	position:relative;
+	left:50px;
+	top:10px;
+}
+
+div.image 
+{
+	clear:right;
+	border:1px solid black;
+	width:750px;
+}
+
+div.menu 
+{
+	float:left;
+	width:300px;
+	border:1px solid black;
+	background-color: white;
+}
+
+div.heros_box 
+{
+	position:relative;
+	left:25px;
+}
+
+div.heros 
+{
+	height:100px;
+	width:250px;
+	overflow-y:auto;
+	border:1px solid black;
+}
+
+
+div.chatbox 
+{
+	border:1px solid black;
+}
+
+div.cb_box 
+{
+	position:relative;
+	left:20px;
+	top:20px;
+	height:175px;
+}
+
+div.cb_box_scroll 
+{
+	height:100px;
+	width: 700px;
+	overflow-y: auto;
+}
+
+div.pseudo {}
+
+div.message 
+{
+	clear:right;
+	border:1px solid black;
+}
+input.message 
+{
+	width:600px;
+	height:40px;
+}
+
+img.scene {
+	width:640px;
+	margin-left: auto ;
+	margin-right: auto ;
+}
+
+h2.game 
+{
+	position:relative;
+	left:20px;
+}
+
+/* Minimap Style */
+
+div.minimap
+{
+	height: 240px;
+	width: 240px;
+	margin-left: auto ;
+	margin-right: auto ;
+	position: relative;
+}
+
+
+img.minimap_main
+{
+	position:absolute;
+	left: 80px;
+	top: 80px;
+}
+
+img.minimap_ne
+{
+	position:absolute;
+	left : 140px;
+}
+
+img.minimap_nw
+{
+	position:absolute;
+	left: 60px;
+}
+
+img.minimap_en
+{
+	position:absolute;
+	left: 200px;
+	top: 60px;
+}
+
+img.minimap_es
+{
+	position:absolute;
+	left: 200px;
+	top: 140px;
+}
+
+img.minimap_se
+{
+	position:absolute;
+	left: 140px;
+	top: 200px;
+}
+
+img.minimap_sw
+{
+	position:absolute;
+	left: 60px;
+	top: 200px;
+}
+
+img.minimap_wn
+{
+	position:absolute;
+	top: 60px;
+}
+
+img.minimap_ws
+{
+	position:absolute;
+	top: 140px;
+}
+
+
+/* Forum style */
+
+div.categorie 
+{
+	border:2px solid black;
+	border-radius : 25px;
+	width: 795px;
+	background-color: white;
+	position:relative;
+	top: 25px;
+}
+
+h1.categorie_name 
+{
+	margin-left: 25px;
+}
+
+div.sous_categorie 
+{
+	text-align: right;
+	margin-right: 5px;
+}
