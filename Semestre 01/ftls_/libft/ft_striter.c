@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/02 07:04:50 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/27 12:38:44 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int 	main(int argc, char **argv)
+void	ft_striter(char *s, void (*f)(char *))
 {
 	int 	i;
 
-	i = 0;
-	ft_putnbr(argc - 1);
-	ft_putendl(" arguments.");
-	while (i <= argc - 1)
+	if (s != NULL && f != NULL)
 	{
-		ft_putendl(argv[i]);
-		i = i + 1;
-		catch_argument;
+		i = 0;
+		while (s[i])
+		{
+			(*f)(&(s[i]));
+			i = i + 1;
+		}
 	}
-	return (0);
 }

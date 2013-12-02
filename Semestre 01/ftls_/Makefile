@@ -1,7 +1,10 @@
-NAME = program_name
-LIBNAME = program_lib.a
+NAME = ft_ls
+LIBNAME = libls.a
+LIBFT = libft.a
+
+LIBDIR = ./libft
 SRCDIR = ./src/
-HEADERDIR = ./inc/
+HEADDIR = ./inc/
 
 SPC :=
 SPC +=
@@ -11,17 +14,18 @@ SRC = $(subst $(SPC),$(SPC)$(SRCDIR),$(SRCDIR)$(shell ls $(SRCDIR) | grep .c))
 OBJ = $(subst .c,.o,$(shell ls $(SRCDIR) | grep .c))
 
 CC = gcc
-CCFLAGS = -Werror -Wall -Wextra
+CCFLAGS = -Werror -Wall -Wextra -L./libft -lft
 
 .PHONY: all lib clean fclean re
 
 all: $(NAME)
 
 $(NAME): lib clean
-	$(CC) $(CCFLAGS) -o $(NAME) $(LIBNAME) main.c
+	cd $(LIBDIR); make
+	$(CC) $(CCFLAGS) -o $(NAME) -I $(LIBDIR) $(LIBNAME) main.c
 
-lib:
-	$(CC) -I $(HEADERDIR) -c $(SRC)
+lib: $(SRC)
+	$(CC) -I $(HEADDIR) -c $(SRC)
 	ar rc $(LIBNAME) $(OBJ)
 	ranlib $(LIBNAME)
 

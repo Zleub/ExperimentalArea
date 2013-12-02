@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/02 07:04:50 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/27 12:39:41 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int 	main(int argc, char **argv)
+void	ft_putstr_fd(char const *s, int fd)
 {
-	int 	i;
-
-	i = 0;
-	ft_putnbr(argc - 1);
-	ft_putendl(" arguments.");
-	while (i <= argc - 1)
-	{
-		ft_putendl(argv[i]);
-		i = i + 1;
-		catch_argument;
-	}
-	return (0);
+	while (*s)
+		ft_putchar_fd(*s++, fd);
 }

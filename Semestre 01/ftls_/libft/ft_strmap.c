@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/02 07:04:50 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/27 12:38:32 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int 	main(int argc, char **argv)
+char		*ft_strmap(char const *s, char (*f)(char))
 {
+	char	*s2;
 	int 	i;
 
-	i = 0;
-	ft_putnbr(argc - 1);
-	ft_putendl(" arguments.");
-	while (i <= argc - 1)
+	if (s != NULL && f != NULL)
 	{
-		ft_putendl(argv[i]);
-		i = i + 1;
-		catch_argument;
+		s2 = malloc(sizeof(char) * (ft_strlen(s) + 1));
+		i = 0;
+		while (s[i])
+		{
+			s2[i] = (*f)(s[i]);
+			i = i + 1;
+		}
+		return (s2);
 	}
-	return (0);
+	return (NULL);
 }

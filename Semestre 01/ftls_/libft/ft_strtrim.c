@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/02 07:04:50 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/30 00:16:25 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/30 08:31:56 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int 	main(int argc, char **argv)
+char	*ft_strtrim(char const *s)
 {
+	char	*tmp;
 	int 	i;
+	int 	j;
 
-	i = 0;
-	ft_putnbr(argc - 1);
-	ft_putendl(" arguments.");
-	while (i <= argc - 1)
+	if (s == NULL)
+		return (NULL);
+	i = ft_strlen(s) - 1;
+	tmp = malloc(sizeof(char) * ft_strlen(s) + 1);
+	while (s[i] == 32 || s[i] == 10 || s[i] == 9)
+		i = i - 1;
+	j = 0;
+	while (s[j] == 32 || s[j] == 10 || s[j] == 9)
+		j = j + 1;
+	if (j == ft_strlen(s))
 	{
-		ft_putendl(argv[i]);
-		i = i + 1;
-		catch_argument;
+		tmp[0] = '\0';
+		return (tmp);
 	}
-	return (0);
+	tmp = ft_strsub(s, j, i - j + 1);
+	return (tmp);
 }

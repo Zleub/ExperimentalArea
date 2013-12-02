@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/02 07:04:50 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/27 12:38:25 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int 	main(int argc, char **argv)
+int 	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int 	i;
-
-	i = 0;
-	ft_putnbr(argc - 1);
-	ft_putendl(" arguments.");
-	while (i <= argc - 1)
+	if (!s1 && !s2)
+		return (0);
+	while (*s1 == *s2 && n > 1 && *s1 != '\0' && *s2 != '\0')
 	{
-		ft_putendl(argv[i]);
-		i = i + 1;
-		catch_argument;
+		s1++;
+		s2++;
+		n = n - 1;
 	}
+	if (n > 0)
+		return (int)(*s1 - *s2);
 	return (0);
 }

@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/02 07:04:50 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/27 12:38:39 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int 	main(int argc, char **argv)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int 	i;
+	char	*tmp;
+	char	*ptr;
 
-	i = 0;
-	ft_putnbr(argc - 1);
-	ft_putendl(" arguments.");
-	while (i <= argc - 1)
+	if (s1 != NULL && s2 != NULL)
 	{
-		ft_putendl(argv[i]);
-		i = i + 1;
-		catch_argument;
+		tmp = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+		if (!s2)
+			return (NULL);
+		ptr = tmp;
+		while (*s1)
+			*tmp++ = *s1++;
+		while (*s2)
+			*tmp++ = *s2++;
+		*tmp = '\0';
+		return (ptr);
 	}
-	return (0);
+	return (NULL);
 }

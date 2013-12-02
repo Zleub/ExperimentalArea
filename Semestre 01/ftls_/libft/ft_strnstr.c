@@ -1,29 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/02 07:04:50 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/27 12:38:10 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int 	main(int argc, char **argv)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
 	int 	i;
+	int 	j;
 
 	i = 0;
-	ft_putnbr(argc - 1);
-	ft_putendl(" arguments.");
-	while (i <= argc - 1)
+	if (s2[0] == '\0')
+		return (char*)(s1);
+	while (s1[i] != '\0' && i <= n)
 	{
-		ft_putendl(argv[i]);
-		i = i + 1;
-		catch_argument;
+		j = 0;
+		while (s1[i] == s2[j] && j <= n)
+		{
+			i++;
+			j++;
+			if ((s2[j]) == '\0')
+				return (char*)(&(s1[i - j]));
+		}
+		i++;
+		i = i - j;
 	}
-	return (0);
+	return (NULL);
 }

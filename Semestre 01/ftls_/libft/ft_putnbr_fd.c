@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/02 07:04:50 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/27 12:39:46 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int 	main(int argc, char **argv)
+void	ft_putnbr_fd(int n, int fd)
 {
+	char	tmp[10];
 	int 	i;
 
-	i = 0;
-	ft_putnbr(argc - 1);
-	ft_putendl(" arguments.");
-	while (i <= argc - 1)
+	if (n < 10)
 	{
-		ft_putendl(argv[i]);
-		i = i + 1;
-		catch_argument;
+		n += '0';
+		ft_putchar_fd(n, fd);
 	}
-	return (0);
+	else
+	{
+		i = 0;
+		while (n > 10)
+		{
+			tmp[i] = n % 10 + '0';
+			n /= 10;
+			i = i + 1;
+		}
+		n += '0';
+		ft_putchar_fd(n, fd);
+		while (i >= 0)
+		{
+			ft_putchar_fd(tmp[i], fd);
+			i = i - 1;
+		}
+	}
 }

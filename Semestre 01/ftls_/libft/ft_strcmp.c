@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/02 07:04:50 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/29 00:38:48 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int 	main(int argc, char **argv)
+int 	ft_strcmp(const char *s1, const char *s2)
 {
-	int 	i;
+	size_t	lenght;
 
-	i = 0;
-	ft_putnbr(argc - 1);
-	ft_putendl(" arguments.");
-	while (i <= argc - 1)
+	lenght = ft_strlen(s2);
+	if (!s1 && !s2)
+		return (0);
+	while (*s1 == *s2)
 	{
-		ft_putendl(argv[i]);
-		i = i + 1;
-		catch_argument;
+		if (lenght-- == 0)
+			return (0);
+		s1++;
+		s2++;
 	}
-	return (0);
+	return (*s1 - *s2);
 }

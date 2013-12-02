@@ -1,29 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/02 07:04:50 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
+/*   Updated: 2013/11/27 12:40:16 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
-int 	main(int argc, char **argv)
+void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
 {
-	int 	i;
+	unsigned char	*tmp2;
 
-	i = 0;
-	ft_putnbr(argc - 1);
-	ft_putendl(" arguments.");
-	while (i <= argc - 1)
+	tmp2 = (unsigned char*) s2;
+	while (n--)
 	{
-		ft_putendl(argv[i]);
-		i = i + 1;
-		catch_argument;
+		if (*tmp2 == c)
+		{
+			*(unsigned char*)s1++ = *tmp2++;
+			return (s1);
+		}
+		*(unsigned char*)s1++ = *tmp2++;
 	}
-	return (0);
+	return (NULL);
 }
