@@ -6,11 +6,9 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
-/*   Updated: 2013/11/27 12:40:26 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/03 00:17:06 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int 	ft_isprint(int c)
 {
