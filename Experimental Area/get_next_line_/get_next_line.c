@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 12:10:06 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/03 13:02:38 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int 		get_next_line(int const fd, char **line)
 	if (toy_boy == NULL)
 		return (-1);
 
-	i = 0;
-	while (grand_pa->stomach[i] != '\n' && i <= BUFF_SIZE)
+
+	while (grand_pa->stomach[i] != '\n')
 	{
 		i = i + 1;
 		if (i == BUFF_SIZE + 1)
