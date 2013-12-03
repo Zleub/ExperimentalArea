@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 09:13:36 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/03 11:44:22 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ t_chain 	*adopt_some(t_chain *grand_pa, t_chain *pa, t_chain *child)
 {
 	child = malloc(sizeof(t_chain));
 	child->stomach = malloc(sizeof(char) * BUFF_SIZE + 1);
-	child->size = BUFF_SIZE;
-	child->family_size = BUFF_SIZE;
 	child->grand_pa = grand_pa;
 	child->pa = pa;
 	child->child = child;
@@ -40,7 +38,7 @@ t_chain 	*build_it(int fd, t_chain *grand_pa, t_chain *pa)
 	return (toy_boy);
 }
 
-void		fill_it(t_chain *pa, char **line)
+int 		fill_it(t_chain *pa, char **line)
 {
 	int 	i;
 
@@ -51,11 +49,14 @@ void		fill_it(t_chain *pa, char **line)
 		i = i + 1;
 		if (i == BUFF_SIZE + 1)
 		{
-			*line = ft_strjoin(*line, pa->stomach);
+			*line = ft_strcat(*line, pa->stomach);
 			fill_it(pa, line);
 		}
 	}
-	ft_strjoin(*line, pa->stomach);
+	ft_strncat(*line, pa->stomach, i);
+	if (pa->stomach[i])
+		return (1);
+	return (0);
 }
 
 int 		get_next_line(int const fd, char **line)
@@ -64,6 +65,7 @@ int 		get_next_line(int const fd, char **line)
 	t_chain 		*toy_boy;
 	int 			i;
 	int 			check_up;
+	static int		test;
 
 	grand_pa = adopt_some(grand_pa, grand_pa, NULL);
 	check_up = read(fd, grand_pa->stomach, BUFF_SIZE);
@@ -80,11 +82,14 @@ int 		get_next_line(int const fd, char **line)
 		if (i == BUFF_SIZE + 1)
 		{
 			*line = ft_strsub(grand_pa->stomach, 0, BUFF_SIZE);
-			fill_it(grand_pa, line);
-			return (111);
+			test = fill_it(grand_pa, line);
+			return (test);
+		}
+		else
+		{
+			*line = ft_strsub(grand_pa->stomach, 0, i);
 		}
 	}
-	*line = ft_strsub(grand_pa->stomach, 0, i);
 
 	ft_putendl("");
 	ft_putendl("<-- VAR_DUMP -->");
@@ -110,8 +115,9 @@ int 		get_next_line(int const fd, char **line)
 	ft_putstr("\t dump toy_boy->child->child->stomach : ");
 	toy_boy = toy_boy->child;
 	ft_putendl(toy_boy->stomach);
-	return (0);
+
 
 	 // grand_pa = grand_pa->grand_pa;
 	 // *line = grand_pa->stomach;
+	return (666);
 }

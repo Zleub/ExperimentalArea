@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 01:04:12 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 08:21:28 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/03 10:16:03 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ int 	main(void)
 	ft_putendl("");
 	free(str);
 
-	i = get_next_line(fd, &str);
-	ft_putstr("main dump : ");
-	ft_putstr(str);
-	ft_putstr(" | ");
-	ft_putstr("return : ");
-	ft_putnbr(i);
-	ft_putendl("");
+	// i = get_next_line(fd, &str);
+	// ft_putstr("main dump : ");
+	// ft_putstr(str);
+	// ft_putstr(" | ");
+	// ft_putstr("return : ");
+	// ft_putnbr(i);
+	// ft_putendl("");
 
 	close(fd);
 	return (0);

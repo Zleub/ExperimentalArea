@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 00:03:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 06:43:55 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/03 10:15:57 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 typedef struct 	s_chain
 {
 	char 		*stomach;
-	int 		size;
-	int 		family_size;
 	void 		*grand_pa;
 	void 		*pa;
 	void 		*child;
