@@ -6,7 +6,7 @@
 /*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 15:21:56 by Arno              #+#    #+#             */
-/*   Updated: 2013/12/03 16:21:10 by Arno             ###   ########.fr       */
+/*   Updated: 2013/12/03 16:29:04 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int 		fill_it(t_chain *pa, char **line)
 	free(*line);
 	*line = malloc(sizeof(char*) * (ft_strlen(*tmp) + i));
 	*line = ft_strjoin(*line, *tmp);
-	*line = ft_strjoin(*line, pa->stomach);
+	*line = ft_strncat(*line, pa->stomach, i);
 	return (0);
 }
 
