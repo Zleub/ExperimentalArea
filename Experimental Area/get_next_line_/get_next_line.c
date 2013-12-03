@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 13:02:38 by adebray          ###   ########.fr       */
+/*   Created: 2013/12/03 15:21:56 by Arno              #+#    #+#             */
+/*   Updated: 2013/12/03 16:21:10 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ t_chain 	*build_it(int fd, t_chain *grand_pa, t_chain *pa)
 	return (toy_boy);
 }
 
-void		fill_it(t_chain *pa, char **line)
+int 		fill_it(t_chain *pa, char **line)
 {
 	int 	i;
+	char	**tmp;
 
 	i = 0;
 	pa = pa->child;
@@ -53,7 +54,12 @@ void		fill_it(t_chain *pa, char **line)
 			fill_it(pa, line);
 		}
 	}
-	ft_strncat(*line, pa->stomach, i);
+	*tmp = ft_strsub(*line, 0, ft_strlen(*line));
+	free(*line);
+	*line = malloc(sizeof(char*) * (ft_strlen(*tmp) + i));
+	*line = ft_strjoin(*line, *tmp);
+	*line = ft_strjoin(*line, pa->stomach);
+	return (0);
 }
 
 int 		get_next_line(int const fd, char **line)
@@ -78,7 +84,8 @@ int 		get_next_line(int const fd, char **line)
 		if (i == BUFF_SIZE + 1)
 		{
 			*line = ft_strsub(grand_pa->stomach, 0, BUFF_SIZE);
-			fill_it(grand_pa, line);
+			check_up = fill_it(grand_pa, line);
+			return (check_up);
 		}
 		else
 		{
