@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 11:44:22 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/03 12:10:06 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_chain 	*build_it(int fd, t_chain *grand_pa, t_chain *pa)
 	return (toy_boy);
 }
 
-int 		fill_it(t_chain *pa, char **line)
+void		fill_it(t_chain *pa, char **line)
 {
 	int 	i;
 
@@ -49,14 +49,11 @@ int 		fill_it(t_chain *pa, char **line)
 		i = i + 1;
 		if (i == BUFF_SIZE + 1)
 		{
-			*line = ft_strcat(*line, pa->stomach);
+			*line = ft_strjoin(*line, pa->stomach);
 			fill_it(pa, line);
 		}
 	}
 	ft_strncat(*line, pa->stomach, i);
-	if (pa->stomach[i])
-		return (1);
-	return (0);
 }
 
 int 		get_next_line(int const fd, char **line)
@@ -65,7 +62,6 @@ int 		get_next_line(int const fd, char **line)
 	t_chain 		*toy_boy;
 	int 			i;
 	int 			check_up;
-	static int		test;
 
 	grand_pa = adopt_some(grand_pa, grand_pa, NULL);
 	check_up = read(fd, grand_pa->stomach, BUFF_SIZE);
@@ -82,8 +78,7 @@ int 		get_next_line(int const fd, char **line)
 		if (i == BUFF_SIZE + 1)
 		{
 			*line = ft_strsub(grand_pa->stomach, 0, BUFF_SIZE);
-			test = fill_it(grand_pa, line);
-			return (test);
+			fill_it(grand_pa, line);
 		}
 		else
 		{
