@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/03 15:21:56 by Arno              #+#    #+#             */
-/*   Updated: 2013/12/04 02:30:43 by Arno             ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/03 00:11:50 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include <libft.h>
 
-int get_next_line(int const fd, char ** line)
+int 	ft_strnequ(char const *s1, char const *s2, size_t n)
 {
-	char	buffer[BUFF_SIZE];
 
-	read(fd, buffer, BUFF_SIZE);
-
-	*line = buffer;
+	if (s1 != NULL && s2 != NULL)
+	{
+		if (ft_strlen(s1) == 0 && ft_strlen(s2) == 0)
+			return (1);
+		if (ft_strncmp(s1, s2, n) != 0)
+			return (0);
+		else
+			return (1);
+	}
 	return (0);
 }

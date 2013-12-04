@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/03 15:21:56 by Arno              #+#    #+#             */
-/*   Updated: 2013/12/03 16:34:45 by Arno             ###   ########.fr       */
+/*   Created: 2013/12/04 02:32:46 by Arno              #+#    #+#             */
+/*   Updated: 2013/12/04 04:07:24 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
 
-# include <libft.h>
-# include <stdlib.h>
-# include <unistd.h>
+#include "get_next_line.h"
+#include <stdio.h>
+int                main(void)
+{
+    int            i;
+    char        *s;
 
-# define BUFF_SIZE 32
-
-int 	get_next_line(int const fd, char ** line);
-#endif
+    i = 0;
+    s = NULL;
+    while (get_next_line(0, &s))
+    {
+        printf("%d : %s$\n", ++i, s);
+        free(s);
+    }
+    return (0);
+}

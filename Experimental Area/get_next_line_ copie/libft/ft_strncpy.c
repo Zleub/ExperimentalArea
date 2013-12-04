@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/03 15:21:56 by Arno              #+#    #+#             */
-/*   Updated: 2013/12/04 02:30:43 by Arno             ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/03 00:21:21 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include <libft.h>
 
-int get_next_line(int const fd, char ** line)
+char	*ft_strncpy(char *s1, const char *s2, size_t n)
 {
-	char	buffer[BUFF_SIZE];
+	int 	i;
+	int 	tmp;
 
-	read(fd, buffer, BUFF_SIZE);
-
-	*line = buffer;
-	return (0);
+	i = 0;
+	tmp = n;
+	while (s2[i] != '\0' && i < n)
+	{
+		s1[i] = s2[i];
+		i = i + 1;
+	}
+	while (i < n)
+	{
+		s1[i] = '\0';
+		i = i + 1;
+	}
+	return (s1);
 }

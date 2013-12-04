@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/03 15:21:56 by Arno              #+#    #+#             */
-/*   Updated: 2013/12/03 16:34:45 by Arno             ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/03 00:20:37 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#include <libft.h>
 
-# include <libft.h>
-# include <stdlib.h>
-# include <unistd.h>
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
 
-# define BUFF_SIZE 32
-
-int 	get_next_line(int const fd, char ** line);
-#endif
+	i = 0;
+	if (s == NULL)
+		return (0);
+	while (s[i])
+		i++;
+	return (i);
+}
