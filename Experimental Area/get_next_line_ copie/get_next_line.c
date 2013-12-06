@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 /* int 	get_next_line(int const fd, char **line)
 {
@@ -71,19 +72,15 @@ int 	get_next_line(int const fd, char **line)
 	i = 0;
 	if (!array)
 		array = ft_memalloc(1);
-/*	while (array[i] != '\n' && i <= (int)ft_strlen(array))
-		i = i + 1;
-	if (i != (int)ft_strlen(array))
+	else if (ft_strchr(array, '\n') != NULL)
 	{
-		*line = ft_strsub(array, 0, i);
-		free(array);
-		array = ft_strsub(array, i, ft_strlen(array) - i);
-		return (1);
-		} */
-	if (array[0] == '\n')
-	{
-		*line = ft_strsub("", 0, 1);
-		array = ft_strsub(array, 1, ft_strlen(array));
+		while (array[i] != '\n')
+			i = i + 1;
+		if (i == 0)
+			*line = ft_strsub("", 0, 1);
+		else
+			*line = ft_strsub(array, 0, i);
+		array = ft_strsub(array, i + 1, ft_strlen(array) - i);
 		return (1);
 	}
 	i = 0;
@@ -91,13 +88,6 @@ int 	get_next_line(int const fd, char **line)
 		return (0);
 	while (buffer[i] != '\n' && i <= BUFF_SIZE)
 		i = i + 1;
-/*	ft_putendl("<-->");
-	ft_putnbr(i);
-	ft_putstr("array : ");
-	ft_putendl(array);
-	ft_putstr("buffer : ");
-	ft_putendl(buffer);
-	ft_putendl(" <-->"); */
 	if (i == BUFF_SIZE + 1)
 	{
 		array = ft_strjoin(array, buffer);
