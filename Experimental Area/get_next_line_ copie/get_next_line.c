@@ -1,55 +1,40 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2013/12/04 21:12:06 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/06 02:55:16 by adebray          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strnjoin(char const *s1, char const *s2, int n)
-{
-	char	*tmp;
-	char	*ptr;
-
-	if (s1 != NULL && s2 != NULL)
-	{
-		tmp = malloc(sizeof(char) * (ft_strlen(s1) + n + 1));
-		if (!s2)
-			return (NULL);
-		ptr = tmp;
-		while (*s1)
-			*tmp++ = *s1++;
-		while (n--)
-			*tmp++ = *s2++;
-		*tmp = '\0';
-		return (ptr);
-	}
-	return (NULL);
-}
-
-int 		get_next_line(int const fd, char **line)
+int 	get_next_line(int const fd, char **line)
 {
 	static char	*array;
-	char		*buffer;
-	int 		check_up;
+	char		buffer[BUFF_SIZE];
 	int 		i;
 
-	buffer = malloc(sizeof(char) * BUFF_SIZE);
-	if(!array)
-		array = malloc(sizeof(char));
-	check_up = read(fd, buffer, BUFF_SIZE);
-	if (check_up == 0 && !array)
-		return (0);
-	i = 0;
-	while (buffer[i] != '\n' && i <= BUFF_SIZE)
-		i = i + 1;
-	if (i == BUFF_SIZE + 1)
+	if (!array)
 	{
-		if (!array)
-			array = ft_strsub(buffer, 0, BUFF_SIZE);
-		else
+		array = ft_memalloc(1);
+		while (read(fd, buffer, BUFF_SIZE - 1))
+		{
 			array = ft_strjoin(array, buffer);
-		get_next_line(fd, line);
+			ft_bzero(buffer, BUFF_SIZE);
+		}
 	}
-	else
-		array = ft_strnjoin(array, buffer, i);
-	*line = array;
-	free(buffer);
+	i = 0;
+	while (array[i] != '\n')
+		i = i + 1;
+	*line = ft_strsub(array, 0, i);
+	if (i == 0)
+		*line = ft_strsub("", 0 , 1);
+	array = ft_strsub(array, i + 1, ft_strlen(array));
+	if (!array)
+		return (0);
 	return (1);
 }

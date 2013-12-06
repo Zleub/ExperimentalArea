@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/04 02:32:46 by Arno              #+#    #+#             */
-/*   Updated: 2013/12/04 04:00:16 by Arno             ###   ########.fr       */
+/*   Created: 2013/12/04 17:16:12 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/04 17:16:24 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (s1 != NULL && s2 != NULL)
 	{
 		tmp = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-		if (!s2)
+		if (!tmp)
 			return (NULL);
 		ptr = tmp;
 		while (*s1)
