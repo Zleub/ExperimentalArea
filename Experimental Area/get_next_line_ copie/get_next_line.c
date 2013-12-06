@@ -6,13 +6,13 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/04 21:12:06 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/06 02:55:16 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/06 09:36:21 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int 	get_next_line(int const fd, char **line)
+/* int 	get_next_line(int const fd, char **line)
 {
 	static char	*array;
 	char		buffer[BUFF_SIZE];
@@ -21,10 +21,12 @@ int 	get_next_line(int const fd, char **line)
 	if (!array)
 	{
 		array = ft_memalloc(1);
-		while (read(fd, buffer, BUFF_SIZE - 1))
+		while ((i = read(fd, buffer, BUFF_SIZE - 1 )) != 0)
 		{
 			array = ft_strjoin(array, buffer);
 			ft_bzero(buffer, BUFF_SIZE);
+			ft_putnbr(i);
+			ft_putendl(" ");
 		}
 	}
 	i = 0;
@@ -36,5 +38,75 @@ int 	get_next_line(int const fd, char **line)
 	array = ft_strsub(array, i + 1, ft_strlen(array));
 	if (!array)
 		return (0);
+	return (1);
+} */
+
+char	*ft_strnjoin(char const *s1, char const *s2, int n)
+{
+	char	*tmp;
+	char	*ptr;
+
+	if (s1 != NULL && s2 != NULL)
+	{
+		tmp = malloc(sizeof(char) * (ft_strlen(s1) + n + 1));
+		if (!s2)
+			return (NULL);
+		ptr = tmp;
+		while (*s1)
+			*tmp++ = *s1++;
+		while (n--)
+			*tmp++ = *s2++;
+		*tmp = '\0';
+		return (ptr);
+	}
+	return (NULL);
+}
+
+int 	get_next_line(int const fd, char **line)
+{
+	static char *array;
+	char		buffer[BUFF_SIZE + 1] = {'\0'};
+	int 		i;
+
+	i = 0;
+	if (!array)
+		array = ft_memalloc(1);
+/*	while (array[i] != '\n' && i <= (int)ft_strlen(array))
+		i = i + 1;
+	if (i != (int)ft_strlen(array))
+	{
+		*line = ft_strsub(array, 0, i);
+		free(array);
+		array = ft_strsub(array, i, ft_strlen(array) - i);
+		return (1);
+		} */
+	if (array[0] == '\n')
+	{
+		*line = ft_strsub("", 0, 1);
+		array = ft_strsub(array, 1, ft_strlen(array));
+		return (1);
+	}
+	i = 0;
+	if (read(fd, buffer, BUFF_SIZE) == 0)
+		return (0);
+	while (buffer[i] != '\n' && i <= BUFF_SIZE)
+		i = i + 1;
+/*	ft_putendl("<-->");
+	ft_putnbr(i);
+	ft_putstr("array : ");
+	ft_putendl(array);
+	ft_putstr("buffer : ");
+	ft_putendl(buffer);
+	ft_putendl(" <-->"); */
+	if (i == BUFF_SIZE + 1)
+	{
+		array = ft_strjoin(array, buffer);
+		get_next_line(fd, line);
+	}
+	else
+	{
+		*line = ft_strnjoin(array, buffer, i);
+		array = ft_strsub(buffer, i + 1, ft_strlen(buffer) - i);
+	}
 	return (1);
 }
