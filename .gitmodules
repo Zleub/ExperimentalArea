@@ -1,6 +1,6 @@
 [submodule "Semestre 01/libft_"]
 	path = Semestre 01/libft_
 	url = vogsphere@vogsphere.42.fr:algo-1-001/2013/par-1-1/libft/adebray
-[submodule "Semestr 01/get_next_line_"]
+[submodule "Semestre 01/get_next_line_"]
 	path = Semestre 01/get_next_line_
 	url = vogsphere@vogsphere.42.fr:algo-1-001/2013/par-1-1/getnextline/adebray
