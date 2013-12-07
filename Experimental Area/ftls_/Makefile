@@ -14,7 +14,7 @@ SRC = $(subst $(SPC),$(SPC)$(SRCDIR),$(SRCDIR)$(shell ls $(SRCDIR) | grep .c))
 OBJ = $(subst .c,.o,$(shell ls $(SRCDIR) | grep .c))
 
 CC = gcc
-CCFLAGS = -Werror -Wall -Wextra -L./libft -lft
+CCFLAGS = -Werror -Wall -Wextra -L./libft -lft -I./libft/includes
 
 .PHONY: all lib clean fclean re
 
@@ -22,7 +22,7 @@ all: $(NAME)
 
 $(NAME): lib clean
 	cd $(LIBDIR); make
-	$(CC) $(CCFLAGS) -o $(NAME) -I $(LIBDIR) $(LIBNAME) main.c
+	$(CC) $(CCFLAGS) -o $(NAME) -I./inc $(LIBNAME) main.c
 
 lib: $(SRC)
 	$(CC) -I $(HEADDIR) -c $(SRC)
