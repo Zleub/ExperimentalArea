@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 00:21:59 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/07 04:00:06 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	int 	i;
-	int 	j;
+	size_t		i;
+	size_t		j;
 
 	i = 0;
 	if (s2[0] == '\0')

@@ -6,15 +6,15 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 00:10:23 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/04 17:04:55 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/07 04:03:07 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-static int 	ft_word_nbr(char const *s, char c)
+static size_t 	ft_word_nbr(char const *s, char c)
 {
-	int 	i;
+	size_t	 	i;
 
 	i = 0;
 	while (*s)
@@ -37,7 +37,7 @@ static int 	ft_word_nbr(char const *s, char c)
 		return (i);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char		**ft_strsplit(char const *s, char c)
 {
 	char			**tab;
 	unsigned int	cmp[3];

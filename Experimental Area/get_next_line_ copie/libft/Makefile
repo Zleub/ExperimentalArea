@@ -75,10 +75,12 @@ CCFLAGS = -Werror -Wall -Wextra
 
 all: $(NAME)
 
-$(NAME): $(SRC)
-	$(CC) -I $(HEADDIR) -c $(SRC)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+%.o: %.c
+	$(CC) $(CCFLAGS) -I $(HEADDIR) -o $@ -c $< 
+
+$(NAME): $(OBJ)
+	ar rc $@ $^
+	ranlib $@
 	make clean
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 00:21:21 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/07 03:59:08 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strncpy(char *s1, const char *s2, size_t n)
 {
-	int 	i;
-	int 	tmp;
+	size_t		i;
+	size_t 		tmp;
 
 	i = 0;
 	tmp = n;
