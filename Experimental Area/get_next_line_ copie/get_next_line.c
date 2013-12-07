@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/04 21:12:06 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/07 05:23:16 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/08 00:24:09 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,10 @@ int 	get_next_read(int const fd, char **line, char **array)
 
 	i = 0;
 	if (read(fd, buffer, BUFF_SIZE) == 0)
+	{
+		*line = ft_strsub(*array, 0, ft_strlen(*array));
 		return (0);
+	}
 	while (buffer[i] != '\n' && i <= BUFF_SIZE)
 		i = i + 1;
 	if (i == BUFF_SIZE + 1)
@@ -77,6 +80,5 @@ int 	get_next_line(int const fd, char **line)
 	}
 	if (get_next_read(fd, line, &array) == 0)
 		return (0);
-	else
-		return (1);
+	return (1);
 }
