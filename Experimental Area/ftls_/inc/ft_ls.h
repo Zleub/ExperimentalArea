@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/07 22:07:12 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/07 22:13:42 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/07 22:29:48 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,9 @@
 # define FT_LS_H
 
 # include <libft.h>
+
+/* opendir / readdir */
+#include <sys/types.h>
+#include <dirent.h>
 
 #endif
