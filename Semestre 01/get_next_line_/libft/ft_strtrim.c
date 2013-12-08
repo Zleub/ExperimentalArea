@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 00:16:25 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/07 04:00:46 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/08 07:38:42 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strtrim(char const *s)
 	if (s == NULL)
 		return (NULL);
 	i = ft_strlen(s) - 1;
-	tmp = malloc(sizeof(char) * ft_strlen(s) + 1);
+	tmp = (char*)malloc(sizeof(char) * ft_strlen(s) + 1);
 	while (s[i] == 32 || s[i] == 10 || s[i] == 9)
 		i = i - 1;
 	j = 0;

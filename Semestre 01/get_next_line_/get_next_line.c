@@ -19,7 +19,7 @@ char	*ft_strnjoin(char const *s1, char const *s2, int n)
 
 	if (s1 != NULL && s2 != NULL)
 	{
-		tmp = malloc(sizeof(char) * (ft_strlen(s1) + n + 1));
+		tmp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + n + 1));
 		if (!s2)
 			return (NULL);
 		ptr = tmp;
