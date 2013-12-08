@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/07 05:14:53 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/08 00:59:02 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/08 06:29:54 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define BUFF_SIZE 128
+# define BUFF_SIZE 2
 
 int 	get_next_line(int const fd, char ** line);
 #endif
