@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-char	*ft_strnjoin(char const *s1, char const *s2, int n)
+char		*ft_strnjoin(char const *s1, char const *s2, int n)
 {
 	char		*tmp;
 	char		*ptr;
@@ -33,17 +33,19 @@ char	*ft_strnjoin(char const *s1, char const *s2, int n)
 	return (NULL);
 }
 
-int 	get_next_read(int const fd, char **line, char **array)
+static int 	get_next_read(int const fd, char **line, char **array)
 {
 	int 		i;
 	char 		buffer[BUFF_SIZE + 1] = {'\0'};
 
-	i = 0;
-	if (read(fd, buffer, BUFF_SIZE) == 0)
+	if ((i = read(fd, buffer, BUFF_SIZE)) <= 0)
 	{
 		*line = ft_strsub(*array, 0, ft_strlen(*array));
+		if (i == -1)
+			return (-1);
 		return (0);
 	}
+	i = 0;
 	while (buffer[i] != '\n' && i <= BUFF_SIZE)
 		i = i + 1;
 	if (i == BUFF_SIZE + 1)
@@ -59,14 +61,16 @@ int 	get_next_read(int const fd, char **line, char **array)
 	return (1);
 }
 
-int 	get_next_line(int const fd, char **line)
+int 		get_next_line(int const fd, char **line)
 {
-	static char *array;
+	static char	*array;
 	int 		i;
 
 	i = 0;
 	if (!array)
 		array = ft_memalloc(1);
+	if (fd == -1)
+		return (-1);
 	else if (ft_strchr(array, '\n') != NULL)
 	{
 		while (array[i] != '\n')
@@ -78,7 +82,7 @@ int 	get_next_line(int const fd, char **line)
 		array = ft_strsub(array, i + 1, ft_strlen(array) - i);
 		return (1);
 	}
-	if (get_next_read(fd, line, &array) == 0)
+	if (get_next_read(fd, line, &array) <= 0)
 		return (0);
 	return (1);
 }
