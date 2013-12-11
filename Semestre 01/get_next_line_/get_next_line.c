@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/04 21:12:06 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/08 00:24:09 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/08 23:32:22 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ static int 	get_next_read(int const fd, char **line, char **array)
 		*line = ft_strsub(*array, 0, ft_strlen(*array));
 		if (i == -1)
 			return (-1);
+		free(*array);
 		return (0);
 	}
 	i = 0;

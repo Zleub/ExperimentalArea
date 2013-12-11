@@ -14,7 +14,7 @@ SRC = $(subst $(SPC),$(SPC)$(SRCDIR),$(SRCDIR)$(shell ls $(SRCDIR) | grep .c))
 OBJ = $(subst .c,.o,$(shell ls $(SRCDIR) | grep .c))
 
 CC = gcc
-CCFLAGS = -Werror -Wall -Wextra -L./libft -lft -I./libft/includes
+CCFLAGS = -g -Werror -Wall -Wextra -L./libft -lft -I./libft/includes
 
 .PHONY: all lib clean fclean re
 
