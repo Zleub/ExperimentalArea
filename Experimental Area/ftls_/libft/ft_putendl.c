@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/10 09:50:50 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/11 09:44:54 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	ft_putendl(char const *s)
 {
-	while (*s)
-		ft_putchar(*s++);
+	if (s)
+	{
+		while (*s)
+			ft_putchar(*s++);
+	}
 	ft_putchar('\n');
 }

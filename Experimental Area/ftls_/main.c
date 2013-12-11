@@ -6,110 +6,30 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/10 13:16:56 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/11 09:39:34 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_ls.h>
 
-void 	list_argv(int argc, char **argv)
-{
-	int 	i;
-
-	i = 1;
-	ft_putnbr(argc - 1);
-	ft_putendl(" arguments.");
-	while (i <= argc - 1)
-	{
-		ft_putendl(argv[i]);
-		i = i + 1;
-	}
-}
-
-// void	ft_cpy_array(char **dst, char **src)
+// void	list_argv(int argc, char **argv)
 // {
-// 	int 	i;
+// 	int		i;
 
-// 	i = 0;
-// 	while (src[i])
-// 		i = i + 1;
-// 	dst = (char **)malloc(sizeof(char*) * i);
-// 	while (i-- != 0)
-// 		dst[i] = ft_strdup(src[i]);
-// }
-
-// void	ft_cat_array(char **dst, char **src)
-// {
-// 	int 	i;
-// 	int 	j;
-// 	int 	k;
-
-// 	i = j = k = 0;
-// 	while (dst[i])
-// 		i = i + 1;
-// 	while (src[j])
-// 		j = j + 1;
-// 	while (i <= i + j && k++)
-// 		dst[i] = ft_strdup(src[k]);
-// }
-
-// int 	get_readdir(char **array, char *dir)
-// {
-// 	DIR				*dirp;
-// 	struct dirent	**read;
-// 	int 			i;
-// 	int 			j;
-
-// 	dirp = opendir(dir);
-// 	/* Gestion d'erreur */
-
-// 	i = 0;
-// 	while (readdir(dirp))
-// 		i = i + 1;
-// 	ft_putnbr(i);
-
-// 	closedir(dirp);
-// 	/* Gestion d'erreur */
-
-
-// 	dirp = opendir(dir);
-// 	/* Gestion d'erreur */
-
-
-// 	read = malloc(sizeof(struct dirent*) * i);
-
-// 	ft_putendl("test3");
-
-// 	i = 0;
-// 	while ((read[i] = readdir(dirp)))
-// 		i = i + 1;
-
-// 	ft_putendl(read[0]->d_name);
-// 	ft_putendl("test4");
-
-// 	*array = (char**)malloc(sizeof(char *) * i);
-
-// 	j = 0;
-// 	while (j <= i)
+// 	i = 1;
+// 	ft_putnbr(argc - 1);
+// 	ft_putendl(" arguments.");
+// 	while (i <= argc - 1)
 // 	{
-// 		array[j] = ft_strdup(read[j]->d_name);
-// 		j = j + 1;
+// 		ft_putendl(argv[i]);
+// 		i = i + 1;
 // 	}
-
-// 	*array[j] = 0;
-// 	ft_putendl("test5");
-
-// 	closedir(dirp);
-// 	/* Gestion d'erreur */
-
-
-// 	return (0);
 // }
 
-int 	get_read_size(char *dir)
+int		get_read_size(char *dir)
 {
-	DIR 	*dirp;
-	int 	i;
+	DIR		*dirp;
+	int		i;
 
 	dirp = opendir(dir);
 	/* Gestion d'erreur */
@@ -123,10 +43,10 @@ int 	get_read_size(char *dir)
 
 void	sort_array_d_name(struct dirent	**read, char *dir)
 {
-	int 			i;
-	int 			j;
-	int 			len;
-	int 			min;
+	int				i;
+	int				j;
+	int				len;
+	int				min;
 	struct dirent	*tmp;
 
 	len = get_read_size(dir);
@@ -155,12 +75,15 @@ char	**get_array_d_name(char *dir)
 	DIR				*dirp;
 	struct dirent	**read;
 	char			**array;
-	int 			len;
-	int 			i;
+	int				len;
+	int				i;
 
 	len = get_read_size(dir);
 	dirp = opendir(dir);
-	read = malloc(sizeof(struct dirent*) * i);
+	read = malloc(sizeof(struct dirent**));
+	i = 0;
+	while (i < len)
+		read[i++] = malloc(sizeof(struct dirent*));
 	array = malloc(sizeof(char *) * i);
 	i = 0;
 	while ((read[i] = readdir(dirp)))
@@ -173,35 +96,121 @@ char	**get_array_d_name(char *dir)
 		i = i + 1;
 	}
 	closedir(dirp);
-	free(read);
 	return (array);
 }
 
-int 	print_basic(char *dir)
+int		print_basic(char *dir, t_global *variables)
 {
-	int 	i;
-	char	**array;
+	int				len;
+	int				i;
+	char			**array;
 
 	i = 0;
+	len = get_read_size(dir);
 	array = get_array_d_name(dir);
-	while(array[i])
+	while(i < len)
 	{
-		ft_putendl(array[i]);
+		if (variables-> a == 1)
+			ft_putendl(array[i]);
+		else
+		{
+			if (array[i][0] != '.')
+				ft_putendl(array[i]);
+		}
 		i = i + 1;
 	}
 	return (0);
 }
 
-int 	main(int argc, char **argv)
+t_global	*bools_init(t_global *variables)
 {
+	variables = malloc(sizeof(t_global *));
+	variables->a = 0;
+	variables->l = 0;
+	variables->nb_folds = 0;
+	return (variables);
+}
+
+t_global	*tea_time(t_global *variables, int argc, char** argv, int i)
+{
+	int		j;
+
+	variables->nb_folds = argc - i;
+	variables->folders = malloc(sizeof(char*) * variables->nb_folds);
+	j = 0;
+	while (i < argc)
+	{
+		variables->folders[j] = ft_strdup(argv[i]);
+		i = i + 1;
+		j = j + 1;
+	}
+	return (variables);
+}
+
+t_global	*parsing(int argc, char **argv, t_global *variables)
+{
+	int		i;
+	int		j;
+
+	variables = bools_init(variables);
+	i = 1;
+	while (i < argc && (!ft_isalnum(argv[i][0])))
+	{
+		if (i < argc && argv[i][0] == '-')
+		{
+			j = 0;
+			while (argv[i][j])
+			{
+				if (argv[i][j] == 'a')
+					variables->a = 1;
+				else if (argv[i][j] == 'l')
+					variables->l = 1;
+				j = j + 1;
+			}
+		}
+		i = i + 1;
+	}
+	variables = tea_time(variables, argc, argv, i);
+	return (variables);
+}
+
+int		main(int argc, char **argv)
+{
+	int				i;
 	char			*dir;
+	t_global		*variables;
 
 	argc = argc;
-	argv = argv;
 
 	dir = "./";
+	variables = parsing(argc, argv, variables);
 
-	print_basic(dir);
+	// ft_putstr("parsing time, a : ");
+	// ft_putnbr(variables->a);
+	// ft_putstr(" l : ");
+	// ft_putnbr(variables->l);
+	// ft_putstr(" . ");
+	// ft_putendl(variables->folders[0]);
+	// ft_putendl(variables->folders[1]);
 
+	if(!variables->folders[0] && !variables->folders[1])
+		print_basic(dir, variables);
+
+	if(variables->folders[0] && !variables->folders[1])
+		print_basic(variables->folders[0], variables);
+
+	if (variables->folders[0] && variables->folders[1])
+	{
+		i = 0;
+		while (variables->folders[i] && i < variables->nb_folds)
+		{
+			ft_putstr(variables->folders[i]);
+			ft_putendl(":");
+			print_basic(variables->folders[i], variables);
+			if (i < variables->nb_folds - 1)
+				ft_putendl("");
+			i = i + 1;
+		}
+	}
 	return (0);
 }
