@@ -1,1 +1,3 @@
 teatime -> identify a folder from files in argv (ternaire isfile ?)
+
+could be nice not to readdir to much aka put some len is glob
