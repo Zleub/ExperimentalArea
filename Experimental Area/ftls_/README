@@ -3,3 +3,96 @@ not to forget a no_rights folder in tests
 teatime -> identify a folder from files in argv (ternaire isfile ?)
 
 could be nice not to readdir to much aka put some len is glob
+
+output :
+
+-> % ./ft_ls -l -a --- main.c libft/includes src/ inc Makefile error.log
+j : 9 strlen : 8 argv : Makefile
+>
+j : 10 strlen : 9 argv : error.log
+>
+j : 4 strlen : 3 argv : inc
+>
+j : 5 strlen : 14 argv : libft/includes
+<
+j : 7 strlen : 6 argv : main.c
+>
+j : 3 strlen : 4 argv : src/
+<
+4 < i
+Makefile is in ./ and has a 8 d_type by Makefile
+Makefile is in ./ and has a 8 d_type by Makefile~
+5 < i
+error.log is in ./ and has a 8 d_type by error.log
+6 < i
+inc is in ./ and has a 4 d_type by inc
+7 < i
+libft/includes has some path
+8 < i
+main.c is in ./ and has a 8 d_type by main.c
+9 < i
+src/ has some path
+
+debug i > 10 : src/:
+.
+..
+.DS_Store
+hello.c
+
+debug i > 9 : main.c:
+
+debug i > 8 : libft/includes:
+.
+..
+libft.h
+
+debug i > 7 : inc:
+.
+..
+ft_ls.h
+
+debug i > 6 : error.log:
+
+debug i > 5 : Makefile:
+1 : ./ft_ls
+1 : -l
+1 : -a
+1 : ---
+1 : Makefile
+1 : error.log
+1 : inc
+1 : libft/includes
+1 : main.c
+1 : src/
+2 : PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
+2 : TMPDIR=/var/folders/rs/_gpwk2q95ps4zsv605qww7qh0000gn/T/
+2 : SHELL=/bin/zsh
+2 : HOME=/Users/Arno
+2 : USER=Arno
+2 : LOGNAME=Arno
+2 : DISPLAY=/tmp/launch-0IJFI7/org.x:0
+2 : SSH_AUTH_SOCK=/tmp/launch-1xbkYz/Listeners
+2 : Apple_Ubiquity_Message=/tmp/launch-Zk0JJA/Apple_Ubiquity_Message
+2 : Apple_PubSub_Socket_Render=/tmp/launch-lwOPoP/Render
+2 : COMMAND_MODE=unix2003
+2 : __CF_USER_TEXT_ENCODING=0x1F5:0:91
+
+2 : TERM_PROGRAM=iTerm.app
+2 : COLORFGBG=7;0
+2 : LANG=fr_FR.UTF-8
+2 : PWD=/Users/Arno/Sourceforge 42/Experimental Area/ftls_
+2 : ITERM_PROFILE=Arno
+2 : TERM=xterm
+2 : ITERM_SESSION_ID=w0t0p0
+2 : SHLVL=1
+2 : OLDPWD=/Users/Arno/Sourceforge 42/Experimental Area/ftls_/libft
+2 : GREP_OPTIONS=--color=auto
+2 : GREP_COLOR=1;32
+2 : PAGER=less
+2 : LESS=-R
+2 : LC_CTYPE=fr_FR.UTF-8
+2 : LSCOLORS=Gxfxcxdxbxegedabagacad
+2 : _=/Users/Arno/Sourceforge 42/Experimental Area/ftls_/./ft_ls
+<----->
+dump vars->read sorted
+[1]    19135 segmentation fault  ./ft_ls -l -a --- main.c libft/includes src/ inc Makefile error.log
