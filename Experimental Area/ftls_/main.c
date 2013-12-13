@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/12 09:22:52 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/13 05:57:05 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,6 +211,57 @@ t_global	*glob_init(t_global *vars)
 // 	return (vars);
 // }
 
+// void	this_is_vomit(t_global *vars, char*)
+// {
+
+// }
+
+void	treat_plague(t_global *vars, int argc, char** argv, int i)
+{
+	int		j;
+	int		k;
+	int		l;
+
+	k = 0;
+	if (i < argc)
+	{
+		j = 0;
+		ft_putnbr(i);
+		ft_putendl(" < i");
+		while (j <= (int)ft_strlen(argv[i]) && argv[i][j] != '/')
+			j = j + 1;
+		if (j == (int)ft_strlen(argv[i]) + 1)
+		{
+			l = 0;
+			while (vars->read[l])
+			{
+				if (ft_strstr(vars->read[l]->d_name, argv[i]))
+				{
+					ft_putstr("is in ./ and has a ");
+					ft_putnbr(vars->read[l]->d_type);
+					ft_putendl(" d_type");
+				}
+				l = l + 1;
+			}
+		}
+		else
+			ft_putendl("has some path");
+		i = i + 1;
+		k = k + 1;
+		treat_plague(vars, argc, argv, i);
+	}
+	if (k)
+	{
+		ft_putendl("");
+		ft_putstr("debug i > ");
+		ft_putnbr(i);
+		ft_putstr(" : ");
+		ft_putstr(argv[i - 1]);
+		ft_putendl(":");
+		print_basic_dir(argv[i - 1], vars);
+	}
+	return ;
+}
 
 t_global	*tea_time(t_global *vars, int argc, char** argv, int i)
 {
@@ -235,8 +286,6 @@ t_global	*tea_time(t_global *vars, int argc, char** argv, int i)
 			ft_putendl("else");
 	i = i + 1;
 	}
-
-
 	return (vars);
 }
 
@@ -265,6 +314,7 @@ t_global	*parsing(int argc, char **argv, t_global *vars)
 	}
 	sort_array_argv(argv, argc, i);
 	vars = tea_time(vars, argc, argv, i);
+	treat_plague(vars, argc, argv, i);
 
 	i = 0;
 	while (argv[i])
@@ -276,13 +326,35 @@ t_global	*parsing(int argc, char **argv, t_global *vars)
 	return (vars);
 }
 
+void	recurs(int i)
+{
+	int		j;
+
+	j = 0;
+	if (i <= 10)
+	{
+		ft_putnbr(i);
+		ft_putendl_fd(" < i | out > 2", 2);
+		i = i + 1;
+		j = j + 1;
+		recurs(i);
+	}
+	ft_putnbr(j);
+	ft_putendl(" < j");
+	if (j == 1)
+	{
+		ft_putnbr(i);
+		ft_putendl_fd(" < i | out > 1", 1);
+	}
+	return ;
+}
+
 int		main(int argc, char **argv)
 {
 	int				i;
 	t_global		*vars;
 
-	argc = argc;
-
+	vars = NULL;
 	vars = parsing(argc, argv, vars);
 
 	// ft_putstr("parsing time, a : ");
@@ -349,10 +421,14 @@ int		main(int argc, char **argv)
 	// 	i = i + 1;
 	// }
 
+	ft_putendl("print recursively");
+
+	recurs(0);
+
 	ft_putendl("<----->");
 
-	ft_putendl("perror test");
-	print_basic_dir("./no_rights.d", vars);
+	ft_putendl("perror test 2");
+	print_basic_dir("./main", vars);
 	perror("test");
 
 	ft_putendl("<----->");
@@ -362,24 +438,24 @@ int		main(int argc, char **argv)
 
 	ft_putendl("<----->");
 
-	if(!vars->folders[0] && !vars->folders[1])
-		print_basic_dir("./", vars);
+	// if(!vars->folders[0] && !vars->folders[1])
+	// 	print_basic_dir("./", vars);
 
-	if(vars->folders[0] && !vars->folders[1])
-		print_basic_dir(vars->folders[0], vars);
+	// if(vars->folders[0] && !vars->folders[1])
+	// 	print_basic_dir(vars->folders[0], vars);
 
-	if (vars->folders[0] && vars->folders[1])
-	{
-		i = 0;
-		while (vars->folders[i] && i < vars->nb_folds)
-		{
-			ft_putstr(vars->folders[i]);
-			ft_putendl(":");
-			print_basic_dir(vars->folders[i], vars);
-			if (i < vars->nb_folds - 1)
-				ft_putendl("");
-			i = i + 1;
-		}
-	}
+	// if (vars->folders[0] && vars->folders[1])
+	// {
+	// 	i = 0;
+	// 	while (vars->folders[i] && i < vars->nb_folds)
+	// 	{
+	// 		ft_putstr(vars->folders[i]);
+	// 		ft_putendl(":");
+	// 		print_basic_dir(vars->folders[i], vars);
+	// 		if (i < vars->nb_folds - 1)
+	// 			ft_putendl("");
+	// 		i = i + 1;
+	// 	}
+	// }
 	return (0);
 }
