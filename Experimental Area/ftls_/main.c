@@ -211,10 +211,31 @@ t_global	*glob_init(t_global *vars)
 // 	return (vars);
 // }
 
-// void	this_is_vomit(t_global *vars, char*)
-// {
+// I JUST WANT THIS FUNCTION TO GIVE SOME DIFFERENCE IF EXACT MATCH
 
-// }
+void	this_is_vomit(char *s1, char *s2)
+{
+	size_t		i;
+	size_t		j;
+
+	i = 0;
+	if (s2[0] == '\0')
+		return (char*)(s1);
+	while (s1[i] != '\0')
+	{
+		j = 0;
+		while (s1[i] == s2[j])
+		{
+			i++;
+			j++;
+			if ((s2[j]) == '\0')
+				return (char*)(&(s1[i - j]));
+		}
+		i++;
+		i = i - j;
+	}
+	return (NULL);
+}
 
 void	treat_plague(t_global *vars, int argc, char** argv, int i)
 {
@@ -235,17 +256,24 @@ void	treat_plague(t_global *vars, int argc, char** argv, int i)
 			l = 0;
 			while (vars->read[l])
 			{
-				if (ft_strstr(vars->read[l]->d_name, argv[i]))
+				if (ft_strnstr(vars->read[l]->d_name, argv[i], ft_strlen(argv[i])))
 				{
-					ft_putstr("is in ./ and has a ");
+					ft_putstr(argv[i]);
+					ft_putstr(" is in ./ and has a ");
 					ft_putnbr(vars->read[l]->d_type);
-					ft_putendl(" d_type");
+					ft_putstr(" d_type");
+					ft_putstr(" by ");
+					ft_putendl(vars->read[l]->d_name);
 				}
 				l = l + 1;
 			}
 		}
 		else
+		{
+			ft_putstr(argv[i]);
+			ft_putstr(" ");
 			ft_putendl("has some path");
+		}
 		i = i + 1;
 		k = k + 1;
 		treat_plague(vars, argc, argv, i);
