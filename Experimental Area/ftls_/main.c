@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/15 06:14:33 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/15 07:11:57 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -211,53 +211,28 @@ int		print_basic_dir(char *dir, t_global *vars)
 	return (0);
 }
 
-char	**load_basic_dir(char *dir, t_global *vars)
+struct dirent	**load_basic_dir(char *dir)
 {
 	int				len;
-	int				i;
 	struct dirent	**read;
-	char			**array;
 
-	i = 0;
 	len = get_read_size(dir);
 	if (len == -1)
 		return (NULL);
 	read = get_array_dirent(dir, len);
-	array = malloc(sizeof(char**));
 	if (!read)
 		return (NULL);
-
-	while (read[i])
-	{
-		ft_putendl(read[i]->d_name);
-		i = i + 1;
-	}
-
-	i = 0;
-	while (i < len)
-	{
-		if (vars->a == 1)
-			array[i] = ft_strdup(read[i]->d_name);
-		else
-		{
-			if (read[i]->d_name[0] != '.')
-				array[i] = ft_strdup(read[i]->d_name);
-		}
-		i = i + 1;
-	}
-	array[i] = NULL;
-	i = 0;
-	while (array[i])
-		ft_putendl(ft_strjoin(array[i++], " < prout"));
-	return (array);
+	if (!read)
+		return (NULL);
+	return (read);
 }
 
 
-void	treat_plague(t_global *vars, int argc, char** argv, int i)
+void	treat_plague(int argc, char** argv, int i)
 {
 	int		j;
 	int		k;
-	char	***save;
+	struct dirent	***save;
 
 	k = 0;
 	save = malloc(sizeof(char***));
@@ -266,7 +241,7 @@ void	treat_plague(t_global *vars, int argc, char** argv, int i)
 		ft_putnbr(i);
 		ft_putendl(" < i");
 		ft_putendl(argv[i]);
-		save[k] = load_basic_dir(argv[i], vars);
+		save[k] = load_basic_dir(argv[i]);
 		if (!save[k])
 			ft_putendl(strerror(errno));
 		else
@@ -274,22 +249,24 @@ void	treat_plague(t_global *vars, int argc, char** argv, int i)
 			j = 0;
 			while (save[k][j])
 			{
-				ft_putendl(save[k][j]);
+				ft_putendl(save[k][j]->d_name);
 				j = j + 1;
 			}
 		}
 		i = i + 1;
 		k = k + 1;
-//		treat_plague(vars, argc, argv, i);
 	}
-	while (k)
+	while (k--)
 	{
-		k = k - 1;
+		ft_putnbr(k);
 		if (save[k])
 		{
-		j = 0;
-		while (save[k][j])
-			ft_putendl(save[k][j++]);
+			j = 0;
+			while (save[k][j])
+			{
+				ft_putendl(save[k][j]->d_name);
+				j = j + 1;
+			}
 		}
 	}
 	return ;
@@ -345,7 +322,7 @@ t_global	*parsing(int argc, char **argv, t_global *vars)
 		i = i + 1;
 	}
 	sort_array_argv(argv, argc, i);
-	treat_plague(vars, argc, argv, i);
+	treat_plague(argc, argv, i);
 
 	return (vars);
 }
