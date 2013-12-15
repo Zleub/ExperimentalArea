@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/01 23:29:11 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/14 11:38:47 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/15 02:12:53 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,30 +246,39 @@ void	treat_plague(t_global *vars, int argc, char** argv, int i)
 {
 	int		j;
 	int		k;
-	char	**save;
+	char	***save;
 
 	k = 0;
-	if (i < argc)
+	save = malloc(sizeof(char***));
+	while (i < argc)
 	{
 		ft_putnbr(i);
 		ft_putendl(" < i");
 		ft_putendl(argv[i]);
-		save = load_basic_dir(argv[i], vars);
-		if (!save)
+		save[k] = load_basic_dir(argv[i], vars);
+		if (!save[k])
 			ft_putendl(strerror(errno));
+		else
+		{
+			j = 0;
+			while (save[k][j])
+				ft_putendl(save[k][j++]);
+		}
 		i = i + 1;
 		k = k + 1;
-		treat_plague(vars, argc, argv, i);
+//		treat_plague(vars, argc, argv, i);
 	}
-	if (k)
+	while (k)
 	{
-		ft_putnbr(i);
-		if (save)
+		k = k - 1;
+		if (save[k])
 		{
-			ft_putendl(ft_strjoin(argv[i - 1], ":"));
-			j = 0;
-			while (save[j])
-				ft_putendl(save[j++]);
+		ft_putnbr(i);
+		if (argv[i - 1])
+		ft_putendl(ft_strjoin(argv[i - 1], ":"));
+		j = 0;
+		while (save[k][j])
+			ft_putendl(save[k][j++]);
 		}
 	}
 	return ;
