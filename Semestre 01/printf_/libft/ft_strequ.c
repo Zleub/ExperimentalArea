@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/18 15:08:36 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/16 20:42:51 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <libft.h>
 
-#include <stdarg.h>
-
-void	ft_printf(char *str, ...);
-
-#endif
+int		ft_strequ(char const *s1, char const *s2)
+{
+	if (s1 != NULL && s2 != NULL)
+	{
+		if (ft_strcmp(s1, s2) != 0)
+			return (0);
+		else
+			return (1);
+	}
+	return (0);
+}

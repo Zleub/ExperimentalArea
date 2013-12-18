@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/18 15:08:36 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/16 20:42:03 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <libft.h>
 
-#include <stdarg.h>
+char	*ft_strnew(size_t size)
+{
+	char	*str;
 
-void	ft_printf(char *str, ...);
-
-#endif
+	if (size)
+	{
+		str = malloc(sizeof(char) * (size + 1));
+		if (!str)
+			return (NULL);
+		ft_bzero(str, size + 1);
+		return (str);
+	}
+	return (NULL);
+}

@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/18 15:08:36 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/03 00:19:57 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <libft.h>
 
-#include <stdarg.h>
+void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
+{
+	unsigned char	*tmp2;
 
-void	ft_printf(char *str, ...);
-
-#endif
+	tmp2 = (unsigned char*) s2;
+	while (n--)
+	{
+		if (*tmp2 == c)
+		{
+			*(unsigned char*)s1++ = *tmp2++;
+			return (s1);
+		}
+		*(unsigned char*)s1++ = *tmp2++;
+	}
+	return (NULL);
+}

@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/18 15:08:36 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/03 00:09:37 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-
-#include <stdarg.h>
-
-void	ft_printf(char *str, ...);
-
-#endif
+int		ft_tolower(int c)
+{
+	if (64 < c && c < 91)
+	{
+		c = c + 32;
+		return (c);
+	}
+	return (c);
+}

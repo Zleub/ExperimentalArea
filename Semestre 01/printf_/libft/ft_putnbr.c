@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/18 15:08:36 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/16 20:43:11 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <libft.h>
 
-#include <stdarg.h>
-
-void	ft_printf(char *str, ...);
-
-#endif
+void	ft_putnbr(int n)
+{
+	if (n < 0)
+		ft_putchar('-');
+	if (n < 0)
+	{
+		if (n < -9)
+			ft_putnbr(n / -10);
+		ft_putchar(n % 10 * -1 + '0');
+	}
+	if (n >= 0)
+	{
+		if (n > 9)
+			ft_putnbr(n / 10);
+		ft_putchar(n % 10 + '0');
+	}
+}

@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strnequ.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/18 15:08:36 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/16 20:42:07 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <libft.h>
 
-#include <stdarg.h>
+int		ft_strnequ(char const *s1, char const *s2, size_t n)
+{
 
-void	ft_printf(char *str, ...);
-
-#endif
+	if (s1 != NULL && s2 != NULL)
+	{
+		if (ft_strlen(s1) == 0 && ft_strlen(s2) == 0)
+			return (1);
+		if (ft_strncmp(s1, s2, n) != 0)
+			return (0);
+		else
+			return (1);
+	}
+	return (0);
+}

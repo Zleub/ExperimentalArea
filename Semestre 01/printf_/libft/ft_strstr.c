@@ -1,20 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/18 15:08:36 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/03 00:22:06 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <libft.h>
 
-#include <stdarg.h>
+char	*ft_strstr(const char *s1, const char *s2)
+{
+	int	i;
+	int	j;
 
-void	ft_printf(char *str, ...);
-
-#endif
+	i = 0;
+	if (s2[0] == '\0')
+		return (char*)(s1);
+	while (s1[i] != '\0')
+	{
+		j = 0;
+		while (s1[i] == s2[j])
+		{
+			i++;
+			j++;
+			if ((s2[j]) == '\0')
+			{
+				return (char*)(&(s1[i - j]));
+			}
+		}
+		i++;
+		i = i - j;
+	}
+	return (NULL);
+}

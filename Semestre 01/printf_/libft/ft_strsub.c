@@ -1,20 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/18 15:08:36 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/30 00:16:25 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/17 09:31:07 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include <libft.h>
 
-#include <stdarg.h>
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	char	*res;
+	size_t	i;
 
-void	ft_printf(char *str, ...);
-
-#endif
+	if (s == NULL)
+		return (NULL);
+	i = 0;
+	res = ft_strnew(len);
+	if (!res)
+		return (NULL);
+	while (len)
+	{
+		res[i] = s[start + i];
+		i++;
+		len--;
+	}
+	return (res);
+}
