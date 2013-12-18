@@ -6,7 +6,7 @@
 	url = vogsphere@vogsphere.42.fr:algo-1-001/2013/par-1-1/getnextline/adebray
 [submodule "Semestre 01/ftls_"]
 	path = Semestre 01/ftls_
-	url = vogsphere@vogsphere.42.fr:algo-1-001/2013/par-1-1/ftls/adebray
+	url = vogsphere@vogsphere.42.fr:unix-1-001/2013/par-1-1/ftls/adebray
 [submodule "Semestre 01/printf_"]
 	path = Semestre 01/printf_
 	url = vogsphere@vogsphere.42.fr:algo-1-001/2013/par-1-1/printf/adebray
