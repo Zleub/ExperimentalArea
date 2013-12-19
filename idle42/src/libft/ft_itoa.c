@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 00:16:53 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/07 22:46:27 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/19 02:36:19 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ char	*ft_itoa(int n)
 	int		sign;
 	int		i;
 
-	if (n == -2147483648)
-		return ("-2147483648");
+	if (n == -2147483647)
+		return ("-2147483647");
 	sign = n < 0 ? 1 : 0;
 	i = 0;
 	result = malloc(sizeof(char *) * 12);
