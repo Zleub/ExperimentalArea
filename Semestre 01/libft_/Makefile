@@ -79,7 +79,6 @@ $(NAME): clean
 	$(CC) -I $(HEADDIR) -c $(SRC)
 	ar rc $(NAME) $(OBJ)
 	ranlib $(NAME)
-	make clean
 
 clean:
 	rm -f $(OBJ)

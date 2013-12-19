@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2013/12/17 09:30:34 by adebray          ###   ########.fr        #
+#    Updated: 2013/12/18 18:15:16 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = ft_printf
@@ -18,7 +18,12 @@ FTHEADDIR = ./src/libft/includes
 SPC :=
 SPC +=
 
-SRC = ./src/ft_printf.c
+SRC = ./src/ft_printf.c \
+		./src/ft_putchar.c \
+		./src/ft_putstr.c \
+		./src/gnl.c \
+		./src/ft_strlen.c \
+		./src/ft_putnbr.c
 
 OBJ = $(subst .c,.o,$(SRC))
 

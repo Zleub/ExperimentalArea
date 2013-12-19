@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/17 07:50:18 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/19 02:24:36 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ void				new_game(void)
 	hash = hashich(str);
 	fd = open(ft_strcat(str, ".sav"), O_WRONLY|O_CREAT, 00760);
 	ft_putendl_fd(str, fd);
+	free(str);
 	str = ft_itoa(hash % 21);
 	ft_putendl_fd(str, fd);
+	free(str);
 	str = ft_itoa((hash / 21) % 21);
 	ft_putendl_fd(str, fd);
 	close(fd);
@@ -133,6 +135,7 @@ int					get_rand(int modulo)
 		test[0] *= -1;
 	tmp = test[0] % modulo;
 	close(fd);
+	free(test);
 	return (tmp);
 }
 
@@ -144,6 +147,7 @@ t_heros				*create_monster(void)
 	static char			**str_array;
 	int					fd;
 	int					i;
+	unsigned int		hash;
 
 	i = 0;
 	monster = NULL;
@@ -155,9 +159,11 @@ t_heros				*create_monster(void)
 			i = i + 1;
 		close(fd);
 	}
-	ft_putendl(str_array[get_rand(i)]);
-	ft_putendl(str_array[get_rand(i)]);
-
+	monster = malloc(sizeof(t_heros));
+	monster->name = str_array[get_rand(20)];
+	hash = hashich(monster->name);
+	monster->strengh = hash % 21;
+	monster->defense = hash / 21 % 21;
 	return (monster);
 }
 
@@ -172,7 +178,6 @@ int							menu()
 	static t_heros			*heros;
 
 	str = NULL;
-	heros = NULL;
 	write(1, "Hello\n", 6);
 	write(1, "(N)ew game\n", 12);
 	write(1, "(L)oad game\n", 13);
@@ -186,7 +191,7 @@ int							menu()
 		heros = load_game(heros);
 		ft_putendl("Playing with : ");
 		print_heros(heros);
-		create_monster();
+		print_heros(create_monster());
 		// ft_putendl("done");
 	}
 //	if (str[0] == 'R' || str[0] == 'r')

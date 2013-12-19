@@ -81,7 +81,6 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rc $@ $^
 	ranlib $@
-	make clean
 
 clean:
 	rm -f $(OBJ)
