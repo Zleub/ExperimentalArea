@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/19 02:24:36 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/19 03:08:04 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,14 +125,14 @@ t_heros				*load_game(t_heros *heros)
 int					get_rand(int modulo)
 {
 	int				fd;
-	char			*test;
+	unsigned char	*test;
 	int				tmp;
 
 	test = ft_memalloc(1);
 	fd = open("/dev/urandom", O_RDONLY);
 	read(fd, test, 1);
-	if (test[0] < 0)
-		test[0] *= -1;
+	// if (test[0] < 0)
+	// 	test[0] *= -1;
 	tmp = test[0] % modulo;
 	close(fd);
 	free(test);
@@ -192,7 +192,7 @@ int							menu()
 		ft_putendl("Playing with : ");
 		print_heros(heros);
 		print_heros(create_monster());
-		// ft_putendl("done");
+		write(1, "done", 4);
 	}
 //	if (str[0] == 'R' || str[0] == 'r')
 //		write_file("");
