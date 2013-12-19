@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2013/12/17 07:16:02 by adebray          ###   ########.fr        #
+#    Updated: 2013/12/19 06:07:22 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = idle
@@ -21,7 +21,11 @@ SPC +=
 SRC = ./src/gnl.c		\
 	./src/hello.c		\
 	./src/hashich.c		\
-	./src/ft_fibonacci.c
+	./src/ft_fibonacci.c\
+	./src/print.c 		\
+	./src/chest.c		\
+	./src/management.c	\
+	./src/doer.c
 
 OBJ = $(subst .c,.o,$(SRC))
 

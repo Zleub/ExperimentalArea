@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   chest.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/19 05:42:30 by adebray          ###   ########.fr       */
+/*   Created: 2013/12/19 05:50:25 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/19 06:03:42 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <idle.h>
+#include <gnl.h>
 #include <libft.h>
 
-void	ft_putnbr(int n)
+int						ft_chest_0(void)
 {
-	if (n < 0)
-		ft_putchar('-');
-	if (n < 0)
-	{
-		if (n < -9)
-			ft_putnbr(n / -10);
-		ft_putchar(n % 10 * -1 + '0');
-	}
-	if (n >= 0)
-	{
-		if (n > 9)
-			ft_putnbr(n / 10);
-		ft_putchar(n % 10 + '0');
-	}
-}
+	char				**prout;
+	int					i;
+	int					fd;
 
+	i = -1;
+	prout = malloc(sizeof(char*) * 25);
+	while (++i < 25)
+		prout[i] = NULL;
+	fd = open("./res/monsters.txt", O_RDONLY);
+	i = 0;
+	while (get_next_line(fd, &prout[i]))
+		i = i + 1;
+	prout[i] = NULL;
+	while(*prout)
+		ft_putendl(*prout++);
+	close (fd);
+	return (0);
+}

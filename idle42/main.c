@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/19 05:23:41 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/19 06:45:46 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,12 @@
 #include <gnl.h>
 #include <libft.h>
 
-int					ft_chest_0(void)
+void					new_game(void)
 {
-	char			**prout;
-	int				i;
-	int				fd;
-
-	i = -1;
-	prout = malloc(sizeof(char*) * 25);
-	while (++i < 25)
-		prout[i] = NULL;
-	fd = open("./res/monsters.txt", O_RDONLY);
-	i = 0;
-	while (get_next_line(fd, &prout[i]))
-		i = i + 1;
-	prout[i] = NULL;
-	while(*prout)
-		ft_putendl(*prout++);
-	close (fd);
-	return (0);
-}
-
-void				new_game(void)
-{
-	char			*str;
-	unsigned int	hash;
-	int				fd;
-	int				i;
+	char				*str;
+	unsigned int		hash;
+	int					fd;
+	int					i;
 
 	write(1, "Enter name : ", 13);
 	get_next_line(0, &str);
@@ -63,182 +42,77 @@ void				new_game(void)
 	free(str);
 }
 
-void	print_heros(t_heros *heros)
+t_heros					*load_heros(t_heros *heros)
 {
-	ft_putendl(heros->name);
-	ft_putstr("Has ");
-	ft_putnbr(heros->strengh);
-	ft_putendl(" strengh");
-	ft_putstr("Has ");
-	ft_putnbr(heros->defense);
-	ft_putendl(" defense");
-}
+	char				*str;
+	int					fd;
 
-char	*trim_save(char *save_name)
-{
-	int		i;
-
-	i = ft_strlen(save_name);
-	while (save_name[i] != '.')
-	{
-		save_name[i] = '\0';
-		i = i - 1;
-	}
-	save_name[i] = '\0';
-	return (save_name);
-}
-
-char				*get_name(void)
-{
-	int		i;
-	char	*str;
-
-	write(1, "Enter name : ", 13);
-	get_next_line(0, &str);
-	i = 0;
-	while (str[i])
-	{
-		str[i] = ft_tolower(str[i]);
-		i = i + 1;
-	}
-	return (str);
-}
-
-t_heros				*load_game(t_heros *heros)
-{
-	char			*str;
-	int				fd;
-
-	if(!heros)
-	{
-		heros = malloc(sizeof(t_heros));
-		str = get_name();
-		fd = open(ft_strcat(str, ".sav"), O_RDONLY);
-		free(str);
-		get_next_line(fd, &str);
-		heros->name = ft_strdup(trim_save(str));
-		free(str);
-		get_next_line(fd, &str);
-		heros->strengh = ft_atoi(str);
-		free(str);
-		get_next_line(fd, &str);
-		heros->defense = ft_atoi(str);
-		free(str);
-		close(fd);
-		return (heros);
-	}
+	free(heros);
+	heros = malloc(sizeof(t_heros));
+	str = get_name();
+	fd = open(ft_strcat(str, ".sav"), O_RDONLY);
+	free(str);
+	get_next_line(fd, &str);
+	heros->name = ft_strdup(trim_save(str));
+	free(str);
+	get_next_line(fd, &str);
+	heros->strengh = ft_atoi(str);
+	free(str);
+	get_next_line(fd, &str);
+	heros->defense = ft_atoi(str);
+	free(str);
+	close(fd);
 	return (heros);
 }
 
-int					get_rand(int modulo)
+t_heros					*load_game(t_heros *heros)
 {
-	int				fd;
-	unsigned char	*test;
-	int				tmp;
+	int					vic;
+	int					cmp;
 
-	test = ft_memalloc(1);
-	fd = open("/dev/urandom", O_RDONLY);
-	read(fd, test, 1);
-	// if (test[0] < 0)
-	// 	test[0] *= -1;
-	tmp = test[0] % modulo;
-	close(fd);
-	free(test);
-	return (tmp);
-}
-
-#include <stdio.h>
-
-t_heros				*create_monster(void)
-{
-	t_heros				*monster;
-	static char			**str_array;
-	int					fd;
-	int					i;
-	unsigned int		hash;
-
-	i = 0;
-	monster = NULL;
-	if(!str_array)
+	cmp = 0;
+	vic = 0;
+	while ((cmp = playing(heros, 20, 20)))
 	{
-		str_array = malloc(sizeof(char*) * 21);
-		fd = open("./res/monsters.txt", O_RDONLY);
-		while (get_next_line(fd, &str_array[i]) > 0)
-			i = i + 1;
-		close(fd);
+		vic += cmp;
+		ft_putstr("Victoires : ");
+		ft_putnbr(vic);
+		ft_putendl(NULL);
+		ft_putendl(NULL);
 	}
-	monster = malloc(sizeof(t_heros));
-	monster->name = str_array[get_rand(20)];
-	hash = hashich(monster->name);
-	monster->strengh = hash % 21;
-	monster->defense = hash / 21 % 21;
-	return (monster);
+	ft_putstr("You died and made ");
+	ft_putnbr(vic);
+	ft_putendl(" victories.");
+	return (heros);
+
+	// cmp = playing(heros, 20, 20);
+	// if (cmp == 0)
+	// 	vic = 0;
+	// else
+	// 	vic += cmp;
+	// ft_putstr("Victoires : ");
 }
 
-int				playing(t_heros *heros, int h_life, int m_life)
+int						menu()
 {
-	t_heros		*monster;
-	int			damage;
-	int			i;
-
-	monster = create_monster();
-	i = 1;
-	while (h_life > 0 && m_life > 0)
-	{
-		damage = heros->strengh - (monster->defense / 2);
-		if (damage < 0)
-			damage = 0;
-		m_life -= damage;
-		damage = monster->strengh - (heros->defense / 2);
-		if (damage < 0)
-			damage = 0;
-		h_life -= damage;
-		ft_putstr("Round : ");
-		ft_putnbr(i);
-		ft_putendl("");
-		print_heros(heros);
-		ft_putnbr(h_life);
-		ft_putendl("");
-		print_heros(monster);
-		ft_putnbr(m_life);
-		ft_putendl("");
-		i += 1;
-	}
-	free(monster);
-	if (h_life > 0)
-		return (1);
-	return (0);
-}
-
-int							menu()
-{
-	char					*str;
-	static int						vic;
-	int				cmp;
-	static t_heros			*heros;
+	static t_heros		*heros;
+	char				*str;
 
 	str = NULL;
-	if (!cmp)
-		cmp = 0;
 	write(1, "Hello\n", 6);
 	write(1, "(N)ew game\n", 12);
-	write(1, "(L)oad game\n", 13);
+	if (heros)
+		write(1, "(P)lay game\n", 13);
+	write(1, "(L)oad heros\n", 13);
 	// write(1, "(R)egles\n", 9);
 	write(1, "(E)xit\n", 8);
 	get_next_line(0, &str);
 	if (str[0] == 'N' || str[0] == 'n')
 		new_game();
-	if (str[0] == 'L' || str[0] == 'l')
-	{
+	if (str[0] == 'P' || str[0] == 'p')
 		heros = load_game(heros);
-		cmp = playing(heros, 20, 20);
-		if (cmp == 0)
-			vic = 0;
-		else
-			vic += cmp;
-		ft_putstr("Victoires : ");
-		ft_putnbr(vic);
-	}
+	if (str[0] == 'L' || str[0] == 'l')
+		heros = load_heros(heros);
 //	if (str[0] == 'R' || str[0] == 'r')
 //		write_file("");
 	if (str[0] == 'E' || str[0] == 'e')
@@ -248,7 +122,7 @@ int							menu()
 	return (0);
 }
 
-int							main(void)
+int						main(void)
 {
 	return (menu());
 }
