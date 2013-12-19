@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/19 03:08:04 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/19 05:23:41 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,23 +88,31 @@ char	*trim_save(char *save_name)
 	return (save_name);
 }
 
+char				*get_name(void)
+{
+	int		i;
+	char	*str;
+
+	write(1, "Enter name : ", 13);
+	get_next_line(0, &str);
+	i = 0;
+	while (str[i])
+	{
+		str[i] = ft_tolower(str[i]);
+		i = i + 1;
+	}
+	return (str);
+}
+
 t_heros				*load_game(t_heros *heros)
 {
 	char			*str;
-	int				i;
 	int				fd;
 
 	if(!heros)
 	{
 		heros = malloc(sizeof(t_heros));
-		write(1, "Enter name : ", 13);
-		get_next_line(0, &str);
-		i = 0;
-		while (str[i])
-		{
-			str[i] = ft_tolower(str[i]);
-			i = i + 1;
-		}
+		str = get_name();
 		fd = open(ft_strcat(str, ".sav"), O_RDONLY);
 		free(str);
 		get_next_line(fd, &str);
@@ -167,21 +175,55 @@ t_heros				*create_monster(void)
 	return (monster);
 }
 
-// void				playing(t_heros)
-// {
-// 	create_monster
-// }
+int				playing(t_heros *heros, int h_life, int m_life)
+{
+	t_heros		*monster;
+	int			damage;
+	int			i;
+
+	monster = create_monster();
+	i = 1;
+	while (h_life > 0 && m_life > 0)
+	{
+		damage = heros->strengh - (monster->defense / 2);
+		if (damage < 0)
+			damage = 0;
+		m_life -= damage;
+		damage = monster->strengh - (heros->defense / 2);
+		if (damage < 0)
+			damage = 0;
+		h_life -= damage;
+		ft_putstr("Round : ");
+		ft_putnbr(i);
+		ft_putendl("");
+		print_heros(heros);
+		ft_putnbr(h_life);
+		ft_putendl("");
+		print_heros(monster);
+		ft_putnbr(m_life);
+		ft_putendl("");
+		i += 1;
+	}
+	free(monster);
+	if (h_life > 0)
+		return (1);
+	return (0);
+}
 
 int							menu()
 {
 	char					*str;
+	static int						vic;
+	int				cmp;
 	static t_heros			*heros;
 
 	str = NULL;
+	if (!cmp)
+		cmp = 0;
 	write(1, "Hello\n", 6);
 	write(1, "(N)ew game\n", 12);
 	write(1, "(L)oad game\n", 13);
-	write(1, "(R)egles\n", 9);
+	// write(1, "(R)egles\n", 9);
 	write(1, "(E)xit\n", 8);
 	get_next_line(0, &str);
 	if (str[0] == 'N' || str[0] == 'n')
@@ -189,10 +231,13 @@ int							menu()
 	if (str[0] == 'L' || str[0] == 'l')
 	{
 		heros = load_game(heros);
-		ft_putendl("Playing with : ");
-		print_heros(heros);
-		print_heros(create_monster());
-		write(1, "done", 4);
+		cmp = playing(heros, 20, 20);
+		if (cmp == 0)
+			vic = 0;
+		else
+			vic += cmp;
+		ft_putstr("Victoires : ");
+		ft_putnbr(vic);
 	}
 //	if (str[0] == 'R' || str[0] == 'r')
 //		write_file("");
