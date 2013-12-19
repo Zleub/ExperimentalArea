@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/19 06:45:46 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/19 07:14:50 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ t_heros					*load_heros(t_heros *heros)
 	char				*str;
 	int					fd;
 
-	free(heros);
 	heros = malloc(sizeof(t_heros));
 	str = get_name();
 	fd = open(ft_strcat(str, ".sav"), O_RDONLY);
@@ -84,16 +83,9 @@ t_heros					*load_game(t_heros *heros)
 	ft_putnbr(vic);
 	ft_putendl(" victories.");
 	return (heros);
-
-	// cmp = playing(heros, 20, 20);
-	// if (cmp == 0)
-	// 	vic = 0;
-	// else
-	// 	vic += cmp;
-	// ft_putstr("Victoires : ");
 }
 
-int						menu()
+int						menu(void)
 {
 	static t_heros		*heros;
 	char				*str;
@@ -114,7 +106,7 @@ int						menu()
 	if (str[0] == 'L' || str[0] == 'l')
 		heros = load_heros(heros);
 //	if (str[0] == 'R' || str[0] == 'r')
-//		write_file("");
+//		load_file("");
 	if (str[0] == 'E' || str[0] == 'e')
 		return (0);
 	write(1, "\n", 1);
