@@ -36,7 +36,7 @@ HEADFLAG = -I $(HEADDIR) -I $(FTHEADDIR)
 
 all: $(NAME)
 
-$(NAME): libft $(LIBNAME) clean
+$(NAME): $(LIBNAME) main.c
 	$(CC) $(CCFLAGS) -o $(NAME) $(HEADFLAG) $(LIBFLAG) main.c
 
 $(LIBNAME): $(OBJ)

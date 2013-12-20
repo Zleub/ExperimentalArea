@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/04 17:16:12 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/08 06:44:59 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/08 07:37:01 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (s1 != NULL && s2 != NULL)
 	{
-		tmp = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+		tmp = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 		if (!tmp)
 			return (NULL);
 		ptr = tmp;

@@ -16,6 +16,15 @@
 #include <stdarg.h>
 #include <unistd.h>
 
+typedef struct	s_flag
+{
+	char	minus;
+	char	plus;
+	char	zero;
+	char	space;
+	int	width;
+}		t_flag;
+
 int			ft_printf(char *str, ...);
 void		ft_putstr(char const *s);
 void		ft_putnbr(int n);

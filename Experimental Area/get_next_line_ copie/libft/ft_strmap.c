@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 00:12:28 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/08 07:37:32 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char		*ft_strmap(char const *s, char (*f)(char))
 
 	if (s != NULL && f != NULL)
 	{
-		s2 = malloc(sizeof(char) * (ft_strlen(s) + 1));
+		s2 = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 		i = 0;
 		while (s[i])
 		{

@@ -47,12 +47,22 @@ t_heros					*load_heros(t_heros *heros)
 	char				*str;
 	int					fd;
 
+	if (heros)
+	{
+		free(heros->name);
+	//	free(heros->strengh);
+	//	free(heros->defense);
+		free(heros);
+	}
+	ft_putendl("prout");
 	heros = malloc(sizeof(t_heros));
 	str = get_name();
 	fd = open(ft_strcat(str, ".sav"), O_RDONLY);
+	ft_putendl("002");
 	free(str);
 	get_next_line(fd, &str);
 	heros->name = ft_strdup(trim_save(str));
+	ft_putendl("003");
 	free(str);
 	get_next_line(fd, &str);
 	heros->strengh = ft_atoi(str);

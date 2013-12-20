@@ -25,8 +25,67 @@ char	*ft_cutstring(char *from, char *to)
 	return (str);
 }
 
+t_flag		*flags_init(t_flag *flags)
+{
+	flags = malloc(sizeof(t_flag));
+	flags->minus = 0;
+	flags->plus = 0;
+	flags->zero = 0;
+	flags->space = 0;
+	flags->width = 0;
+	return (flags);	
+}
+
+t_flag		*parse_option(t_flag *flags, char *str)
+{
+	if (!flags)
+		flags = flags_init(flags);
+	if (*str == '-')
+		flags->minus = 1;
+	else if (*str == ' ')
+		flags->space = 1;
+	return (flags);		
+}
+
 int		ft_printf(char *str, ...)
 {
+	va_list		ap;
+	static	t_flag	*flags;
+//	char		out;
+	int		ret;
+
+	va_start(ap, str);
+	ret = 0;
+	flags = NULL;
+	while (*str)
+	{
+		if (*str != '%')
+		{ 
+			ft_putchar(*str);
+			ret += 1;
+		}
+		else
+		{
+			str += 1;
+			while (!ft_isdigit(*str))
+			{
+				flags = parse_option(flags, str);
+				str += 1;
+			}
+			ft_putnbr(flags->space);
+//			print_arguments();
+		}
+		str++;
+	}
+	va_end(ap);
+	return (ret);
+}	
+
+
+
+
+
+/*{
 	va_list		ap;
 	int			d;
 	int			cmp;
@@ -82,7 +141,7 @@ int		ft_printf(char *str, ...)
 	}
 	va_end(ap);
 	return (cmp);
-}
+}*/
 
 
 
