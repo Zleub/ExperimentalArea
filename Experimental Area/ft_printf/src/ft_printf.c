@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/17 09:17:41 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/18 23:13:49 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/20 15:23:48 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,61 +25,122 @@ char	*ft_cutstring(char *from, char *to)
 	return (str);
 }
 
-t_flag		*flags_init(t_flag *flags)
+t_flags		*flags_init(t_flags *flags)
 {
-	flags = malloc(sizeof(t_flag));
+	flags = malloc(sizeof(t_flags));
 	flags->minus = 0;
 	flags->plus = 0;
 	flags->zero = 0;
 	flags->space = 0;
 	flags->width = 0;
-	return (flags);	
+	return (flags);
 }
 
-t_flag		*parse_option(t_flag *flags, char *str)
+void	get_flags(t_flags *flags, char *str)
 {
-	if (!flags)
-		flags = flags_init(flags);
 	if (*str == '-')
 		flags->minus = 1;
+	else if (*str == '0')
+		flags->zero = 1;
+	else if (*str == '+')
+		flags->plus = 1;
 	else if (*str == ' ')
 		flags->space = 1;
-	return (flags);		
+}
+
+int		ft_isflags(char str)
+{
+	if (str == '-' || str == '0' || str == '+' || str == ' ')
+		return (1);
+	else
+		return (0);
+}
+
+void	get_width(t_flags *flags, char str)
+{
+	flags->width *= 10;
+	flags->width += str - '0';
+}
+
+void	print_arguments(char ar, t_flags *flags, va_list ap)
+{
+	int				d;
+	unsigned int	u;
+	char			*s;
+
+	if (ar == 'd' || ar == 'i')
+	{
+		d = va_arg(ap, int);
+		ft_putnbr(d);
+		flags->cmp += ft_strlen(ft_itoa(d));
+	}
+	else if (ar == 'u')
+	{
+		u = va_arg(ap, unsigned int);
+		if (u > 9)
+		{
+			flags->cmp += ft_printf("%d", u / 10);
+		}
+		flags->cmp += ft_printf("%d", u % 10);
+	}
+	else if (ar == 'o')
+	{
+		u = va_arg(ap, unsigned int);
+		flags->cmp += ft_putoctal(u);
+	}
+	else if (ar == 'c')
+	{
+		d = va_arg(ap, int);
+		ft_putchar(d);
+		flags->cmp += 1;
+	}
+	else if (ar == 's')
+	{
+		s = va_arg(ap, char*);
+		if(s == NULL)
+		{
+			flags->cmp += ft_printf("(null)");
+		}
+		else
+			ft_putstr(s);
+		flags->cmp += ft_strlen(s);
+	}
 }
 
 int		ft_printf(char *str, ...)
 {
 	va_list		ap;
-	static	t_flag	*flags;
-//	char		out;
-	int		ret;
+	t_flags	*flags;
 
 	va_start(ap, str);
-	ret = 0;
-	flags = NULL;
+	flags = flags_init(flags);
 	while (*str)
 	{
 		if (*str != '%')
-		{ 
+		{
 			ft_putchar(*str);
-			ret += 1;
+			flags->cmp += 1;
 		}
 		else
 		{
 			str += 1;
-			while (!ft_isdigit(*str))
+			while (ft_isflags(*str))
 			{
-				flags = parse_option(flags, str);
+				get_flags(flags, str);
 				str += 1;
 			}
-			ft_putnbr(flags->space);
-//			print_arguments();
+			while (ft_isdigit(*str))
+			{
+				get_width(flags, *str);
+				str += 1;
+			}
+			print_arguments(*str, flags, ap);
 		}
 		str++;
 	}
 	va_end(ap);
-	return (ret);
-}	
+	return (flags->cmp);
+}
 
 
 

@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2013/12/18 18:15:16 by adebray          ###   ########.fr        #
+#    Updated: 2013/12/20 15:16:03 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = ft_printf
@@ -23,7 +23,8 @@ SRC = ./src/ft_printf.c \
 		./src/ft_putstr.c \
 		./src/gnl.c \
 		./src/ft_strlen.c \
-		./src/ft_putnbr.c
+		./src/ft_putnbr.c \
+		./src/ft_octal.c
 
 OBJ = $(subst .c,.o,$(SRC))
 
@@ -56,4 +57,4 @@ fclean: clean
 	rm -f $(LIBNAME)
 	rm -f $(NAME)
 
-re: all
+re: fclean all
