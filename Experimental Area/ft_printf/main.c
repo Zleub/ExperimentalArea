@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/21 16:12:31 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/21 21:41:41 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,14 @@ int		main(void)
 	printf("%10d\n", ret);
 	ft_putstr("Their : ");
 	ret = printf("hello %s %c", "world", '!');
+	printf("%10d\n", ret);
+
+	ft_printf("Test 4\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("hello %s %c", "world", 'A');
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("hello %s %c", "world", 'A');
 	printf("%10d\n", ret);
 
 	ft_putendl(NULL);
@@ -415,19 +423,131 @@ int		main(void)
 
 	ft_printf("Test 9 - 14\n");
 	ft_putstr("   My : ");
-	ret = ft_printf("%x", 000000000000000000001);
+	int		i = -1;
+	ret = ft_printf("%x", i);
 	printf("%10d\n", ret);
 	ft_putstr("Their : ");
-	ret = printf("%x", 000000000000000000001);
+	ret = printf("%x", i);
 	printf("%10d\n", ret);
 
 	ft_printf("Test 9 - 15\n");
 	ft_putstr("   My : ");
-	ret = ft_printf("%x", 195);
+	ret = ft_printf("%X", 195);
 	printf("%10d\n", ret);
 	ft_putstr("Their : ");
-	ret = printf("%x", 195);
+	ret = printf("%X", 195);
 	printf("%10d\n", ret);
+
+	ft_putendl(NULL);
+	ft_putendl("Da %p test");
+	ft_putendl(NULL);
+
+	ft_printf("Test 10 - 1\n");
+	char *to_del1 = "hello";
+	ft_putstr("   My : ");
+	ret = ft_printf("%p", to_del1);
+	printf("%10d\n", ret);
+	char *to_del2 = "hello";
+	ft_putstr("Their : ");
+	ret = printf("%p", to_del2);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 10 - 2\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%p", &to_del1);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%p", &to_del1);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 10 - 3\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%p", &to_del2);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%p", &to_del2);
+	printf("%10d\n", ret);
+
+	int to_dell1 = 11112;
+	int to_dell2 = 11112;
+
+	int *del1 = &to_dell1;
+	int *del2 = &to_dell2;
+
+	ft_printf("Test 10 - 4\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%p", del1);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%p", del2);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 10 - 5\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%p", &del1);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%p", &del1);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 10 - 6\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%p", &del2);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%p", &del2);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 10 - 5\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%p", &to_dell1);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%p", &to_dell1);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 10 - 6\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%p", &to_dell2);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%p", &to_dell2);
+	printf("%10d\n", ret);
+
+	void *tmp1 = &to_del1;
+	void *tmp2 = &to_del2;
+
+	ft_printf("Test 10 - 7\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%p", tmp1);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%p", tmp2);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 10 - 8\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%p", &tmp1);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%p", &tmp2);
+	printf("%10d\n", ret);
+
+	// ft_printf("Test 10 - 3\n");
+	// ft_putstr("   My : ");
+	// ret = ft_printf("%p", &(*to_del1));
+	// printf("%10d\n", ret);
+	// ft_putstr("Their : ");
+	// ret = printf("%p", &(*to_del2));
+	// printf("%10d\n", ret);
+
+	// ft_printf("Test 10 - 4\n");
+	// ft_putstr("   My : ");
+	// ret = ft_printf("%p", &to_del1);
+	// printf("%10d\n", ret);
+	// ft_putstr("Their : ");
+	// ret = printf("%p", &to_del2);
+	// printf("%10d\n", ret);
 
 	// while (get_next_line(0, &tmp))
 	// 	if (tmp[0] == 'q')

@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/17 09:17:41 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/21 16:09:51 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/21 20:29:52 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,9 @@ void	print_arguments(char ar, t_flags *flags, va_list ap)
 	int				d;
 	unsigned int	u;
 	char			*s;
+	// void			*p;
+
+	unsigned long int				test;
 
 	if (ar == 'd' || ar == 'i')
 	{
@@ -87,6 +90,11 @@ void	print_arguments(char ar, t_flags *flags, va_list ap)
 	{
 		u = va_arg(ap, unsigned int);
 		flags->cmp += ft_putoctal(u);
+	}
+	else if (ar == 'X')
+	{
+		u = va_arg(ap, unsigned int);
+		flags->cmp += ft_put_sheum_hexa(u);
 	}
 	else if (ar == 'x')
 	{
@@ -109,6 +117,12 @@ void	print_arguments(char ar, t_flags *flags, va_list ap)
 		else
 			ft_putstr(s);
 		flags->cmp += ft_strlen(s);
+	}
+	else if (ar == 'p')
+	{
+		test = va_arg(ap, unsigned long int);
+		// test = (int)&p;
+		ft_printf("%x", test);
 	}
 }
 

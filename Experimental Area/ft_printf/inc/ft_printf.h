@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/21 16:13:46 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/21 18:28:47 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ int					ft_isdigit(int c);
 int					ft_atoi(const char *str);
 int					ft_putoctal(unsigned int decimal);
 int					ft_puthexa(unsigned int decimal);
+int					ft_put_sheum_hexa(unsigned int decimal);
+
 
 #endif
