@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2013/12/20 15:16:03 by adebray          ###   ########.fr        #
+#    Updated: 2013/12/21 16:14:10 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = ft_printf
@@ -24,7 +24,8 @@ SRC = ./src/ft_printf.c \
 		./src/gnl.c \
 		./src/ft_strlen.c \
 		./src/ft_putnbr.c \
-		./src/ft_octal.c
+		./src/ft_octal.c \
+		./src/ft_hexa.c
 
 OBJ = $(subst .c,.o,$(SRC))
 

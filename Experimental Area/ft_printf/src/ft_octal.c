@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/20 12:38:16 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/20 18:18:10 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/21 16:32:59 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,17 @@
 
 int							ft_putoctal(unsigned int decimal)
 {
-	unsigned long int		diviser;
-	int						octal;
 	static int				cmp;
 
-	diviser = 8;
 	cmp = 0;
-	octal = 0;
-	while (diviser <= decimal)
-		diviser *= 8;
-	diviser /= 8;
-	if (decimal >= 8)
-	{
-		octal *= 10;
-		octal += decimal / diviser;
-		ft_putnbr(octal);
-		decimal -= (diviser * octal);
-		diviser /= 8;
-		ft_putoctal(decimal);
-		cmp += 1;
-		return (cmp);
-	}
+
+	if (decimal < 8)
+		ft_printf("%d", decimal);
 	else
 	{
-		octal *= 10;
-		octal += decimal / diviser;
-		decimal = decimal - (diviser * (decimal / diviser));
-		ft_putnbr(octal);
-		cmp += 1;
-		return (cmp);
+		ft_putoctal(decimal / 8);
+		ft_printf("%d", decimal % 8);
 	}
+	cmp += 1;
+	return (cmp);
 }

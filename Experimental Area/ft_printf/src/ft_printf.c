@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/17 09:17:41 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/20 15:23:48 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/21 16:09:51 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,11 @@ void	print_arguments(char ar, t_flags *flags, va_list ap)
 		u = va_arg(ap, unsigned int);
 		flags->cmp += ft_putoctal(u);
 	}
+	else if (ar == 'x')
+	{
+		u = va_arg(ap, unsigned int);
+		flags->cmp += ft_puthexa(u);
+	}
 	else if (ar == 'c')
 	{
 		d = va_arg(ap, int);
@@ -97,7 +102,7 @@ void	print_arguments(char ar, t_flags *flags, va_list ap)
 	else if (ar == 's')
 	{
 		s = va_arg(ap, char*);
-		if(s == NULL)
+		if (s == NULL)
 		{
 			flags->cmp += ft_printf("(null)");
 		}

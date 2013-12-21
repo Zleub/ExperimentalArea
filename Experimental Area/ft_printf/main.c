@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/20 17:57:38 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/21 16:12:31 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,6 +289,145 @@ int		main(void)
 	ret = printf("%o", 195);
 	printf("%10d\n", ret);
 
+	ft_putendl(NULL);
+	ft_putendl("Da %x test");
+	ft_putendl(NULL);
+
+	ft_printf("Test 9 - 1\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", (unsigned int)4294967295);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", (unsigned int)4294967295);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 2\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", 42);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", 42);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 3\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", -42);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", -42);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 4\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", -429496729);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", -429496729);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 5\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", (unsigned int)429496729795);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", (unsigned int)429496729795);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 5 - 1\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", (unsigned int)429496729796);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", (unsigned int)429496729796);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 6\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", 0);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", 0);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 6\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", -0);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", -0);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 7\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", 01);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", 01);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 8\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", -01);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", -01);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 9\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", 8);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", 8);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 10\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", -9);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", -9);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 11\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", -1);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", -1);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 12\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", 16);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", 16);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 13\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", -16);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", -16);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 14\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", 000000000000000000001);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", 000000000000000000001);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 9 - 15\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%x", 195);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%x", 195);
+	printf("%10d\n", ret);
 
 	// while (get_next_line(0, &tmp))
 	// 	if (tmp[0] == 'q')
