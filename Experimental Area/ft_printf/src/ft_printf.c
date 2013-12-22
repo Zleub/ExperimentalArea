@@ -6,57 +6,16 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/17 09:17:41 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/22 08:16:27 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/22 14:18:12 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 #include <stdlib.h>
 
-t_flags		*flags_init(t_flags *flags)
-{
-	flags = malloc(sizeof(t_flags));
-	flags->minus = 0;
-	flags->plus = 0;
-	flags->zero = 0;
-	flags->space = 0;
-	flags->width = 0;
-	return (flags);
-}
-
-void	get_flags(t_flags *flags, char *str)
-{
-	if (*str == '-')
-		flags->minus = 1;
-	else if (*str == '0')
-		flags->zero = 1;
-	else if (*str == '+')
-		flags->plus = 1;
-	else if (*str == ' ')
-		flags->space = 1;
-}
-
-int		ft_isflags(char str)
-{
-	if (str == '-' || str == '0' || str == '+' || str == ' ')
-		return (1);
-	else
-		return (0);
-}
-
-void	get_width(t_flags *flags, char str)
-{
-	flags->width *= 10;
-	flags->width += str - '0';
-}
-
-void	print_arguments(char ar, t_flags *flags, va_list ap)
+void		use_a_d(char ar, t_flags *flags, va_list ap)
 {
 	int						d;
-	void					*tmp;
-	unsigned int			u;
-	char					*s;
-	unsigned long int		ul;
 
 	if (ar == 'd' || ar == 'i')
 	{
@@ -64,13 +23,24 @@ void	print_arguments(char ar, t_flags *flags, va_list ap)
 		ft_putnbr(d);
 		flags->cmp += ft_strlen(ft_itoa(d));
 	}
-	else if (ar == 'u')
+	else if (ar == 'c')
+	{
+		d = va_arg(ap, int);
+		ft_putchar(d);
+		flags->cmp += 1;
+	}
+	return ;
+}
+
+void		use_a_u(char ar, t_flags *flags, va_list ap)
+{
+	unsigned int			u;
+
+	if (ar == 'u')
 	{
 		u = va_arg(ap, unsigned int);
 		if (u > 9)
-		{
 			flags->cmp += ft_printf("%d", u / 10);
-		}
 		flags->cmp += ft_printf("%d", u % 10);
 	}
 	else if (ar == 'o')
@@ -85,68 +55,76 @@ void	print_arguments(char ar, t_flags *flags, va_list ap)
 	}
 	else if (ar == 'x')
 	{
-		u = va_arg(ap, unsigned long int);
+		u = va_arg(ap, unsigned int);
 		flags->cmp += ft_puthexa(u);
 	}
-	else if (ar == 'c')
-	{
-		d = va_arg(ap, int);
-		ft_putchar(d);
-		flags->cmp += 1;
-	}
-	else if (ar == 's')
+	return ;
+}
+
+void	print_arguments(char ar, t_flags *flags, va_list ap)
+{
+	char					*s;
+	long unsigned int		ul;
+
+	use_a_d(ar, flags, ap);
+	use_a_u(ar, flags, ap);
+	if (ar == 's')
 	{
 		s = va_arg(ap, char*);
 		if (s == NULL)
-		{
 			flags->cmp += ft_printf("(null)");
-		}
 		else
 			ft_putstr(s);
 		flags->cmp += ft_strlen(s);
 	}
 	else if (ar == 'p')
 	{
-		tmp = va_arg(ap, void*);
-		ul = (unsigned long int)tmp;
+		ul = va_arg(ap, long unsigned int);
 		flags->cmp += ft_printf("%s", "0x");
-		// flags->cmp += ft_printf("%x", ul/4294967295);
-		flags->cmp += ft_printf("%x", ul);
+		flags->cmp += ft_puthexa(ul);
 	}
+	else if (ar == '%')
+		flags->cmp += ft_printf("%c", '%');
+	else if (ar == 'Z')
+		flags->cmp += ft_printf("%c", 'Z');
 }
 
+t_flags			*parse(char *str, t_flags *flags, va_list ap)
+{
+	while (ft_isflags(*str))
+	{
+		get_flags(flags, str);
+		str += 1;
+	}
+	while (ft_isdigit(*str))
+	{
+		get_width(flags, *str);
+		str += 1;
+	}
+	print_arguments(*str, flags, ap);
+	return (flags);
+}
 
-
-int		ft_printf(char *str, ...)
+int				ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	t_flags	*flags;
 
-	va_start(ap, str);
+	va_start(ap, format);
 	flags = flags_init(flags);
-	while (*str)
+	while (*format)
 	{
-		if (*str != '%')
+		if (*format != '%')
 		{
-			ft_putchar(*str);
+			ft_putchar(*format);
 			flags->cmp += 1;
 		}
 		else
 		{
-			str += 1;
-			while (ft_isflags(*str))
-			{
-				get_flags(flags, str);
-				str += 1;
-			}
-			while (ft_isdigit(*str))
-			{
-				get_width(flags, *str);
-				str += 1;
-			}
-			print_arguments(*str, flags, ap);
+			format += 1;
+			flags = parse((char*)format, flags, ap);
 		}
-		str++;
+		format++;
 	}
 	va_end(ap);
 	return (flags->cmp);

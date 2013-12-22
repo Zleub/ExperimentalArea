@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/22 08:17:38 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/22 14:18:20 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct	s_flags
 	int			cmp;
 }				t_flags;
 
-int					ft_printf(char *str, ...);
+int					ft_printf(const char *format, ...);
 void				ft_putstr(char const *s);
 void				ft_putnbr(int n);
 void				ft_putchar(char c);
@@ -36,8 +36,11 @@ char				*ft_cutstring(char *from, char *to);
 int					ft_isdigit(int c);
 int					ft_atoi(const char *str);
 int					ft_putoctal(unsigned int decimal);
-int					ft_puthexa(unsigned long int decimal);
+int					ft_puthexa(long unsigned int decimal);
 int					ft_put_sheum_hexa(unsigned int decimal);
-
+t_flags				*flags_init(t_flags *flags);
+void				get_flags(t_flags *flags, char *str);
+int					ft_isflags(char str);
+void				get_width(t_flags *flags, char str);
 
 #endif

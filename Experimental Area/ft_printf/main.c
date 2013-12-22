@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/22 07:16:07 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/22 14:13:44 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -479,7 +479,7 @@ int		main(void)
 	ret = ft_printf("%p", del1);
 	printf("%10d\n", ret);
 	ft_putstr("Their : ");
-	ret = printf("%p", del2);
+	ret = printf("%p", del1);
 	printf("%10d\n", ret);
 
 	ft_printf("Test 10 - 5\n");
@@ -522,12 +522,12 @@ int		main(void)
 	ret = ft_printf("%p", tmp1);
 	printf("%10d\n", ret);
 	ft_putstr("Their : ");
-	ret = printf("%p", tmp2);
+	ret = printf("%p", tmp1);
 	printf("%10d\n", ret);
 
 	ft_printf("Test 10 - 8\n");
 	ft_putstr("   My : ");
-	ret = ft_printf("%p", &tmp1);
+	ret = ft_printf("%p", &tmp2);
 	printf("%10d\n", ret);
 	ft_putstr("Their : ");
 	ret = printf("%p", &tmp2);
@@ -547,6 +547,58 @@ int		main(void)
 	// printf("%10d\n", ret);
 	// ft_putstr("Their : ");
 	// ret = printf("%p", &to_del2);
+	// printf("%10d\n", ret);
+
+
+	ft_printf("Test 11 - 1\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%%");
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%%");
+	printf("%10d\n", ret);
+
+	ft_printf("Test 11 - 2\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("Hello %% World");
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("Hello %% World");
+	printf("%10d\n", ret);
+
+	ssize_t prout = 2244;
+	// ssize_t prout2 = 666;
+
+	ft_printf("Test 12 - 1\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("%Zuft", prout);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("%Zuft", prout);
+	printf("%10d\n", ret);
+
+	ft_printf("Test 12 - 2\n");
+	ft_putstr("   My : ");
+	ret = ft_printf("Hello %Zd World", prout);
+	printf("%10d\n", ret);
+	ft_putstr("Their : ");
+	ret = printf("Hello %Zd World", prout);
+	printf("%10d\n", ret);
+
+	// ft_printf("Test 13 - 1\n");
+	// ft_putstr("   My : ");
+	// ret = ft_printf("%");
+	// printf("%10d\n", ret);
+	// ft_putstr("Their : ");
+	// ret = printf("%");
+	// printf("%10d\n", ret);
+
+	// ft_printf("Test 13 - 2\n");
+	// ft_putstr("   My : ");
+	// ret = ft_printf("Hello % World");
+	// printf("%10d\n", ret);
+	// ft_putstr("Their : ");
+	// ret = printf("Hello % World");
 	// printf("%10d\n", ret);
 
 	// while (get_next_line(0, &tmp))
