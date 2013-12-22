@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/21 21:41:41 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/22 07:16:07 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -449,7 +449,7 @@ int		main(void)
 	printf("%10d\n", ret);
 	char *to_del2 = "hello";
 	ft_putstr("Their : ");
-	ret = printf("%p", to_del2);
+	ret = printf("%p", to_del1);
 	printf("%10d\n", ret);
 
 	ft_printf("Test 10 - 2\n");

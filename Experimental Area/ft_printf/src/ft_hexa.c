@@ -6,13 +6,13 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/21 16:06:37 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/21 20:05:09 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/22 08:16:43 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
 
-static int			ft_printx(unsigned int decimal)
+static int			ft_printx(unsigned long int decimal)
 {
 	int				cmp;
 
@@ -32,7 +32,7 @@ static int			ft_printx(unsigned int decimal)
 	return (cmp);
 }
 
-int					ft_puthexa(unsigned int decimal)
+int					ft_puthexa(unsigned long int decimal)
 {
 	int				cmp;
 
