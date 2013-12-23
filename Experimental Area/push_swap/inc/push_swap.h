@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/22 14:31:29 by adebray          ###   ########.fr       */
+/*   Created: 2013/12/23 04:36:24 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/23 07:16:58 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-size_t		ft_strlen(const char *s)
+typedef struct	s_list
 {
-	size_t	i;
+	int			data;
+	void		*next;
+}				t_list;
 
-	i = 0;
-	if (s == NULL)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
+void		ft_printargv(int argc, char **argv);
+void		ft_putendl_fd(char const *s, int fd);
+void		ft_putchar_fd(char c, int fd);
+
+
+#endif

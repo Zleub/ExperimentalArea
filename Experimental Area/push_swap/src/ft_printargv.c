@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_printargv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/22 14:31:29 by adebray          ###   ########.fr       */
+/*   Created: 2013/12/23 04:43:31 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/23 04:59:01 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-size_t		ft_strlen(const char *s)
+void		ft_printargv(int argc, char **argv)
 {
-	size_t	i;
+	int		i;
 
 	i = 0;
-	if (s == NULL)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
+	while (i <= argc)
+	{
+		ft_printf("%d : %s\n", i, argv[i]);
+		i += 1;
+	}
 }

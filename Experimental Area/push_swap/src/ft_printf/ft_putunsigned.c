@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/22 14:31:29 by adebray          ###   ########.fr       */
+/*   Created: 2013/12/20 11:46:03 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/20 12:04:45 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-size_t		ft_strlen(const char *s)
+int		ft_putunsigned(unsigned int n)
 {
-	size_t	i;
+	static unsigned int	r;
 
-	i = 0;
-	if (s == NULL)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
+	r = 0;
+	if (n > 9)
+	{
+			ft_putnbr(n / 10);
+			r += 1;
+	}
+	ft_putchar(n % 10 + '0');
+	return (r + 1);
 }

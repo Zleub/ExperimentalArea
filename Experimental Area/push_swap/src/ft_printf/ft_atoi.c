@@ -1,25 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/22 14:31:29 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/30 00:07:24 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/22 14:25:46 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-
-size_t		ft_strlen(const char *s)
+int				ft_atoi(const char *str)
 {
-	size_t	i;
+	int			i;
+	int			nbr;
+	int			sign;
 
+	nbr = 0;
+	sign = 1;
 	i = 0;
-	if (s == NULL)
-		return (0);
-	while (s[i])
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
-	return (i);
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nbr = 10 * nbr + (str[i] - '0');
+		i++;
+	}
+	return (nbr * sign);
 }

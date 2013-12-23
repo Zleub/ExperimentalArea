@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_octal.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/22 14:31:29 by adebray          ###   ########.fr       */
+/*   Created: 2013/12/20 12:38:16 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/22 14:29:38 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-size_t		ft_strlen(const char *s)
+int							ft_putoctal(unsigned int decimal)
 {
-	size_t	i;
+	static int				cmp;
 
-	i = 0;
-	if (s == NULL)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
+	cmp = 0;
+	if (decimal < 8)
+		ft_printf("%d", decimal);
+	else
+	{
+		ft_putoctal(decimal / 8);
+		ft_printf("%d", decimal % 8);
+	}
+	cmp += 1;
+	return (cmp);
 }
