@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
+/*   gnl.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/20 11:46:03 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/20 12:04:45 by adebray          ###   ########.fr       */
+/*   Created: 2013/12/15 20:37:58 by nsierra           #+#    #+#             */
+/*   Updated: 2013/12/17 02:33:37 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ft_printf.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
+# include <unistd.h>
+# include <stdlib.h>
+# define BUFF_SIZE 4096
 
-int		ft_putunsigned(unsigned int n)
+int					get_next_line(int const fd, char **line);
+
+typedef struct		s_read
 {
-	static unsigned int	r;
+	int				size;
+	int				index;
+	int				fd;
+	char			*read;
+	struct s_read	*next;
+}					t_read;
 
-	r = 0;
-	if (n > 9)
-	{
-			ft_putnbr(n / 10);
-			r += 1;
-	}
-	ft_putchar(n % 10 + '0');
-	return (r + 1);
-}
+#endif /* !GET_NEXT_LINE_H */

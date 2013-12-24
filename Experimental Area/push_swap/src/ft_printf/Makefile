@@ -6,11 +6,11 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/23 04:54:36 by adebray           #+#    #+#              #
-#    Updated: 2013/12/23 04:57:05 by adebray          ###   ########.fr        #
+#    Updated: 2013/12/24 21:12:43 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBNAME = libftprintf.a
+NAME = libftprintf.a
 SRCDIR = ./
 HEADDIR = ../../inc
 
@@ -33,11 +33,11 @@ CC = gcc
 CCFLAGS = -Werror -Wall -Wextra
 HEADFLAG = -I $(HEADDIR)
 
-.PHONY: all $(LIBNAME) clean fclean re
+.PHONY: all $(NAME) clean fclean re
 
-all: $(LIBNAME)
+all: $(NAME)
 
-$(LIBNAME): $(OBJ)
+$(NAME): $(OBJ)
 	ar rc $@ $^
 	ranlib $@
 

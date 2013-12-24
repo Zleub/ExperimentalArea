@@ -6,11 +6,12 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/22 14:16:14 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/22 14:26:23 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/24 21:16:29 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <ft_printf.h>
+#include <stdlib.h>
 
 t_flags			*flags_init(t_flags *flags)
 {

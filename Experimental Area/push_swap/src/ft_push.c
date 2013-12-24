@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/24 21:01:01 by adebray          ###   ########.fr       */
+/*   Created: 2013/12/24 19:56:00 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/24 20:02:09 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-int				main(int argc, char **argv)
+static void			ft_push(t_list **dst, t_list **src)
 {
-	t_vars		*vars;
-	char		*str;
+	t_list		*tmp;
+	t_list		*_tmp;
 
-	if (argc <= 1)
-	{
-		ft_putendl_fd("Error", 2);
-		return (1);
-	}
-	vars = ft_initvars();
-	str = ft_some_option(vars, argv);
-	if (str)
-		return (1);
-	ft_buildlist(vars, argc, argv);
-	if (vars->i == 1)
-		ft_interactive(vars, str);
-	return (0);
+	if (!*src)
+		return ;
+	tmp = *src;
+	*src = tmp->next;
+	_tmp = *dst;
+	*dst = tmp;
+	tmp->next = _tmp;
+}
+
+void			ft_pb(t_vars *vars)
+{
+	ft_printf("%s", "pb\n");
+	ft_push(vars->l_b, vars->l_a);
+}
+
+void			ft_pa(t_vars *vars)
+{
+	ft_printf("%s", "pa\n");
+	ft_push(vars->l_a, vars->l_b);
 }
