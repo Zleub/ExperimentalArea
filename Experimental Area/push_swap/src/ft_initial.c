@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/24 21:00:39 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/24 21:07:03 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/25 03:24:21 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_vars			*ft_initvars(void)
 	vars->l_a = malloc(sizeof(t_list**));
 	vars->l_b = malloc(sizeof(t_list**));
 	vars->i = 0;
+	vars->max = -2147483648;
 	return (vars);
 }
 
@@ -51,6 +52,8 @@ void			ft_buildlist(t_vars *vars, int argc, char **argv)
 	while (i < argc)
 	{
 		shackle->data = ft_atoi(argv[i]);
+		if (shackle->data > vars->max)
+			vars->max = shackle->data;
 		if (i < argc - 1)
 			shackle->next = ft_initshackle();
 		shackle = shackle->next;

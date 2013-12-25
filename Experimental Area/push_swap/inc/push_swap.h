@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/23 04:36:24 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/24 21:03:56 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/25 03:23:09 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct			s_list
 typedef struct			s_this_is_glob_stuct
 {
 	int					i;
+	int					max;
 	t_list				**l_a;
 	t_list				**l_b;
 }						t_vars;
