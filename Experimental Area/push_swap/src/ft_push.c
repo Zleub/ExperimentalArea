@@ -6,13 +6,13 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/24 19:56:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/26 08:38:06 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/26 10:34:20 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static void			ft_push(t_list **dst, t_list **src)
+void			ft_push(t_list **dst, t_list **src)
 {
 	t_list		*tmp;
 	t_list		*_tmp;

@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/26 09:37:53 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/26 10:39:17 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void			ft_solve(t_vars *vars)
 		ft_ra(vars);
 		ft_printf(" ");
 		ft_solve(vars);
-		i = -1;
 	}
+	i = -1;
 	while (*vars->l_b)
 	{
 		ft_pa(vars);

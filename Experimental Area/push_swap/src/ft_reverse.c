@@ -6,13 +6,13 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/24 19:57:02 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/26 08:37:48 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/26 10:34:40 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 
-static void			ft_reverse(t_list **head)
+void			ft_reverse(t_list **head)
 {
 	t_list		*tmp;
 	t_list		*_head;

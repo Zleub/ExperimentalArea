@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/24 20:33:27 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/24 20:50:56 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/26 10:37:55 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,18 @@ void			ft_isswap(t_vars *vars, char *str)
 {
 	if (SA)
 	{
-		ft_sa(vars);
+		ft_swap(vars->l_a);
 		ft_print_la(vars);
 	}
 	else if (SB)
 	{
-		ft_sb(vars);
+		ft_swap(vars->l_b);
 		ft_print_lb(vars);
 	}
 	else if (SS)
 	{
-		ft_ss(vars);
+		ft_swap(vars->l_a);
+		ft_swap(vars->l_b);
 		ft_print_la(vars);
 		ft_print_lb(vars);
 	}
@@ -38,13 +39,13 @@ void			ft_ispush(t_vars *vars, char *str)
 {
 	if (PA)
 	{
-		ft_pa(vars);
+		ft_push(vars->l_a, vars->l_b);
 		ft_print_la(vars);
 		ft_print_lb(vars);
 	}
 	else if (PB)
 	{
-		ft_pb(vars);
+		ft_push(vars->l_b, vars->l_a);
 		ft_print_la(vars);
 		ft_print_lb(vars);
 	}
@@ -56,17 +57,18 @@ void			ft_isreverse(t_vars *vars, char *str)
 {
 	if (RA)
 	{
-		ft_ra(vars);
+		ft_reverse(vars->l_a);
 		ft_print_la(vars);
 	}
 	else if (RB)
 	{
-		ft_rb(vars);
+		ft_reverse(vars->l_b);
 		ft_print_lb(vars);
 	}
 	else if (RR)
 	{
-		ft_rr(vars);
+		ft_reverse(vars->l_a);
+		ft_reverse(vars->l_b);
 		ft_print_la(vars);
 		ft_print_lb(vars);
 	}
@@ -78,17 +80,18 @@ void			ft_isrreverse(t_vars *vars, char *str)
 {
 	if (RRA)
 	{
-		ft_rra(vars);
+		ft_rreverse(vars->l_a);
 		ft_print_la(vars);
 	}
 	else if (RRB)
 	{
-		ft_rrb(vars);
+		ft_rreverse(vars->l_b);
 		ft_print_lb(vars);
 	}
 	else if (RRR)
 	{
-		ft_rrr(vars);
+		ft_rreverse(vars->l_a);
+		ft_rreverse(vars->l_b);
 		ft_print_la(vars);
 		ft_print_lb(vars);
 	}

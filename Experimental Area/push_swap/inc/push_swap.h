@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/23 04:36:24 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/26 09:39:32 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/26 10:35:16 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ void					ft_printargv(int argc, char **argv);
 void					ft_putendl_fd(char const *s, int fd);
 void					ft_putchar_fd(char c, int fd);
 void					ft_printshackle(t_list *shackle);
+void					ft_swap(t_list **head);
+void					ft_push(t_list **dst, t_list **src);
+void					ft_reverse(t_list **head);
+void					ft_rreverse(t_list **head);
 char					*ft_some_option(t_vars *vars, int argc, char **argv);
 void					ft_interactive(t_vars *vars, char *str);
 void					ft_isswap(t_vars *vars, char *str);
