@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/24 19:57:02 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/25 23:45:48 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/26 08:37:48 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,19 @@ static void			ft_reverse(t_list **head)
 
 void			ft_ra(t_vars *vars)
 {
-	ft_printf("%s", "ra\n");
+	ft_printf("%s", "ra");
 	ft_reverse(vars->l_a);
 }
 
 void			ft_rb(t_vars *vars)
 {
-	ft_printf("%s", "rb\n");
+	ft_printf("%s", "rb");
 	ft_reverse(vars->l_b);
 }
 
 void			ft_rr(t_vars *vars)
 {
-	ft_printf("%s", "rr\n");
+	ft_printf("%s", "rr");
 	ft_reverse(vars->l_b);
 	ft_reverse(vars->l_a);
 }

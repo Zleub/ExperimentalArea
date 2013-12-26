@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/24 19:56:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/24 20:02:09 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/26 08:38:06 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static void			ft_push(t_list **dst, t_list **src)
 
 void			ft_pb(t_vars *vars)
 {
-	ft_printf("%s", "pb\n");
+	ft_printf("%s", "pb");
 	ft_push(vars->l_b, vars->l_a);
 }
 
 void			ft_pa(t_vars *vars)
 {
-	ft_printf("%s", "pa\n");
+	ft_printf("%s", "pa");
 	ft_push(vars->l_a, vars->l_b);
 }

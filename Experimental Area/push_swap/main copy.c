@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/26 09:03:15 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/26 07:16:02 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,70 +24,67 @@ void			ft_solve(t_vars *vars)
 	{
 		l_a = l_a->next;
 		ft_pb(vars);
-		ft_printf(" ");
 		l_b = *vars->l_b;
+		tmp = l_b;
+		while (tmp->next)
+			tmp = tmp->next;
 		if (l_b->next && l_b->data < l_b->next->data)
 		{
 			if (!l_b->next->next)
-			{
 				ft_sb(vars);
-				ft_printf(" ");
-			}
 			else if (l_b->next->next && l_b->data > l_b->next->next->data)
-			{
 				ft_sb(vars);
-				ft_printf(" ");
-			}
 			else
 			{
 				i = 1;
-				tmp = *vars->l_b;
-				while (tmp->next)
-					tmp = tmp->next;
-				while (l_b->data > tmp->data)
+				while (l_b->next->next && l_b->data < l_b->next->next->data)
 				{
 					i += 1;
+					ft_printf("while (l_b->next->next && l_b->data '%d' < l_b->next->next->data) '%d'\n", l_b->data, l_b->next->next->data);
+					ft_print_la(vars);
+					ft_print_lb(vars);
+
+
+						// tmp = *vars->l_b;
+						// while (tmp->next)
+						// 	tmp = tmp->next;
 					if (l_b->data > tmp->data)
 					{
+						ft_printf("rrb + sb if l_b->data : %d > %d : tmp->data\n", l_b->data, tmp->data);
 						ft_rrb(vars);
-						ft_printf(" ");
 						ft_sb(vars);
-						ft_printf(" ");
 					}
 					else
 					{
+												ft_printf("rb if l_b->data : %d < %d : tmp->data\n", l_b->data, tmp->data);
 						ft_rb(vars);
-						ft_printf(" ");
 					}
-					tmp = *vars->l_b;
-					while (tmp->next)
-						tmp = tmp->next;
+						// 			tmp = l_b;
+						// while (tmp->next)
+						// 	tmp = tmp->next;
+					// WORK TO DO NOT TO RRB RB IN VAIN
+					ft_print_la(vars);
+					ft_print_lb(vars);
 				}
 				while (i != 0)
 				{
 					ft_rb(vars);
-					ft_printf(" ");
 					i -= 1;
 				}
 			}
 		}
-
+		ft_print_la(vars);
+		ft_print_lb(vars);
 	}
 	if (l_a->next)
 	{
 		ft_ra(vars);
-		ft_printf(" ");
 		ft_solve(vars);
-		i = -1;
 	}
 	while (*vars->l_b)
-	{
 		ft_pa(vars);
-		if (*vars->l_b)
-			ft_printf(" ");
-	}
-	if (i == -1)
-		ft_printf("\n");
+	ft_print_la(vars);
+	ft_print_lb(vars);
 }
 
 int				main(int argc, char **argv)
