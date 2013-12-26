@@ -6,17 +6,22 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/24 20:27:15 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/24 20:45:06 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/26 09:40:29 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <push_swap.h>
 #include <gnl.h>
 
-char			*ft_some_option(t_vars *vars, char **argv)
+char			*ft_some_option(t_vars *vars, int argc, char **argv)
 {
 	if (ft_isdigit(argv[1][0]) || ft_isdigit(argv[1][1]))
 		return (NULL);
+	else if (argc <= 2)
+	{
+		ft_printf("Usage: push_swap [-i] [list]\n");
+		return ("you got it wrong");
+	}
 	else if (argv[1][0] != '-')
 	{
 		ft_printf("Illegal option : %s\n", argv[1]);

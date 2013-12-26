@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/26 09:03:15 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/26 09:37:53 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int				main(int argc, char **argv)
 		return (1);
 	}
 	vars = ft_initvars();
-	str = ft_some_option(vars, argv);
+	str = ft_some_option(vars, argc, argv);
 	if (str)
 		return (1);
 	ft_buildlist(vars, argc, argv);
