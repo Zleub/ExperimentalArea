@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/23 04:36:24 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/25 03:23:09 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/26 06:50:58 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,33 +45,33 @@ typedef struct			s_this_is_glob_stuct
 	t_list				**l_b;
 }						t_vars;
 
-t_list			*ft_initshackle(void);
-t_vars			*ft_initvars(void);
-void			ft_buildlist(t_vars *vars, int argc, char **argv);
-void			ft_printargv(int argc, char **argv);
-void			ft_putendl_fd(char const *s, int fd);
-void			ft_putchar_fd(char c, int fd);
-void			ft_printshackle(t_list *shackle);
-char			*ft_some_option(t_vars *vars, char **argv);
-void			ft_interactive(t_vars *vars, char *str);
-void			ft_isswap(t_vars *vars, char *str);
-void			ft_ispush(t_vars *vars, char *str);
-void			ft_isreverse(t_vars *vars, char *str);
-void			ft_isrreverse(t_vars *vars, char *str);
-void			ft_isprint(t_vars *vars, char *str);
-void			ft_dumplist(t_list **head);
-void			ft_print_la(t_vars *vars);
-void			ft_print_lb(t_vars *vars);
-void			ft_sa(t_vars *vars);
-void			ft_sb(t_vars *vars);
-void			ft_ss(t_vars *vars);
-void			ft_pb(t_vars *vars);
-void			ft_pa(t_vars *vars);
-void			ft_ra(t_vars *vars);
-void			ft_rb(t_vars *vars);
-void			ft_rr(t_vars *vars);
-void			ft_rra(t_vars *vars);
-void			ft_rrb(t_vars *vars);
-void			ft_rrr(t_vars *vars);
+t_list					*ft_initshackle(void);
+t_vars					*ft_initvars(void);
+void					ft_buildlist(t_vars *vars, int argc, char **argv);
+void					ft_printargv(int argc, char **argv);
+void					ft_putendl_fd(char const *s, int fd);
+void					ft_putchar_fd(char c, int fd);
+void					ft_printshackle(t_list *shackle);
+char					*ft_some_option(t_vars *vars, char **argv);
+void					ft_interactive(t_vars *vars, char *str);
+void					ft_isswap(t_vars *vars, char *str);
+void					ft_ispush(t_vars *vars, char *str);
+void					ft_isreverse(t_vars *vars, char *str);
+void					ft_isrreverse(t_vars *vars, char *str);
+void					ft_isprint(t_vars *vars, char *str);
+void					ft_dumplist(t_list **head);
+void					ft_print_la(t_vars *vars);
+void					ft_print_lb(t_vars *vars);
+void					ft_sa(t_vars *vars);
+void					ft_sb(t_vars *vars);
+void					ft_ss(t_vars *vars);
+void					ft_pb(t_vars *vars);
+void					ft_pa(t_vars *vars);
+void					ft_ra(t_vars *vars);
+void					ft_rb(t_vars *vars);
+void					ft_rr(t_vars *vars);
+void					ft_rra(t_vars *vars);
+void					ft_rrb(t_vars *vars);
+void					ft_rrr(t_vars *vars);
 
 #endif

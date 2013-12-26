@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/24 19:58:15 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/24 20:51:27 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/25 23:44:59 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void			ft_rreverse(t_list **head)
 	if (!*head)
 		return ;
 	_head = *head;
+	if (!_head->next)
+		return ;
 	while (_head->next->next)
 		_head = _head->next;
 	tmp = _head->next;
