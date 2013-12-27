@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2013/12/24 21:03:53 by adebray          ###   ########.fr        #
+#    Updated: 2013/12/27 02:47:37 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = push_swap
@@ -15,6 +15,7 @@ SRCDIR = ./src/
 HEADDIR = ./inc/
 
 SRC = ./src/ft_initial.c \
+		./src/ft_shity_algo.c \
 		./src/ft_putendl_fd.c \
 		./src/ft_putchar_fd.c \
 		./src/ft_printargv.c \
