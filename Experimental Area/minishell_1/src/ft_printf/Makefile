@@ -5,59 +5,49 @@
 #                                                     +:+ +:+         +:+      #
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2013/12/27 04:07:04 by adebray          ###   ########.fr        #
+#    Created: 2013/12/23 04:54:36 by adebray           #+#    #+#              #
+#    Updated: 2013/12/24 21:12:43 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = push_swap
-LIBNAME = ./src/libpushswap.a
-SRCDIR = ./src/
-HEADDIR = ./inc/
 
-SRC = ./src/ft_initial.c \
-		./src/ft_shity_algo.c \
-		./src/ft_putendl_fd.c \
-		./src/ft_putchar_fd.c \
-		./src/ft_printargv.c \
-		./src/ft_issomething.c \
-		./src/ft_interactive.c \
-		./src/ft_print.c \
-		./src/ft_swap.c \
-		./src/ft_push.c \
-		./src/ft_reverse.c \
-		./src/ft_rreverse.c \
-		./src/gnl.c
+NAME = libftprintf.a
+SRCDIR = ./
+HEADDIR = ../../inc
 
+SRC = ft_atoi.c \
+		ft_isdigit.c \
+		ft_itoa.c \
+		ft_printf.c \
+		ft_putchar.c \
+		ft_putnbr.c \
+		ft_putstr.c \
+		ft_strlen.c \
+		ft_octal.c \
+		ft_hexa.c \
+		ft_sheum_hexa.c \
+		tools.c
 
 OBJ = $(subst .c,.o,$(SRC))
 
 CC = gcc
-CCFLAGS = -Werror -Wall -Wextra -g
-LIBFLAG = -L./src/ -L./src/ft_printf -lpushswap -lftprintf
-HEADFLAG = -I$(HEADDIR)
+CCFLAGS = -Werror -Wall -Wextra
+HEADFLAG = -I $(HEADDIR)
 
-.PHONY: all clean fclean re
+.PHONY: all $(NAME) clean fclean re
 
 all: $(NAME)
 
-$(NAME): printf $(LIBNAME) main.c
-	$(CC) $(CCFLAGS) $(HEADFLAG) $(LIBFLAG) -o $(NAME) main.c
-
-$(LIBNAME): $(OBJ)
+$(NAME): $(OBJ)
 	ar rc $@ $^
 	ranlib $@
-
-printf:
-	make -C ./src/ft_printf
-
-%.o: %.c
-	$(CC) $(CCFLAGS) $(HEADFLAG) -o $@ -c $<
 
 clean:
 	rm -f $(OBJ)
 
+%.o: %.c
+	$(CC) $(CCFLAGS) $(HEADFLAG) -o $@ -c $<
+
 fclean: clean
 	rm -f $(LIBNAME)
-	rm -f $(NAME)
 
 re: fclean all

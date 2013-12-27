@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/27 02:45:43 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/27 02:46:24 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/27 07:12:19 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@ void			ft_reverso(t_vars *vars, t_list *l_b, t_list *tmp, int i)
 
 void			ft_postmax(t_vars *vars, t_list *l_a, int i)
 {
+	static int	mono;
+
 	if (l_a->next)
 	{
 		ft_ra(vars);
 		ft_printf(" ");
 		ft_solve(vars);
-		i = -1;
 	}
 	while (*vars->l_b)
 	{
@@ -56,11 +57,10 @@ void			ft_postmax(t_vars *vars, t_list *l_a, int i)
 		if (*vars->l_b)
 			ft_printf(" ");
 	}
-	if (i == -1)
-	{
+	if (!mono)
+		mono = i;
+	if (i == mono)
 		ft_printf("\n");
-		ft_print_la(vars);
-	}
 }
 
 void			ft_bswap(t_vars *vars, t_list *l_b, t_list *tmp, int i)
