@@ -6,12 +6,14 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/28 12:34:40 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/28 12:42:04 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <gnl.h>
 #include <ft_printf.h>
+
+get_path()
 
 void		build_bin(t_vars *vars, char **environ;)
 {
