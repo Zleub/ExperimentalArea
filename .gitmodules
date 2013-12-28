@@ -13,3 +13,9 @@
 [submodule "idle"]
 	path = idle
 	url = https://arnaud_debray@bitbucket.org/arnaud_debray/idle42.git
+[submodule "Semestre 01/printf_"]
+	path = Semestre 01/ft_printf_
+	url = vogsphere@vogsphere.42.fr:algo-1-001/2013/par-1-1/printf/adebray
+[submodule "Semestre 01/push_swap_"]
+	path = Semestre 01/push_swap_
+	url = vogsphere@vogsphere.42.fr:algo-1-001/2013/par-1-1/pushswap/adebray
