@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/28 09:57:06 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/22 14:26:37 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <gnl.h>
 #include <ft_printf.h>
 
-int			main(void)
+size_t			ft_strlen(const char *s)
 {
-	char			*str;
-	// extern char		**environ;
+	size_t		i;
 
-
-	// build_bin()
-	while (!str || str[0] != 'q')
-	{
-		ft_printf("-> ");
-		if (get_next_line(0, &str) > 0)
-		{
-			ft_printf("%s\n", str);
-			if (str[0] != 'q')
-			{
-				free(str);
-				str = NULL;
-			}
-		}
-	}
-	return (0);
+	i = 0;
+	if (s == NULL)
+		return (0);
+	while (s[i])
+		i++;
+	return (i);
 }

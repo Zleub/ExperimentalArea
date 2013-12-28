@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/28 09:57:06 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/22 14:31:50 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <gnl.h>
 #include <ft_printf.h>
 
-int			main(void)
+void	ft_putstr(char const *s)
 {
-	char			*str;
-	// extern char		**environ;
-
-
-	// build_bin()
-	while (!str || str[0] != 'q')
+	if (s)
 	{
-		ft_printf("-> ");
-		if (get_next_line(0, &str) > 0)
-		{
-			ft_printf("%s\n", str);
-			if (str[0] != 'q')
-			{
-				free(str);
-				str = NULL;
-			}
-		}
+		while (*s)
+		ft_putchar(*s++);
 	}
-	return (0);
 }

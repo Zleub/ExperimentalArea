@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_octal.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/28 09:57:06 by adebray          ###   ########.fr       */
+/*   Created: 2013/12/20 12:38:16 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/22 14:29:38 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <gnl.h>
 #include <ft_printf.h>
 
-int			main(void)
+int							ft_putoctal(unsigned int decimal)
 {
-	char			*str;
-	// extern char		**environ;
+	static int				cmp;
 
-
-	// build_bin()
-	while (!str || str[0] != 'q')
+	cmp = 0;
+	if (decimal < 8)
+		ft_printf("%d", decimal);
+	else
 	{
-		ft_printf("-> ");
-		if (get_next_line(0, &str) > 0)
-		{
-			ft_printf("%s\n", str);
-			if (str[0] != 'q')
-			{
-				free(str);
-				str = NULL;
-			}
-		}
+		ft_putoctal(decimal / 8);
+		ft_printf("%d", decimal % 8);
 	}
-	return (0);
+	cmp += 1;
+	return (cmp);
 }

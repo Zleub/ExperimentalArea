@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_printargv.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/28 09:57:06 by adebray          ###   ########.fr       */
+/*   Created: 2013/12/23 04:43:31 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/23 04:59:01 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <gnl.h>
 #include <ft_printf.h>
 
-int			main(void)
+void		ft_printargv(int argc, char **argv)
 {
-	char			*str;
-	// extern char		**environ;
+	int		i;
 
-
-	// build_bin()
-	while (!str || str[0] != 'q')
+	i = 0;
+	while (i <= argc)
 	{
-		ft_printf("-> ");
-		if (get_next_line(0, &str) > 0)
-		{
-			ft_printf("%s\n", str);
-			if (str[0] != 'q')
-			{
-				free(str);
-				str = NULL;
-			}
-		}
+		ft_printf("%d : %s\n", i, argv[i]);
+		i += 1;
 	}
-	return (0);
 }

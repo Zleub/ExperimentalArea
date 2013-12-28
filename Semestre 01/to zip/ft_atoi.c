@@ -1,37 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/28 09:57:06 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/30 00:07:24 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/22 14:25:46 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <gnl.h>
-#include <ft_printf.h>
-
-int			main(void)
+int				ft_atoi(const char *str)
 {
-	char			*str;
-	// extern char		**environ;
+	int			i;
+	int			nbr;
+	int			sign;
 
-
-	// build_bin()
-	while (!str || str[0] != 'q')
+	nbr = 0;
+	sign = 1;
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		ft_printf("-> ");
-		if (get_next_line(0, &str) > 0)
-		{
-			ft_printf("%s\n", str);
-			if (str[0] != 'q')
-			{
-				free(str);
-				str = NULL;
-			}
-		}
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
 	}
-	return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nbr = 10 * nbr + (str[i] - '0');
+		i++;
+	}
+	return (nbr * sign);
 }
