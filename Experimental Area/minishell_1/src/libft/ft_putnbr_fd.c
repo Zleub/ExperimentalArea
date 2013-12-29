@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 00:14:55 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/29 15:51:29 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_putnbr_fd(int n, int fd)
 {
 	char	tmp[10];
-	int 	i;
+	int		i;
 
 	if (n < 10)
 	{

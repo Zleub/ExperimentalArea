@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 00:10:46 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 00:11:25 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/29 15:54:23 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int 	length;
+	int		length;
 	char	*p;
 
 	if (c == '\0')

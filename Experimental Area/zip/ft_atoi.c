@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/29 15:52:03 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/30 00:07:24 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/22 14:25:46 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-
-int			ft_strcmp(const char *s1, const char *s2)
+int				ft_atoi(const char *str)
 {
-	size_t	lenght;
+	int			i;
+	int			nbr;
+	int			sign;
 
-	lenght = ft_strlen(s2);
-	if (!s1 && !s2)
-		return (0);
-	while (*s1 == *s2)
+	nbr = 0;
+	sign = 1;
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (lenght-- == 0)
-			return (0);
-		s1++;
-		s2++;
+		if (str[i] == '-')
+			sign *= -1;
+		i++;
 	}
-	return (*s1 - *s2);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nbr = 10 * nbr + (str[i] - '0');
+		i++;
+	}
+	return (nbr * sign);
 }

@@ -78,7 +78,7 @@ all: $(NAME)
 %.o: %.c
 	$(CC) $(CCFLAGS) -I $(HEADDIR) -o $@ -c $<
 
-$(NAME):
+$(NAME): $(OBJ)
 	ar rc $@ $^
 	ranlib $@
 

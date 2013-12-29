@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/29 15:52:03 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/22 14:31:50 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-int			ft_strcmp(const char *s1, const char *s2)
+void	ft_putstr(char const *s)
 {
-	size_t	lenght;
-
-	lenght = ft_strlen(s2);
-	if (!s1 && !s2)
-		return (0);
-	while (*s1 == *s2)
+	if (s)
 	{
-		if (lenght-- == 0)
-			return (0);
-		s1++;
-		s2++;
+		while (*s)
+		ft_putchar(*s++);
 	}
-	return (*s1 - *s2);
 }

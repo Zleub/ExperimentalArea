@@ -6,11 +6,11 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 00:16:53 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/29 15:51:02 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/22 14:28:10 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <stdlib.h>
 
 static void		reverse(char *str, int length)
 {

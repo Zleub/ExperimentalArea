@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/29 15:52:03 by adebray          ###   ########.fr       */
+/*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/22 14:29:26 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-
-int			ft_strcmp(const char *s1, const char *s2)
+int		ft_isdigit(int c)
 {
-	size_t	lenght;
-
-	lenght = ft_strlen(s2);
-	if (!s1 && !s2)
+	if ((47 < c && c < 58))
+		return (1);
+	else
 		return (0);
-	while (*s1 == *s2)
-	{
-		if (lenght-- == 0)
-			return (0);
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
 }

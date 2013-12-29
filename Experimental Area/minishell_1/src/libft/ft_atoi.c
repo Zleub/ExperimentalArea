@@ -6,15 +6,15 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 00:07:24 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 00:07:17 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/29 15:50:00 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int 	ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
-	int 	i;
-	int 	nbr;
-	int 	sign;
+	int		i;
+	int		nbr;
+	int		sign;
 
 	nbr = 0;
 	sign = 1;

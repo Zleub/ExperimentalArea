@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/15 06:44:56 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/29 15:52:15 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char	*ft_strdup(const char *s1)
 {
 	char	*dup;
-	int 	i;
+	int		i;
 
 	i = 0;
 	dup = malloc(sizeof(char) * (ft_strlen(s1) + 1));

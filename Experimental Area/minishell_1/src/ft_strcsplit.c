@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 00:10:23 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/29 02:27:12 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/29 02:26:19 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len)
 	return (new);
 }
 
-char				**ft_strsplit(char const *s, char c)
+char				**ft_strcsplit(char const *s, char c, int start)
 {
 	char			**ret;
 	int				i;
@@ -79,7 +79,7 @@ char				**ft_strsplit(char const *s, char c)
 	ret = (char **)malloc(sizeof(char *) * word + 1);
 	if (!ret)
 		return (0);
-	i = 0;
+	i = start;
 	k = 0;
 	ret[word] = 0;
 	while (k < word)

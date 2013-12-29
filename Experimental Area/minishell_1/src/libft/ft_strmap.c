@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/27 00:23:43 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 00:12:28 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/29 15:53:01 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 char		*ft_strmap(char const *s, char (*f)(char))
 {
 	char	*s2;
-	int 	i;
+	int		i;
 
 	if (s != NULL && f != NULL)
 	{

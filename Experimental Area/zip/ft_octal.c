@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_octal.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/29 15:52:03 by adebray          ###   ########.fr       */
+/*   Created: 2013/12/20 12:38:16 by adebray           #+#    #+#             */
+/*   Updated: 2013/12/22 14:29:38 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include <ft_printf.h>
 
-int			ft_strcmp(const char *s1, const char *s2)
+int							ft_putoctal(unsigned int decimal)
 {
-	size_t	lenght;
+	static int				cmp;
 
-	lenght = ft_strlen(s2);
-	if (!s1 && !s2)
-		return (0);
-	while (*s1 == *s2)
+	cmp = 0;
+	if (decimal < 8)
+		ft_printf("%d", decimal);
+	else
 	{
-		if (lenght-- == 0)
-			return (0);
-		s1++;
-		s2++;
+		ft_putoctal(decimal / 8);
+		ft_printf("%d", decimal % 8);
 	}
-	return (*s1 - *s2);
+	cmp += 1;
+	return (cmp);
 }

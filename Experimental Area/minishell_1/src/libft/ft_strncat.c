@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 00:21:32 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/29 15:53:26 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strncat(char *s1, const char* s2, size_t n)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 
 	i = 0;
 	while (s1[i])

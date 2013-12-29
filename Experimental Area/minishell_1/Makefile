@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2013/12/27 04:07:22 by adebray          ###   ########.fr        #
+#    Updated: 2013/12/29 02:27:37 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = ft_minishell1
@@ -14,13 +14,14 @@ LIBNAME = ./src/libminishell1.a
 SRCDIR = ./src/
 HEADDIR = ./inc/
 
-SRC = ./src/gnl.c
+SRC = ./src/gnl.c \
+		./src/ft_strcsplit.c
 
 OBJ = $(subst .c,.o,$(SRC))
 
 CC = gcc
 CCFLAGS = -Werror -Wall -Wextra -g
-LIBFLAG = -L./src/ -L./src/ft_printf -lminishell1 -lftprintf
+LIBFLAG = -L./src/ -L./src/libft -L./src/ft_printf -lminishell1 -lft -lftprintf
 HEADFLAG = -I$(HEADDIR)
 
 .PHONY: all clean fclean re

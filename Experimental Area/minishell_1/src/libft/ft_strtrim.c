@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 00:16:25 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/07 04:00:46 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/29 15:54:37 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strtrim(char const *s)
 {
 	char	*tmp;
 	size_t		i;
-	size_t	 	j;
+	size_t		j;
 
 	if (s == NULL)
 		return (NULL);

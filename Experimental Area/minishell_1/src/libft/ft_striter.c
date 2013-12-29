@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 00:22:46 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/29 15:52:33 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_striter(char *s, void (*f)(char *))
 {
-	int 	i;
+	int		i;
 
 	if (s != NULL && f != NULL)
 	{
