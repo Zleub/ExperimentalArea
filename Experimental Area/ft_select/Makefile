@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2014/01/02 18:20:53 by adebray          ###   ########.fr        #
+#    Updated: 2014/01/03 01:14:05 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = ft_select
@@ -21,7 +21,7 @@ SRC = ./src/gnl.c \
 OBJ = $(subst .c,.o,$(SRC))
 
 CC = gcc
-CCFLAGS = -Werror -Wall -Wextra -g
+CCFLAGS = -Werror -Wall -Wextra -g3
 LIBFLAG = -L./src/ -L./src/libft -L./src/ft_printf -lselect -lft -lftprintf
 LIBSYS = -ltermcap
 HEADFLAG = -I$(HEADDIR)

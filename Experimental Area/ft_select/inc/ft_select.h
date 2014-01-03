@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/02 17:27:11 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/02 18:42:38 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/03 01:05:40 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 # include <curses.h>
 # include <term.h>
-
+# include <termcap.h>
 int		ft_putschar(int c);
 
 #endif
