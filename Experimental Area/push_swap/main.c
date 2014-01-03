@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/28 11:56:17 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/03 04:22:04 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ int				main(int argc, char **argv)
 	if (str)
 		return (1);
 	ft_buildlist(vars, argc, argv);
+
+	// ft_dumplist(vars->l_a);
+
 	if (vars->i == 1)
 		ft_interactive(vars, str);
 	else

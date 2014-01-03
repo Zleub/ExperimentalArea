@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/03 01:34:10 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/03 14:14:53 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int     voir_touche()
   while (1)
   {
     read(0, buffer, 3);
+    ft_printf("%s\n", buffer);
     if (buffer[0] == 27)
       printf("C'est une fleche !\n");
     else if (buffer[0] == 4)
@@ -52,10 +53,10 @@ int					main(void)
 	char *termtype;
 
 
-	char term_buffer[2048];
+	static char term_buffer[2048];
 	int success;
 	int	check;
-	char *buffer;
+	char buffer[3];
 
 	char *test;
 	char *area;
@@ -64,22 +65,52 @@ int					main(void)
 	ptr = &(ft_putschar);
 
 
-	buffer = (char *)malloc(ft_strlen(term_buffer));
+	struct termios term;
+
+	// buffer = (char *)malloc(ft_strlen(term_buffer));
 	// buffer = NULL;
 	ft_printf("\n%s\n", getenv("TERM"));
 
 	termtype = getenv("TERM");
 
-	success = tgetent(0, termtype);
+	success = tgetent(term_buffer, termtype);
 	ft_printf("%d\n", success);
 
 
-	test = tgetstr("cl", &area);
+	tcgetattr(0, &term);
+
+	term.c_lflag &= ~(ICANON); // Met le terminal en mode canonique.
+	term.c_lflag &= ~(ECHO); // les touches tapées s'inscriront dans le terminal
+	term.c_lflag &= ISIG;
+	term.c_cc[VMIN] = 1;
+	term.c_cc[VTIME] = 0;
+	// On applique les changements :
+	if (tcsetattr(0, TCSANOW, &term) == -1)
+		ft_printf("bouze");
+
+	// ft_printf("%d", MAX_INPUT);
+	test = tgetstr("nl", &area);
 	check = tputs(area, 1, ptr);
 
-	ft_printf("\n%d", tgetnum("co"));
+	// if (read(0, &buffer, 1) > 0)
+	// {
+	// 	if (buffer[0] == '\n')
+	// 	{
+	// 		test = tgetstr("/R", &area);
+	// 		check = tputs(area, 1, ptr);
+	// 	}
+	// }
+	// read(0, &buffer, 3);
 
-	test_();
+	while(42)
+	{
+		ft_strclr(buffer);
+		read(0, &buffer, 3);
+		ft_printf("%d%d%d\n", buffer[0], buffer[1], buffer[2]);
+	}
+	// ft_printf("\n%d", tgetnum("li"));
+
+	// test_();
 
 	// ft_printf("%d\n", check);
 	return (0);
