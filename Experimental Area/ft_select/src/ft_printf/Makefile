@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/23 04:54:36 by adebray           #+#    #+#              #
-#    Updated: 2013/12/24 21:12:43 by adebray          ###   ########.fr        #
+#    Updated: 2014/01/04 02:59:23 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC = ft_atoi.c \
 OBJ = $(subst .c,.o,$(SRC))
 
 CC = gcc
-CCFLAGS = -Werror -Wall -Wextra
+CCFLAGS = -Werror -Wall -Wextra -Wuninitialized -g3 -O3
 HEADFLAG = -I $(HEADDIR)
 
 .PHONY: all $(NAME) clean fclean re
