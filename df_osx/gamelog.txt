@@ -1,0 +1,55 @@
+*** STARTING NEW GAME ***
+Generating world using parameter set CREATE WORLD NOW = 2333333
+ Seed: qE20uc42ymwAKeOECE2s
+ History Seed: E4ICkQwu04CousSA4gYK
+ Name Seed: q66yOsew6S6CyueM2AIg
+ Creature Seed: UC0Kc2ikqASac60wY68q
+*** STARTING NEW GAME ***
+** Starting New Outpost **
+*** STARTING NEW GAME ***
+** Starting New Outpost **
+Kib GuzatŒs, Miner cancels Pickup Equipment: Equipment mismatch.
+There is nothing to catch in the central swamps.
+There is nothing to catch in the southern swamps.
+It has started raining.
+*** STARTING NEW GAME ***
+** Loading Fortress **
+Generating world using parameter set CREATE WORLD NOW = 2333333
+ Seed: kC2sWaMooAyYS2UgokyS
+ History Seed: ESOWyAwQmoQmKcuWa82s
+ Name Seed: CKKIoA60ccqmC4ImsSGq
+ Creature Seed: O6SA6cEIUYmSegOcmk4M
+** Starting New Outpost **
+It has started raining.
+The weather has cleared.
+The Wolverine has become enraged!
+Erib Reglibash, Jeweler cancels Store Item in Stockpile: Interrupted by Wolverine.
+The Wolverine attacks The Jeweler but He jumps away!
+Wolverine is no longer enraged.
+You have struck sphalerite!
+Logem Endokal†th has become a Miner.
+Obok Mengn†zom, expedition leader cancels Fish: Interrupted by Thrips Woman.
+Obok Mengn†zom, expedition leader cancels Fish: Interrupted by Thrips Woman.
+Obok Mengn†zom, expedition leader cancels Fish: Interrupted by Thrips Woman.
+x2
+x3
+x4
+x5
+You have struck jet!
+It is now summer.
+You have struck jet!
+** Starting New Outpost **
+Likot Eteslikot has become a Miner.
+There is nothing to catch in the northwestern swamps.
+There is nothing to catch in the southern swamps.
+It has started raining.
+The weather has cleared.
+Generating world using parameter set CREATE WORLD NOW = 2333333
+ Seed: oy8gawQuS0AIcYG6IoMe
+ History Seed: 80UwMmiwu8OwOGgMmUkM
+ Name Seed: qk42Ww0i0OoqOueEiMU8
+ Creature Seed: uK48SgQwKOISg4mcg8oS
+** Starting New Outpost **
+Dod¢k Olonelbel has become a Miner.
+A snow storm has come.
+The weather has cleared.
