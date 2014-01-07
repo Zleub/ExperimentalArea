@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/06 15:19:24 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/07 23:15:11 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,19 +116,26 @@ int						so_printed(t_term *conf, t_list *head)
 {
 	int					i;
 	int					j;
-	t_list				*list;
+	int					recul;
+	t_list					*list;
 
 	i = 0;
 	j = 0;
+	recul = 0;
 	list = head;
 	while (j < conf->maxlin || list != head)
 	{
-		tputs(tgoto(tgetstr("cm", NULL), list->x, list->y), 1, ft_putschar);
-		if (list->slc == 1)
-			tputs(tgetstr("mr", NULL), 1, ft_putschar);
-		ft_printf(list->str);
-		if (list->slc == 1)
-			tputs(tgetstr("me", NULL), 1, ft_putschar);
+		tputs(tgoto(tgetstr("cm", NULL), list->x, list->y - recul), 1, ft_putschar);
+		if (list->slc != 2)
+		{
+			if (list->slc == 1)
+				tputs(tgetstr("mr", NULL), 1, ft_putschar);
+			ft_printf(list->str);
+			if (list->slc == 1)
+				tputs(tgetstr("me", NULL), 1, ft_putschar);
+		}
+		else
+			recul += 1;
 		list = list->next;
 		if (list && list->y >= conf->height)
 		{
@@ -136,11 +143,10 @@ int						so_printed(t_term *conf, t_list *head)
 				i += conf->maxlen + 1;
 			list->x += i;
 			list->y %= conf->height;
-			// list->y = list->y - 1;
 		}
 		j += 1;
 	}
-	return (0);
+	return (recul);
 }
 
 t_term				*drawin_op(t_term *conf)
@@ -183,11 +189,14 @@ t_list					*read_user(t_term *conf, t_list *head)
 {
 	char				read_char[4] = {0};
 	t_list				*list;
+	int					recul;
+	// int				j;
 
 	list = head;
+	recul = 0;
 	while (read_char[0] != 3 && (read_char[0] != 27 || read_char[1] != 0))
 	{
-		tputs(tgoto(tgetstr("cm", NULL), list->x, list->y), 1, ft_putschar);
+		tputs(tgoto(tgetstr("cm", NULL), list->x, list->y - recul), 1, ft_putschar);
 		ft_strclr(read_char);
 		read(0, read_char, 3);
 		list = is_key(list, read_char);
@@ -197,10 +206,24 @@ t_list					*read_user(t_term *conf, t_list *head)
 			return (head);
 		else if ((read_char[0] == 127 && read_char[1] == 0) || (read_char[0] == 126 && read_char[1] == 0))
 		{
-			list->prev->next = list->next;
-			list->next->prev = list->prev;
-			// list = list->next;
-			so_printed(conf, head);
+			//list->prev->next = list->next;
+			//list->next->prev = list->prev;
+			list->slc = 2;
+			list = list->next;
+			// i = 0;
+			// while (i <= conf->height)
+			// {
+			// 	j = 0;
+			// 	while (j <= conf->width)
+			// 	{
+			// 		tputs(tgoto(tgetstr("cm", NULL), i, j), 1, ft_putschar);
+			// 		ft_printf(" ");
+			// 		j += 1;
+			// 	}
+			// 	i += 1;
+			// }
+			tputs(tgetstr("cl", NULL), 1, ft_putschar);
+			recul = so_printed(conf, head);
 		}
 		// else
 		// 	ft_printf("%d.%d.%d.%d\n", read_char[0], read_char[1], read_char[2], read_char[3]);
@@ -249,7 +272,7 @@ int					main(int argc, char **argv)
 	conf = drawin_op(conf);
 	if (!conf)
 		return (-1);
-
+	// print(list);
 
 	tputs(tgetstr("ti", NULL), 1, ft_putschar);
 	so_printed(conf, list);
@@ -259,6 +282,6 @@ int					main(int argc, char **argv)
 	tputs(tgetstr("te", NULL), 1, ft_putschar);
 
 	print_result(conf, list);
-	// print(list);
+	print(list);
 	return (0);
 }
