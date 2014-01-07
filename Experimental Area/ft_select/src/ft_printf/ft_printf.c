@@ -113,6 +113,7 @@ int						ft_printf(const char *format, ...)
 	va_list				ap;
 	t_flags				*flags;
 
+	flags = NULL;
 	va_start(ap, format);
 	flags = flags_init(flags);
 	while (*format)
