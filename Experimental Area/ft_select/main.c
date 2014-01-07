@@ -116,19 +116,23 @@ int						so_printed(t_term *conf, t_list *head)
 {
 	int					i;
 	int					j;
-	t_list				*list;
+	int					recul;
+	t_list					*list;
 
 	i = 0;
 	j = 0;
+	recul = 0;
 	list = head;
 	while (j < conf->maxlin || list != head)
 	{
-		tputs(tgoto(tgetstr("cm", NULL), list->x, list->y), 1, ft_putschar);
+		tputs(tgoto(tgetstr("cm", NULL), list->x, list->y - recul), 1, ft_putschar);
 		if (list->slc == 1)
 			tputs(tgetstr("mr", NULL), 1, ft_putschar);
 		ft_printf(list->str);
 		if (list->slc == 1)
 			tputs(tgetstr("me", NULL), 1, ft_putschar);
+		else if (list->slc == 2)
+			recul += 1;
 		list = list->next;
 		if (list && list->y >= conf->height)
 		{
@@ -136,7 +140,6 @@ int						so_printed(t_term *conf, t_list *head)
 				i += conf->maxlen + 1;
 			list->x += i;
 			list->y %= conf->height;
-			// list->y = list->y - 1;
 		}
 		j += 1;
 	}
@@ -183,6 +186,8 @@ t_list					*read_user(t_term *conf, t_list *head)
 {
 	char				read_char[4] = {0};
 	t_list				*list;
+	int				i;
+	int				j;
 
 	list = head;
 	while (read_char[0] != 3 && (read_char[0] != 27 || read_char[1] != 0))
@@ -197,9 +202,22 @@ t_list					*read_user(t_term *conf, t_list *head)
 			return (head);
 		else if ((read_char[0] == 127 && read_char[1] == 0) || (read_char[0] == 126 && read_char[1] == 0))
 		{
-			list->prev->next = list->next;
-			list->next->prev = list->prev;
-			// list = list->next;
+			//list->prev->next = list->next;
+			//list->next->prev = list->prev;
+			list->slc = 2;
+			//list = list->next;
+			i = 0;
+			while (i <= conf->height)
+			{
+				j = 0;
+				while (j <= conf->width)
+				{
+					tputs(tgoto(tgetstr("cm", NULL), i, j), 1, ft_putschar);
+					ft_printf(" ");
+					j += 1;
+				}
+				i += 1;
+			}
 			so_printed(conf, head);
 		}
 		// else
