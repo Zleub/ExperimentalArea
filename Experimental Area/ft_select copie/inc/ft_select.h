@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_select.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/02 17:27:11 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/08 14:06:24 by Arno             ###   ########.fr       */
+/*   Updated: 2014/01/08 21:05:29 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ typedef struct		s_term
 	int				col_size;
 	int				li_nb;
 	int				li_by_col;
+	t_list			*col;
+	struct s_term	*next;
+	struct s_term	*prev;
 }					t_term;
 
 #endif
