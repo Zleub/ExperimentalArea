@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/09 13:46:33 by Arno             ###   ########.fr       */
+/*   Updated: 2014/01/11 05:31:05 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,37 +182,44 @@ t_term				*build_crown(t_list *head)
 	list = head;
 	while (list != head || i == 0)
 	{
+		if (list->next == list && list->slc == -1)
+			return (NULL);
 		if (list->slc == -1)
 		{
+			list->prev->next = list->next;
+			list->next->prev = list->prev;
 			list = list->next;
 		}
-		if (k % tmp->height == 0)
+		else
 		{
-			tmp->col = list;
-			tmp->col_nb = i;
-			i += 1;
+			if (k % tmp->height == 0)
+			{
+				tmp->col = list;
+				tmp->col_nb = i;
+				i += 1;
+			}
+			if (ft_strlen(list->str) > (size_t)tmp->col_size)
+				tmp->col_size = ft_strlen(list->str);
+			tmp->li_nb += 1;
+			list->x = j;
+			if (list->next && (k + 1) % tmp->height == 0)
+			{
+				j += tmp->col_size + 1;
+				tmp->next = init();
+				tmp->next->prev = tmp;
+				tmp = tmp->next;
+			}
+			list->y = k % tmp->height;
+			k += 1;
+			list = list->next;
 		}
-		if (ft_strlen(list->str) > (size_t)tmp->col_size)
-			tmp->col_size = ft_strlen(list->str);
-		tmp->li_nb += 1;
-		list->x = j;
-		if (list->next && (k + 1) % tmp->height == 0)
-		{
-			j += tmp->col_size + 1;
-			tmp->next = init();
-			tmp->next->prev = tmp;
-			tmp = tmp->next;
-		}
-		list->y = k % tmp->height;
-		k += 1;
-		list = list->next;
 	}
 	tmp->next = term;
 	term->prev = tmp;
 	return (term);
 }
 
-void				so_printed(t_list *head)
+t_list				*so_printed(t_list *head)
 {
 	t_list			*list;
 	t_term			*tmp;
@@ -222,6 +229,8 @@ void				so_printed(t_list *head)
 
 	i = 0;
 	term = build_crown(head);
+	if (term == NULL)
+		return (NULL);
 	tmp = term;
 	while (tmp != term || i == 0)
 	{
@@ -231,19 +240,17 @@ void				so_printed(t_list *head)
 		while (n--)
 		{
 			tputs(tgoto(tgetstr("cm", NULL), list->x, list->y % tmp->height), 1, ft_putschar);
-			if (list->slc != -1)
-			{
-				if (list->slc == 1)
-					tputs(tgetstr("mr", NULL), 1, ft_putschar);
-				ft_printf("%s", list->str);
-				if (list->slc == 1)
-					tputs(tgetstr("me", NULL), 1, ft_putschar);
-			}
+			if (list->slc == 1)
+				tputs(tgetstr("mr", NULL), 1, ft_putschar);
+			ft_printf("%s", list->str);
+			if (list->slc == 1)
+				tputs(tgetstr("me", NULL), 1, ft_putschar);
 			list = list->next;
 		}
 		tmp = tmp->next;
 		i += 1;
 	}
+	return (head);
 }
 
 
@@ -279,6 +286,13 @@ t_list					*read_user(t_list *head)
 		// tputs(tgetstr("cl", NULL), 1, ft_putschar);
 		// so_printed(conf);
 		tputs(tgoto(tgetstr("cm", NULL), list->x, list->y), 1, ft_putschar);
+
+
+		tputs(tgetstr("us", NULL), 1, ft_putschar);
+		ft_printf(list->str);
+		tputs(tgetstr("ue", NULL), 1, ft_putschar);
+
+
 		ft_strclr(read_char);
 		read(0, read_char, 3);
 		list = is_key(list, read_char);
@@ -290,31 +304,74 @@ t_list					*read_user(t_list *head)
 		{
 			list->slc = -1;
 			tputs(tgetstr("cl", NULL), 1, ft_putschar);
-			so_printed(head);
+			// conf = build_crown(head);
+			if (list->y == 0 && list->x == 0)
+				head = so_printed(head->next);
+			else
+				head = so_printed(head);
+			if (head == NULL)
+				return (NULL);
 			list = list->next;
 		}
 		// else
 		// 	ft_printf("%d.%d.%d.%d\n", read_char[0], read_char[1], read_char[2], read_char[3]);
+		tputs(tgetstr("cl", NULL), 1, ft_putschar);
+		so_printed(head);
 	}
 	return (head);
+}
+
+void				print_result(t_list *head)
+{
+	int					i;
+	int					j;
+	t_list				*list;
+
+	i = 1;
+	j = 0;
+	list = head;
+	while (list != head || j == 0)
+	{
+		if (list->slc == 1)
+		{
+			if (i == 1)
+			{
+				ft_printf(list->str);
+				i -= 1;
+			}
+			else
+			{
+				ft_printf(" ");
+				ft_printf(list->str);
+			}
+		}
+		list = list->next;
+		j += 1;
+	}
 }
 
 int					main(int argc, char **argv)
 {
 	t_list			*list;
-	t_term			*conf;
+	// t_term			*conf;
 
-	tswitch(1);
+	if (tswitch(1) == -1)
+		return (0);
+
 	list = build_list(argc, argv);
-	conf = build_crown(list);
+	// conf = build_crown(list);
+
 	tputs(tgetstr("ti", NULL), 1, ft_putschar);
+	tputs(tgetstr("vi", NULL), 1, ft_putschar);
 	so_printed(list);
 	// print_(conf);
 	read_user(list);
 	// char *str;read(0, &str, 1);
+	tputs(tgetstr("ve", NULL), 1, ft_putschar);
 	tputs(tgetstr("te", NULL), 1, ft_putschar);
 
 	tswitch(0);
-	print_(conf);
+	print_result(list);
+	// print_(conf);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/23 04:54:36 by adebray           #+#    #+#              #
-#    Updated: 2014/01/04 02:59:23 by adebray          ###   ########.fr        #
+#    Updated: 2014/01/11 06:02:33 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ CC = gcc
 CCFLAGS = -Werror -Wall -Wextra -Wuninitialized -g3 -O3
 HEADFLAG = -I $(HEADDIR)
 
-.PHONY: all $(NAME) clean fclean re
+.PHONY: all clean fclean re
 
 all: $(NAME)
 
