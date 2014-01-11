@@ -3,13 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/11 05:31:05 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/11 13:19:58 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <signal.h>
+#include <sys/ioctl.h>
 #include <ft_select.h>
 
 t_list				*create(void)
@@ -281,17 +283,19 @@ t_list					*read_user(t_list *head)
 	t_list				*list;
 
 	list = head;
-	while (read_char[0] != 3 && (read_char[0] != 27 || read_char[1] != 0))
+	while (42)
 	{
 		// tputs(tgetstr("cl", NULL), 1, ft_putschar);
 		// so_printed(conf);
 		tputs(tgoto(tgetstr("cm", NULL), list->x, list->y), 1, ft_putschar);
 
-
+		if (list->slc == 1)
+			tputs(tgetstr("mr", NULL), 1, ft_putschar);
 		tputs(tgetstr("us", NULL), 1, ft_putschar);
 		ft_printf(list->str);
 		tputs(tgetstr("ue", NULL), 1, ft_putschar);
-
+		if (list->slc == 1)
+			tputs(tgetstr("me", NULL), 1, ft_putschar);
 
 		ft_strclr(read_char);
 		read(0, read_char, 3);
@@ -312,6 +316,14 @@ t_list					*read_user(t_list *head)
 			if (head == NULL)
 				return (NULL);
 			list = list->next;
+		}
+		else if (read_char[0] == 3 || (read_char[0] == 27 && read_char[1] == 0))
+		{
+			// tputs(tgetstr("ve", NULL), 1, ft_putschar);
+			// tputs(tgetstr("te", NULL), 1, ft_putschar);
+
+			// tswitch(0);
+			return(head);
 		}
 		// else
 		// 	ft_printf("%d.%d.%d.%d\n", read_char[0], read_char[1], read_char[2], read_char[3]);
@@ -350,16 +362,54 @@ void				print_result(t_list *head)
 	}
 }
 
+// void				resize(int)
+// {
+// 	so_printed()
+// }
+
+// void				*_signal(int index)
+// {
+// 	void			**array;
+
+// 	array = malloc(sizeof(void*));
+// 	array[0] = &resize;
+// 	return (array[index]);
+// }
+
+void    sigwinch(int sig)
+{
+  struct winsize ws;
+  int rv;
+		tputs(tgetstr("cl", NULL), 1, ft_putschar);
+
+  signal(SIGWINCH, sigwinch);
+  if(sig)
+    ft_printf("SIGWINCH-HANDLER: sig=%d\n", sig);
+  rv = ioctl(0, TIOCGWINSZ, &ws);
+//  ft_printf("IOCTL: rv=%d rows=%d cols=%d\n", rv, ws.ws_row, ws.ws_col);
+  so_printed(head);
+} /* sigwinch() */
+
+/*
+** EN FAIT
+** IL EST POSSIBLE DE GERER LE PROGRAMME
+** VIA LES SIGNAUX. LE SIGWINCH DONNE UNE BOUCLE GRATOS.
+** ENTRE AUTRE.
+*/
+
 int					main(int argc, char **argv)
 {
 	t_list			*list;
 	// t_term			*conf;
+	// int				nbr;
 
 	if (tswitch(1) == -1)
 		return (0);
 
 	list = build_list(argc, argv);
 	// conf = build_crown(list);
+
+	sigwinch(0);
 
 	tputs(tgetstr("ti", NULL), 1, ft_putschar);
 	tputs(tgetstr("vi", NULL), 1, ft_putschar);
