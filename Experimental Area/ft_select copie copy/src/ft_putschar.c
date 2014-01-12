@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/02 18:17:44 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/04 15:06:40 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/12 17:15:23 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int		ft_putschar(int c)
 {
-	write(1, &c, 1);
+	write(isatty(STDOUT_FILENO), &c, 1);
 	return ((int)c);
 }

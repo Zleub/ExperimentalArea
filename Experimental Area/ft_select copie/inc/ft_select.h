@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/02 17:27:11 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/08 21:05:29 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/12 05:06:23 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@
 
 
 int		ft_putschar(int c);
+
+// typedef enum	e_sig
+// {
+// 	SIGWINCH
+// }				t_sig;
 
 typedef struct		s_list
 {

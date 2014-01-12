@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/11 13:19:58 by Arno             ###   ########.fr       */
+/*   Updated: 2014/01/12 07:06:45 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ t_list				*build_list(int argc, char **argv)
 	t_list			*tmp;
 
 	i = 1;
-	list = create();
-	tmp = list;
+	tmp = list = create();
 	while (i < argc)
 	{
 		list->str = argv[i];
@@ -223,18 +222,23 @@ t_term				*build_crown(t_list *head)
 
 t_list				*so_printed(t_list *head)
 {
-	t_list			*list;
-	t_term			*tmp;
-	t_term			*term;
-	int				i;
-	int				n;
+	static t_list			*_tmp;
+	t_list					*list;
+	t_term					*tmp;
+	t_term					*term;
+	int						i;
+	int						n;
 
 	i = 0;
+	if (!_tmp)
+		_tmp = head;
+	// else if (!head)
+	// 	head = _tmp;
 	term = build_crown(head);
 	if (term == NULL)
 		return (NULL);
 	tmp = term;
-	while (tmp != term || i == 0)
+	while (i + tmp->col_size < tmp->width - (tmp->col_nb - 1))
 	{
 		// tputs(tgoto(tgetstr("cm", NULL), tmp->col->x, tmp->col->y % tmp->height), 1, ft_putschar);
 		list = tmp->col;
@@ -249,9 +253,11 @@ t_list				*so_printed(t_list *head)
 				tputs(tgetstr("me", NULL), 1, ft_putschar);
 			list = list->next;
 		}
+		i += tmp->col_size;
 		tmp = tmp->next;
-		i += 1;
 	}
+	free(term);
+	term = NULL;
 	return (head);
 }
 
@@ -262,6 +268,10 @@ t_list				*is_key(t_list *list, char *read_char)
 		return (list->prev);
 	else if (KEY_DW)
 		return (list->next);
+	// else if (KEY_RT)
+	// 	return (list->);
+	// else if (KEY_DW)
+	// 	return (list->next);
 	else
 		return (list);
 }
@@ -277,6 +287,36 @@ t_list				*is_spc(t_list *head, t_list *list)
 	return (list->next);
 }
 
+void					print_cursor(t_list *head)
+{
+	static t_list		*tmp;
+
+	if (!head)
+	{
+		tputs(tgoto(tgetstr("cm", NULL), tmp->x, tmp->y), 1, ft_putschar);
+		if (tmp->slc == 1)
+			tputs(tgetstr("mr", NULL), 1, ft_putschar);
+		tputs(tgetstr("us", NULL), 1, ft_putschar);
+		ft_printf(tmp->str);
+		tputs(tgetstr("ue", NULL), 1, ft_putschar);
+		if (tmp->slc == 1)
+			tputs(tgetstr("me", NULL), 1, ft_putschar);
+	}
+	else
+	{
+		tmp = head;
+		tputs(tgoto(tgetstr("cm", NULL), tmp->x, tmp->y), 1, ft_putschar);
+		if (tmp->slc == 1)
+			tputs(tgetstr("mr", NULL), 1, ft_putschar);
+		tputs(tgetstr("us", NULL), 1, ft_putschar);
+		ft_printf(tmp->str);
+		tputs(tgetstr("ue", NULL), 1, ft_putschar);
+		if (tmp->slc == 1)
+			tputs(tgetstr("me", NULL), 1, ft_putschar);
+	}
+
+}
+
 t_list					*read_user(t_list *head)
 {
 	char				read_char[4] = {0};
@@ -287,15 +327,19 @@ t_list					*read_user(t_list *head)
 	{
 		// tputs(tgetstr("cl", NULL), 1, ft_putschar);
 		// so_printed(conf);
-		tputs(tgoto(tgetstr("cm", NULL), list->x, list->y), 1, ft_putschar);
+		// tputs(tgoto(tgetstr("cm", NULL), list->x, list->y), 1, ft_putschar);
 
-		if (list->slc == 1)
-			tputs(tgetstr("mr", NULL), 1, ft_putschar);
-		tputs(tgetstr("us", NULL), 1, ft_putschar);
-		ft_printf(list->str);
-		tputs(tgetstr("ue", NULL), 1, ft_putschar);
-		if (list->slc == 1)
-			tputs(tgetstr("me", NULL), 1, ft_putschar);
+		// if (list->slc == 1)
+		// 	tputs(tgetstr("mr", NULL), 1, ft_putschar);
+		// tputs(tgetstr("us", NULL), 1, ft_putschar);
+		// ft_printf(list->str);
+		// tputs(tgetstr("ue", NULL), 1, ft_putschar);
+		// if (list->slc == 1)
+		// 	tputs(tgetstr("me", NULL), 1, ft_putschar);
+
+		tputs(tgetstr("cl", NULL), 1, ft_putschar);
+		so_printed(list);
+		print_cursor(list);
 
 		ft_strclr(read_char);
 		read(0, read_char, 3);
@@ -327,8 +371,6 @@ t_list					*read_user(t_list *head)
 		}
 		// else
 		// 	ft_printf("%d.%d.%d.%d\n", read_char[0], read_char[1], read_char[2], read_char[3]);
-		tputs(tgetstr("cl", NULL), 1, ft_putschar);
-		so_printed(head);
 	}
 	return (head);
 }
@@ -362,40 +404,27 @@ void				print_result(t_list *head)
 	}
 }
 
-// void				resize(int)
-// {
-// 	so_printed()
-// }
-
-// void				*_signal(int index)
-// {
-// 	void			**array;
-
-// 	array = malloc(sizeof(void*));
-// 	array[0] = &resize;
-// 	return (array[index]);
-// }
-
-void    sigwinch(int sig)
+void				resize(void)
 {
-  struct winsize ws;
-  int rv;
-		tputs(tgetstr("cl", NULL), 1, ft_putschar);
+	tgetent(0, getenv("TERM"));
+	tputs(tgetstr("cl", NULL), 1, ft_putschar);
+	so_printed(NULL);
+	print_cursor(NULL);
 
-  signal(SIGWINCH, sigwinch);
-  if(sig)
-    ft_printf("SIGWINCH-HANDLER: sig=%d\n", sig);
-  rv = ioctl(0, TIOCGWINSZ, &ws);
-//  ft_printf("IOCTL: rv=%d rows=%d cols=%d\n", rv, ws.ws_row, ws.ws_col);
-  so_printed(head);
-} /* sigwinch() */
+	// ft_printf("test");
 
-/*
-** EN FAIT
-** IL EST POSSIBLE DE GERER LE PROGRAMME
-** VIA LES SIGNAUX. LE SIGWINCH DONNE UNE BOUCLE GRATOS.
-** ENTRE AUTRE.
-*/
+}
+
+void				_signal(int index)
+{
+	// void			**array;
+
+	// array = malloc(sizeof(void*));
+	// array[0] = &resize;
+	if (index == SIGWINCH)
+		resize();
+	// return (array[index]);
+}
 
 int					main(int argc, char **argv)
 {
@@ -409,11 +438,12 @@ int					main(int argc, char **argv)
 	list = build_list(argc, argv);
 	// conf = build_crown(list);
 
-	sigwinch(0);
+	void *sig = &_signal;
+	signal(SIGWINCH, sig);
 
 	tputs(tgetstr("ti", NULL), 1, ft_putschar);
 	tputs(tgetstr("vi", NULL), 1, ft_putschar);
-	so_printed(list);
+	// so_printed(list);
 	// print_(conf);
 	read_user(list);
 	// char *str;read(0, &str, 1);

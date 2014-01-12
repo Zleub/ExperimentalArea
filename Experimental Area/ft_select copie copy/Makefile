@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2014/01/11 06:02:40 by adebray          ###   ########.fr        #
+#    Updated: 2014/01/12 17:30:11 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = ft_select
@@ -16,7 +16,12 @@ HEADDIR = ./inc/
 
 SRC = ./src/gnl.c \
 		./src/ft_strcsplit.c \
-		./src/ft_putschar.c
+		./src/ft_putschar.c \
+		./src/crown.c \
+		./src/list.c \
+		./src/print.c \
+		./src/read.c \
+		./src/signal.c
 
 OBJ = $(subst .c,.o,$(SRC))
 
