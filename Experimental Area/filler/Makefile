@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
+#    By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2014/01/13 22:02:37 by adebray          ###   ########.fr        #
+#    Updated: 2014/01/14 11:06:44 by Arno             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = filler
@@ -17,17 +17,12 @@ HEADDIR = ./inc/
 SRC = ./src/gnl.c \
 		./src/ft_strcsplit.c \
 		./src/ft_putschar.c \
-		./src/crown.c \
-		./src/list.c \
-		./src/print.c \
-		./src/read.c \
-		./src/signal.c
 
 OBJ = $(subst .c,.o,$(SRC))
 
 CC = gcc
 CCFLAGS = -Werror -Wall -Wextra -Wuninitialized -g3 -O3
-LIBFLAG = -L./src/ -L./src/libft -L./src/ft_printf -lselect -lft -lftprintf
+LIBFLAG = -L./src/ -L./src/libft -L./src/ft_printf -lfiller -lft -lftprintf
 HEADFLAG = -I$(HEADDIR)
 
 .PHONY: all clean fclean re

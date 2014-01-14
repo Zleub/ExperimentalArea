@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 00:07:24 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/29 15:50:00 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/14 12:03:11 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <filler.h>
 
 int			ft_atoi(const char *str)
 {
