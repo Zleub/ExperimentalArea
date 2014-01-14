@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/14 08:16:55 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/14 08:40:30 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int					main(void)
 
 	gnl = create();
 	head = gnl;
-	while (get_next_line(0, &gnl->str) == 1 || ft_strcmp(gnl->str, ""))
+	while (get_next_line(0, &gnl->str) == 1)
 	{
 		gnl->next = create();
 		gnl = gnl->next;
