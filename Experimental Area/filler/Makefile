@@ -6,11 +6,11 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2014/01/12 17:30:11 by adebray          ###   ########.fr        #
+#    Updated: 2014/01/13 22:02:37 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = ft_select
-LIBNAME = ./src/libselect.a
+NAME = filler
+LIBNAME = ./src/libfiller.a
 SRCDIR = ./src/
 HEADDIR = ./inc/
 
@@ -28,7 +28,6 @@ OBJ = $(subst .c,.o,$(SRC))
 CC = gcc
 CCFLAGS = -Werror -Wall -Wextra -Wuninitialized -g3 -O3
 LIBFLAG = -L./src/ -L./src/libft -L./src/ft_printf -lselect -lft -lftprintf
-LIBSYS = -ltermcap
 HEADFLAG = -I$(HEADDIR)
 
 .PHONY: all clean fclean re
@@ -36,7 +35,7 @@ HEADFLAG = -I$(HEADDIR)
 all: $(NAME)
 
 $(NAME): libft printf $(LIBNAME) main.c
-	$(CC) $(CCFLAGS) $(HEADFLAG) $(LIBFLAG) $(LIBSYS) -o $(NAME) main.c
+	$(CC) $(CCFLAGS) $(HEADFLAG) $(LIBFLAG) -o $(NAME) main.c
 
 $(LIBNAME): $(OBJ)
 	ar rc $@ $^
