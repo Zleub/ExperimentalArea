@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+         #
+#    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2014/01/14 11:06:44 by Arno             ###   ########.fr        #
+#    Updated: 2014/01/15 11:43:37 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = filler
@@ -27,10 +27,10 @@ HEADFLAG = -I$(HEADDIR)
 
 .PHONY: all clean fclean re
 
-all: $(NAME)
+all: libft printf $(LIBNAME) $(NAME)
 
-$(NAME): libft printf $(LIBNAME) main.c
-	$(CC) $(CCFLAGS) $(HEADFLAG) $(LIBFLAG) -o $(NAME) main.c
+$(NAME): main.c
+	$(CC) $(CCFLAGS) $(HEADFLAG) $(LIBFLAG) -o $(NAME) $^
 
 $(LIBNAME): $(OBJ)
 	ar rc $@ $^

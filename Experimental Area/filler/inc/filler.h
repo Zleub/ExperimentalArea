@@ -6,12 +6,13 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/02 17:27:11 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/14 08:03:04 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/15 11:59:46 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLER_H
 # define FILLER_H
+# define SHEUM "i) {i -= 1; if (i == 0"
 
 # include <ft_printf.h>
 # include <gnl.h>
@@ -33,5 +34,11 @@ typedef struct		s_gnl
 	char			*str;
 	struct s_gnl	*next;
 }					t_gnl;
+
+typedef struct		s_coord
+{
+	int				*size;
+	int				*piece;
+}					t_coord;
 
 #endif

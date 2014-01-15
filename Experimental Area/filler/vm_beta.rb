@@ -130,7 +130,7 @@ class Plateau
 
 		fd.write "    "
 		for i in 0..(@map_col - 1)
-			fd.write(i % 10).to_s
+			fd.write (i % 10).to_s
 		end
 		fd.write "\n"
 
@@ -168,7 +168,7 @@ class Plateau
 		x = 0
 		for i in 0..(@piece_row - 1)
 			for l in 0..(@piece_col - 1)
-				fd.write @piece_content[x].chr
+				fd.write "#{@piece_content[x]}"
 				x = x + 1
 			end
 			fd.write "\n"

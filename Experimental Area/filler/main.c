@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/14 19:59:57 by Arno             ###   ########.fr       */
+/*   Updated: 2014/01/15 12:03:45 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,66 +22,80 @@ t_gnl				*create(void)
 	return (elem);
 }
 
-int					*get_size(t_gnl *head)
+int					*get_coord(t_gnl *head)
 {
 	int				*size;
-	t_gnl			*curs;
+	char			*curs;
 
 	size = NULL;
-	curs = head->next;
+	curs = head->str;
 	size = malloc(sizeof(int) * 3);
 
-	while (!ft_isdigit(*curs->str))
+	while (!ft_isdigit(*curs))
 	{
-		curs->str++;
+		curs++;
 	}
-	size[0] = ft_atoi(curs->str);
-	while(ft_isdigit(*curs->str))
-		curs->str++;
-	size[1] = ft_atoi(curs->str);
+	size[0] = ft_atoi(curs);
+	while(ft_isdigit(*curs))
+		curs++;
+	size[1] = ft_atoi(curs);
 	size[2] = 0;
 	return (size);
+}
+
+void				print_coord_fd(int *size, int *piece, int fd)
+{
+	ft_putendl_fd("<-->", fd);
+	ft_putendl_fd(ft_itoa(size[0]), fd);
+	ft_putendl_fd(ft_itoa(size[1]), fd);
+	ft_putendl_fd(ft_itoa(piece[0]), fd);
+	ft_putendl_fd(ft_itoa(piece[1]), fd);
+}
+
+void				ft_give_answer(void)
+{
+	ft_putendl("5 15");
+	return ;
 }
 
 int					main(void)
 {
 	t_gnl			*head;
 	t_gnl			*gnl;
+	t_coord			*coord;
 	int				fd;
+	int				i;
+
+	coord = malloc(sizeof(t_coord));
+
+	fd = open("dump", O_CREAT | O_APPEND | O_WRONLY, 755);
 
 	gnl = create();
 	head = gnl;
-	while (get_next_line(0, &gnl->str) == 1 && gnl->str)
+	i = 0;
+	while (get_next_line(0, &gnl->str))
 	{
-		if (gnl->str[0] == '\0')
-			close (0);
+		if (SHEUM)
+				ft_give_answer();
+		if (!ft_strncmp(gnl->str, "Plateau", 7))
+			coord->size = get_coord(gnl);
+		else if (!ft_strncmp(gnl->str, "Piece", 5))
+		{
+			coord->piece = get_coord(gnl);
+			i = coord->piece[0];
+			print_coord_fd(coord->size, coord->piece, fd);
+		}
 		gnl->next = create();
 		gnl = gnl->next;
 	}
 
-	fd = open("dump", O_CREAT | O_TRUNC | O_WRONLY, 755);
 	gnl = head;
 	while (gnl)
 	{
 		ft_putendl_fd(gnl->str, fd);
 		gnl = gnl->next;
 	}
-	// ft_putendl("5 15");
-
-	int *size = get_size(head);
-
-	while (*size)
-	{
-		ft_putendl_fd(ft_itoa(*size), fd);
-		size++;
-	}
-	ft_putstr_fd("5 15", 1);
-
-
 
 	close (fd);
-	close (0);
-	close (1);
-	close (2);
-	exit (0);
+	return (0);
 }
