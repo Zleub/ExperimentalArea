@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/15 12:03:45 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/16 12:04:20 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_gnl				*create(void)
 	return (elem);
 }
 
-int					*get_coord(t_gnl *head)
+int					*get_dual(t_gnl *head)
 {
 	int				*size;
 	char			*curs;
@@ -43,7 +43,7 @@ int					*get_coord(t_gnl *head)
 	return (size);
 }
 
-void				print_coord_fd(int *size, int *piece, int fd)
+void				print_dual_fd(int *size, int *piece, int fd)
 {
 	ft_putendl_fd("<-->", fd);
 	ft_putendl_fd(ft_itoa(size[0]), fd);
@@ -52,48 +52,112 @@ void				print_coord_fd(int *size, int *piece, int fd)
 	ft_putendl_fd(ft_itoa(piece[1]), fd);
 }
 
-void				ft_give_answer(void)
+void				print_piece_fd(char **tmp, int i, int fd)
+{
+	while (i--)
+	{
+		ft_putendl_fd(*tmp, fd);
+		tmp++;
+	}
+}
+
+void				give_answer(void)
 {
 	ft_putendl("5 15");
 	return ;
 }
 
+char					**get_piece(int *piece_size)
+{
+	char				**piece;
+	int					i;
+	int					j;
+
+	i = piece_size[0];
+	j = 0;
+	piece = malloc(sizeof(char*) * i + 1);
+	while (i--)
+	{
+		get_next_line(0, &piece[j]);
+		j += 1;
+	}
+	piece[j] = "\0";
+	return (piece);
+}
+
+char					**get_plat(int *plateau_size, char *str1)
+{
+	char				**plateau;
+	int					i;
+	int					j;
+
+	i = plateau_size[0];
+	j = 1;
+	plateau = malloc(sizeof(char*) * i + 1);
+	plateau[0] = str1;
+	while (i--)
+	{
+		get_next_line(0, &plateau[j]);
+		j += 1;
+	}
+	plateau[j] = "\0";
+	return (plateau);
+}
+
+void				read_filler(t_gnl *gnl, t_dual *dual, int fd)
+{
+	char			**tmp;
+	char			**plateau;
+
+	while (get_next_line(0, &gnl->str))
+	{
+		tmp = NULL;
+		plateau = NULL;
+		if (!ft_strncmp(gnl->str, "Plateau", 7))
+			dual->size = get_dual(gnl);
+		else if (!ft_strncmp(gnl->str, "Piece", 5))
+		{
+			dual->piece = get_dual(gnl);
+			ft_putnbr_fd(dual->piece[0], 2);
+			print_dual_fd(dual->size, dual->piece, fd);
+			tmp = get_piece(dual->piece);
+			print_piece_fd(tmp, dual->piece[0], fd);
+		}
+		else if (ft_isdigit(gnl->str[0]) && ft_isdigit(gnl->str[1]) && ft_isdigit(gnl->str[2]))
+		{
+			plateau = get_plat(dual->size, gnl->str);
+			// print_piece_fd(plateau, dual->size[0], fd);
+		}
+		else
+		{
+			gnl->next = create();
+			gnl = gnl->next;
+		}
+	}
+}
+
 int					main(void)
 {
 	t_gnl			*head;
-	t_gnl			*gnl;
-	t_coord			*coord;
-	int				fd;
-	int				i;
+	t_dual			*dual;
 
-	coord = malloc(sizeof(t_coord));
+	int				fd;
+
+	dual = malloc(sizeof(t_dual));
 
 	fd = open("dump", O_CREAT | O_APPEND | O_WRONLY, 755);
 
-	gnl = create();
-	head = gnl;
-	i = 0;
-	while (get_next_line(0, &gnl->str))
-	{
-		if (SHEUM)
-				ft_give_answer();
-		if (!ft_strncmp(gnl->str, "Plateau", 7))
-			coord->size = get_coord(gnl);
-		else if (!ft_strncmp(gnl->str, "Piece", 5))
-		{
-			coord->piece = get_coord(gnl);
-			i = coord->piece[0];
-			print_coord_fd(coord->size, coord->piece, fd);
-		}
-		gnl->next = create();
-		gnl = gnl->next;
-	}
+	head = create();
+	read_filler(head, dual, fd);
 
-	gnl = head;
-	while (gnl)
+	t_gnl			*tmp;
+
+	tmp = head;
+	ft_putendl_fd("DUMP :", fd);
+	while (tmp)
 	{
-		ft_putendl_fd(gnl->str, fd);
-		gnl = gnl->next;
+		ft_putendl_fd(tmp->str, fd);
+		tmp = tmp->next;
 	}
 
 	close (fd);
