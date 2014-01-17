@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/16 12:04:20 by Arno             ###   ########.fr       */
+/*   Updated: 2014/01/17 07:25:09 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,36 +25,37 @@ t_gnl				*create(void)
 int					*get_dual(t_gnl *head)
 {
 	int				*size;
-	char			*curs;
+	char			*str;
 
 	size = NULL;
-	curs = head->str;
+	str = head->str;
 	size = malloc(sizeof(int) * 3);
 
-	while (!ft_isdigit(*curs))
+	while (!ft_isdigit(*str))
 	{
-		curs++;
+		str++;
 	}
-	size[0] = ft_atoi(curs);
-	while(ft_isdigit(*curs))
-		curs++;
-	size[1] = ft_atoi(curs);
+	size[0] = ft_atoi(str);
+	while(ft_isdigit(*str))
+		str++;
+	size[1] = ft_atoi(str);
 	size[2] = 0;
 	return (size);
 }
 
 void				print_dual_fd(int *size, int *piece, int fd)
 {
-	ft_putendl_fd("<-->", fd);
+	ft_putendl_fd("print_dualfd :", fd);
 	ft_putendl_fd(ft_itoa(size[0]), fd);
 	ft_putendl_fd(ft_itoa(size[1]), fd);
 	ft_putendl_fd(ft_itoa(piece[0]), fd);
 	ft_putendl_fd(ft_itoa(piece[1]), fd);
+	ft_putendl_fd("print_dualfd end", fd);
 }
 
-void				print_piece_fd(char **tmp, int i, int fd)
+void				print_piece_fd(char **tmp, int fd)
 {
-	while (i--)
+	while (*tmp)
 	{
 		ft_putendl_fd(*tmp, fd);
 		tmp++;
@@ -81,52 +82,82 @@ char					**get_piece(int *piece_size)
 		get_next_line(0, &piece[j]);
 		j += 1;
 	}
-	piece[j] = "\0";
+	piece[j] = NULL;
 	return (piece);
 }
 
-char					**get_plat(int *plateau_size, char *str1)
+char					**get_plat(int *plateau_size)
 {
 	char				**plateau;
+	char				*str;
 	int					i;
 	int					j;
+	int					k;
 
 	i = plateau_size[0];
-	j = 1;
+	j = 0;
 	plateau = malloc(sizeof(char*) * i + 1);
-	plateau[0] = str1;
 	while (i--)
 	{
-		get_next_line(0, &plateau[j]);
+		get_next_line(0, &str);
+		k = 0;
+		while (ft_isdigit(str[k]))
+			k += 1;
+		plateau[j] = ft_strsub(str, k + 1, ft_strlen(str));
 		j += 1;
 	}
-	plateau[j] = "\0";
+	plateau[j] = NULL;
 	return (plateau);
+}
+
+void				truc_much(char **plateau, int fd)
+{
+	int				i;
+	int				j;
+	// char			**rectangle;
+
+	i = j = 0;
+	while (plateau[i] && plateau[i][j] != 'O')
+	{
+		j = 0;
+		while (plateau[i][j] != 'O')
+		{
+			j += 1;
+		}
+		i += 1;
+	}
+	ft_putstr_fd("->", fd);
+	ft_putstr_fd(ft_itoa(i), fd);
+	ft_putstr_fd(" | ->", fd);
+	ft_putstr_fd(ft_itoa(j), fd);
 }
 
 void				read_filler(t_gnl *gnl, t_dual *dual, int fd)
 {
-	char			**tmp;
+	char			**piece;
 	char			**plateau;
 
 	while (get_next_line(0, &gnl->str))
 	{
-		tmp = NULL;
-		plateau = NULL;
+		// piece = NULL;
+		// plateau = NULL;
 		if (!ft_strncmp(gnl->str, "Plateau", 7))
+		{
 			dual->size = get_dual(gnl);
+			get_next_line(0, &gnl->str);
+			free(gnl->str);
+			plateau = get_plat(dual->size);
+			print_piece_fd(plateau, fd);
+		}
 		else if (!ft_strncmp(gnl->str, "Piece", 5))
 		{
 			dual->piece = get_dual(gnl);
-			ft_putnbr_fd(dual->piece[0], 2);
 			print_dual_fd(dual->size, dual->piece, fd);
-			tmp = get_piece(dual->piece);
-			print_piece_fd(tmp, dual->piece[0], fd);
-		}
-		else if (ft_isdigit(gnl->str[0]) && ft_isdigit(gnl->str[1]) && ft_isdigit(gnl->str[2]))
-		{
-			plateau = get_plat(dual->size, gnl->str);
-			// print_piece_fd(plateau, dual->size[0], fd);
+			piece = get_piece(dual->piece);
+			print_piece_fd(piece, fd);
+			ft_putendl_fd("<-->", fd);
+			truc_much(plateau, fd);
+			// ft_putendl_fd("13 33", 1);
 		}
 		else
 		{
@@ -144,14 +175,11 @@ int					main(void)
 	int				fd;
 
 	dual = malloc(sizeof(t_dual));
-
-	fd = open("dump", O_CREAT | O_APPEND | O_WRONLY, 755);
-
+	fd = open("dump", O_CREAT | O_TRUNC | O_WRONLY, 755);
 	head = create();
 	read_filler(head, dual, fd);
 
 	t_gnl			*tmp;
-
 	tmp = head;
 	ft_putendl_fd("DUMP :", fd);
 	while (tmp)

@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/29 15:51:29 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/17 07:20:44 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,19 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	tmp[10];
-	int		i;
-
-	if (n < 10)
+	if (n < 0)
+		ft_putchar_fd('-', fd);
+	if (n < 0)
 	{
-		n += '0';
-		ft_putchar_fd(n, fd);
+		if (n < -9)
+			ft_putnbr_fd(n / -10, fd);
+		ft_putchar_fd(n % 10 * -1 + '0', fd);
 	}
-	else
+	if (n >= 0)
 	{
-		i = 0;
-		while (n > 10)
-		{
-			tmp[i] = n % 10 + '0';
-			n /= 10;
-			i = i + 1;
-		}
-		n += '0';
-		ft_putchar_fd(n, fd);
-		while (i >= 0)
-		{
-			ft_putchar_fd(tmp[i], fd);
-			i = i - 1;
-		}
+		if (n > 9)
+			ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd(n % 10 + '0', fd);
 	}
 }
+
