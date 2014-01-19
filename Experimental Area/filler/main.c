@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/18 12:24:41 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/19 07:43:28 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,44 @@ int					*get_first(char **plateau)
 	return (dual);
 }
 
+int					*get_second(char **plateau, int *size)
+{
+	int				i;
+	int				j;
+	int				k;
+	int				*dual;
+
+	i = size[0] - 1;
+	k = 0;
+	dual = malloc(sizeof(int) * 3);
+	while (plateau[i] && k == 0)
+	{
+		j = size[1] - 1;
+		while (plateau[i][j] && k == 0)
+		{
+			// ft_putstr_fd("i -> ", 3);
+			// ft_putnbr_fd(i, 3);
+			// ft_putstr_fd(" . j -> ", 3);
+			// ft_putnbr_fd(j, 3);
+			// ft_putendl_fd("", 3);
+			if (plateau[i][j] == 'O')
+				k = 1;
+			j -= 1;
+		}
+		i -= 1;
+	}
+	dual[0] = i + 2;
+	dual[1] = j + 2;
+	dual[2] = 0;
+	ft_putstr_fd("get second : i / j : ", 3);
+	ft_putnbr_fd(dual[0], 3);
+	ft_putstr_fd(" / ", 3);
+	ft_putnbr_fd(dual[1], 3);
+	ft_putendl_fd("", 3);
+	return (dual);
+}
+
+
 int					*get_more(int *first_dual, char** plateau)
 {
 	int				*actual_dual;
@@ -154,41 +192,129 @@ int					*get_more(int *first_dual, char** plateau)
 		actual_dual[1] = 0;
 		while (plateau[actual_dual[0]][actual_dual[1]])
 		{
-			if (plateau[actual_dual[0]][actual_dual[1]] == 'O')
-			{
-				stop = 1;
-				// first_dual[1] = actual_dual[1];
-			}
+			if (plateau[actual_dual[0]][actual_dual[1]] == 'O' && actual_dual[1] - 1 < first_dual[1])
+				first_dual[1] = actual_dual[1] - 1;
 			actual_dual[1] += 1;
 		}
 		actual_dual[0] += 1;
 	}
 
-	return (actual_dual);
+	return (first_dual);
 }
 
-int					*get_insc(char **plateau)
+int					*get_less(int *first_dual, int *second_dual, int *size, char **plateau)
+{
+	int				*actual_dual;
+	int				stop;
+
+	actual_dual = malloc(sizeof(int) * 3);
+	actual_dual[0] = second_dual[0];
+	stop = 0;
+	while (actual_dual[0] >= first_dual[0] && plateau[actual_dual[0]])
+	{
+		actual_dual[1] = size[1] - 1;
+		while (actual_dual[1] >= first_dual[1] && plateau[actual_dual[0]][actual_dual[1]])
+		{
+			if (plateau[actual_dual[0]][actual_dual[1]] == 'O' && actual_dual[1] + 1 > second_dual[1])
+				second_dual[1] = actual_dual[1] + 1;
+			actual_dual[1] -= 1;
+		}
+		actual_dual[0] -= 1;
+	}
+
+	return (second_dual);
+}
+
+
+int					*get_insc(t_dual *dual, char **plateau)
 {
 	int				*rectangle;
 	int				*first_dual;
+	int				*second_dual;
+	char			**inscrit;
 
 	rectangle = malloc(sizeof(int) * 5);
 	first_dual = get_more(get_first(plateau), plateau);
+	second_dual = get_less(first_dual, get_second(plateau, dual->size), dual->size, plateau);
+
+	int i;
+	int j;
+	int k;
+	int l;
+
+	i = first_dual[0];
+	j = first_dual[1];
+
+	k = 0;
+	inscrit = malloc(sizeof(char*) * (second_dual[0] - first_dual[0]) + 1);
+	while (i <= second_dual[0])
+	{
+		l = 0;
+		j = first_dual[1];
+		inscrit[k] = malloc(sizeof(char) * (second_dual[1] - first_dual[1]) + 1);
+		while (j <= second_dual[1])
+		{
+			inscrit[k][l] = plateau[i][j];
+			j += 1;
+			l += 1;
+		}
+		inscrit[k][l] = '\0';
+		k += 1;
+		i += 1;
+	}
+	inscrit[k] = NULL;
+
+	i = j = 0;
+	while (inscrit[i])
+	{
+		j = 0;
+		while (inscrit[i][j])
+		{
+			ft_putchar_fd(inscrit[i][j], 3);
+			j += 1;
+		}
+		ft_putendl_fd("", 3);
+		i += 1;
+	}
+
+	ft_putendl_fd("GIGA DUMP :", 3);
+
+	// int i;
+	// int j;
+
+	i = first_dual[0];
+	j = first_dual[1];
+
+	while (i <= second_dual[0])
+	{
+		j = first_dual[1];
+		while (j <= second_dual[1])
+		{
+			ft_putchar_fd(plateau[i][j], 3);
+			j += 1;
+		}
+		ft_putendl_fd("", 3);
+		i += 1;
+	}
+	ft_putnbr_fd(i, 3);
+	ft_putstr_fd(":", 3);
+	ft_putnbr_fd(j, 3);
+	ft_putendl_fd("", 3);
 
 
 	rectangle[0] = first_dual[0];
 	rectangle[1] = first_dual[1];
-	rectangle[2] = 0;
-	rectangle[3] = 0;
+	rectangle[2] = second_dual[0];
+	rectangle[3] = second_dual[1];
 	rectangle[4] = 0;
 	return (rectangle);
 }
 
-void				truc_much(char **plateau, int fd)
+void				truc_much(t_dual *dual, char **plateau, int fd)
 {
 	int				*rectangle;
 
-	rectangle = get_insc(plateau);
+	rectangle = get_insc(dual, plateau);
 
 	ft_putstr_fd("-> ", fd);
 	ft_putnbr_fd(rectangle[0], fd);
@@ -227,7 +353,7 @@ void				read_filler(t_gnl *gnl, t_dual *dual, int fd)
 			piece = get_piece(dual->piece);
 			print_piece_fd(piece, fd);
 			ft_putendl_fd("<-->", fd);
-			truc_much(plateau, fd);
+			truc_much(dual, plateau, fd);
 			ft_putendl_fd("8 14", 1);
 		}
 		else
