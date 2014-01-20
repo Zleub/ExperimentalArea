@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2014/01/15 11:43:37 by adebray          ###   ########.fr        #
+#    Updated: 2014/01/20 06:08:55 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME = filler
@@ -20,8 +20,8 @@ SRC = ./src/gnl.c \
 
 OBJ = $(subst .c,.o,$(SRC))
 
-CC = gcc
-CCFLAGS = -Werror -Wall -Wextra -Wuninitialized -g3 -O3
+CC = cc
+CCFLAGS = -Werror -Wall -Wextra -g3 #-Wuninitialized -g3 -O3
 LIBFLAG = -L./src/ -L./src/libft -L./src/ft_printf -lfiller -lft -lftprintf
 HEADFLAG = -I$(HEADDIR)
 

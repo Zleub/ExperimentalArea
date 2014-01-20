@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/19 07:43:28 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/20 08:07:21 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,6 +225,7 @@ int					*get_less(int *first_dual, int *second_dual, int *size, char **plateau)
 	return (second_dual);
 }
 
+#include <stdio.h>
 
 int					*get_insc(t_dual *dual, char **plateau)
 {
@@ -246,30 +247,75 @@ int					*get_insc(t_dual *dual, char **plateau)
 	j = first_dual[1];
 
 	k = 0;
+	dprintf(3, "alloc : %d\n", (second_dual[0] - first_dual[0]) + 1);
 	inscrit = malloc(sizeof(char*) * (second_dual[0] - first_dual[0]) + 1);
 	while (i <= second_dual[0])
 	{
 		l = 0;
 		j = first_dual[1];
+		dprintf(3, "alloc : %d\n", (second_dual[1] - first_dual[1]) + 1);
 		inscrit[k] = malloc(sizeof(char) * (second_dual[1] - first_dual[1]) + 1);
+		// dprintf(3, "-> %d %p %s<-\n", k, inscrit[k], inscrit[k]);
 		while (j <= second_dual[1])
 		{
 			inscrit[k][l] = plateau[i][j];
+			// ft_putchar_fd(inscrit[k][l], 3);
+			// ft_putstr_fd("[", 3);
+			// ft_putnbr_fd(k, 3);
+			// ft_putstr_fd("]", 3);
+			// ft_putstr_fd("[", 3);
+			// ft_putnbr_fd(l, 3);
+			// ft_putstr_fd("]", 3);
+			// ft_putstr_fd(" <- ", 3);
+			// ft_putchar_fd(plateau[i][j], 3);
+			// ft_putstr_fd("[", 3);
+			// ft_putnbr_fd(i, 3);
+			// ft_putstr_fd("]", 3);
+			// ft_putstr_fd("[", 3);
+			// ft_putnbr_fd(j, 3);
+			// ft_putstr_fd("]", 3);
+			// ft_putendl_fd("", 3);
 			j += 1;
 			l += 1;
 		}
+			// 		ft_putstr_fd("[", 3);
+			// ft_putnbr_fd(k, 3);
+			// ft_putstr_fd("]", 3);
+			// ft_putstr_fd("[", 3);
+			// ft_putnbr_fd(l, 3);
+			// ft_putstr_fd("]", 3);
 		inscrit[k][l] = '\0';
+		dprintf(3, "-2> %d %p %s<-\n", k, inscrit[k], inscrit[k]);
 		k += 1;
 		i += 1;
 	}
-	inscrit[k] = NULL;
-
-	i = j = 0;
+	// ft_putstr_fd(">>>>", 3);
+	// ft_putnbr_fd(k, 3);
+	dprintf(3, "== %p <-\n", &inscrit[k]);
+	&inscrit[k] = NULL;
+	dprintf(3, "== %p <-\n", &inscrit[k]);
+	i = 0;
+	// ft_putstr_fd(inscrit[i], 3);
 	while (inscrit[i])
 	{
 		j = 0;
+		// 			ft_putstr_fd("[", 3);
+		// 	ft_putnbr_fd(i, 3);
+		// 	ft_putstr_fd("]", 3);
+		// 	ft_putstr_fd("[", 3);
+		// 	ft_putnbr_fd(j, 3);
+		// 	ft_putstr_fd("]", 3);
+		// ft_putchar_fd(inscrit[i][j], 3);
+		// ft_putendl_fd(" <-", 3);
+		dprintf(3, "-> %d %p %s<-\n", i, inscrit[i], inscrit[i]);
 		while (inscrit[i][j])
 		{
+			// ft_putstr_fd("i : ", 3);
+			// ft_putnbr_fd(i, 3);
+			// ft_putendl_fd("", 3);
+			// ft_putstr_fd("j : ", 3);
+			// ft_putnbr_fd(j, 3);
+			// ft_putendl_fd("", 3);
 			ft_putchar_fd(inscrit[i][j], 3);
 			j += 1;
 		}
@@ -327,6 +373,16 @@ void				truc_much(t_dual *dual, char **plateau, int fd)
 	ft_putstr_fd(" | -> ", fd);
 	ft_putnbr_fd(rectangle[4], fd);
 	ft_putendl_fd("", fd);
+
+// 	static int check;
+
+// 	if (!check)
+// 		check = 1;
+// 	else
+// 	{
+// 		char str[1];
+// 		read(0, &str, 1);
+// 	}
 }
 
 void				read_filler(t_gnl *gnl, t_dual *dual, int fd)
