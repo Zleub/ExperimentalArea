@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/22 05:13:16 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/22 10:31:00 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,10 +226,10 @@ int					*get_insc(t_dual *dual, char **plateau)
 	first_dual = get_more(get_first(plateau), plateau);
 	second_dual = get_less(first_dual, get_second(plateau, dual->size), dual->size, plateau);
 
-	rectangle[0] = first_dual[0];
-	rectangle[1] = first_dual[1];
-	rectangle[2] = second_dual[0];
-	rectangle[3] = second_dual[1];
+	rectangle[0] = first_dual[0] - dual->piece[0] + 1;
+	rectangle[1] = first_dual[1] - dual->piece[1] + 1;
+	rectangle[2] = second_dual[0] + dual->piece[0] - 1;
+	rectangle[3] = second_dual[1] + dual->piece[1] - 1;
 	rectangle[4] = 0;
 	return (rectangle);
 }
@@ -278,13 +278,13 @@ int				make_move(char **piece, char **array, int x, int y)
 		{
 			if (array[plat_x][plat_y] == 'O' && piece[piece_x][piece_y] != '.')
 			{
-				array[plat_x][plat_y] = piece[piece_x][piece_y];
+				array[plat_x][plat_y] = 'O';
 				cmp += 1;
 				if (cmp > 1)
 					return (0);
 			}
 			else if (piece[piece_x][piece_y] != '.')
-				array[plat_x][plat_y] = piece[piece_x][piece_y];
+				array[plat_x][plat_y] = 'O';
 			plat_y += 1;
 			piece_y += 1;
 		}
@@ -320,29 +320,66 @@ void				print_array(char **array)
 
 void				truc_much(t_dual *dual, char **plateau, char **piece)
 {
+	int				i;
+	int				j;
+	int				nbr;
 	int				*rectangle;
 	char			**array;
+	t_result		*head;
+	t_result		*result;
 
 	rectangle = get_insc(dual, plateau);
+	i = 0;
+	j = 0;
+	nbr = 0;
+	dprintf(3, "?? %d ??\n", rectangle[2] - rectangle[0] + 2 - dual->piece[0]);
+	dprintf(3, "?? %d ??\n", rectangle[3] - rectangle[1] + 2 - dual->piece[1]);
 
-	array = get_array(rectangle, plateau);
-	dprintf(3, "make move[%d][%d] : %d\n", 0, 0, make_move(piece, array, 0, 0));
-	print_array(array);
-	array = get_array(rectangle, plateau);
-	dprintf(3, "make move[%d][%d] : %d\n", 1, 0, make_move(piece, array, 1, 0));
-	print_array(array);
-	array = get_array(rectangle, plateau);
-	dprintf(3, "make move[%d][%d] : %d\n", 0, 1, make_move(piece, array, 0, 1));
-	print_array(array);
-	array = get_array(rectangle, plateau);
-	dprintf(3, "make move[%d][%d] : %d\n", 1, 1, make_move(piece, array, 1, 1));
-	print_array(array);
-	// array = get_array(rectangle, plateau);
-	// dprintf(3, "make move[%d][%d] : %d\n", 2, 0, make_move(piece, array, 2, 1));
-	// print_array(array);
-	array = get_array(rectangle, plateau);
-	dprintf(3, "make move[%d][%d] : %d\n", 1, 2, make_move(piece, array, 1, 2));
-	print_array(array);
+	result = malloc(sizeof(t_result));
+	head = result;
+	while (i < rectangle[2] - rectangle[0] + 2 - dual->piece[0])
+	{
+		j = 0;
+		while (j < rectangle[3] - rectangle[1] + 2 - dual->piece[1])
+		{
+			array = get_array(rectangle, plateau);
+			if (make_move(piece, array, i, j))
+			{
+				dprintf(3, "make move[%d][%d]\n", i, j);
+				print_array(array);
+				result->x = i;
+				result->y = j;
+				result->next = malloc(sizeof(t_result));
+				result = result->next;
+				result->x = -1;
+				result->y = -1;
+				nbr += 1;
+			}
+			j += 1;
+		}
+		i += 1;
+	}
+
+	i = 0;
+	j = 0;
+	if (nbr % 2 == 0)
+	{
+		nbr /= 2;
+	}
+	else
+	{
+		nbr = nbr / 2 + 1;
+	}
+
+	result = head;
+	while (i < nbr)
+	{
+		// dprintf(3, "%d,%d / %d\n", result->x, result->y, nbr);
+		result = result->next;
+		i += 1;
+	}
+	sleep (1);
+	ft_printf("%d %d\n", result->x + rectangle[0], result->y + rectangle[1]);
 }
 
 void				read_filler(t_gnl *gnl, t_dual *dual, int fd)
@@ -370,7 +407,7 @@ void				read_filler(t_gnl *gnl, t_dual *dual, int fd)
 			print_piece_fd(piece, fd);
 			ft_putendl_fd("<-->", fd);
 			truc_much(dual, plateau, piece);
-			ft_putendl_fd("8 14", 1);
+			// ft_putendl_fd("8 14", 1);
 		}
 		else
 		{
