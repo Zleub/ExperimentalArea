@@ -6,11 +6,12 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/20 08:07:21 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/22 05:13:16 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
+#include <stdio.h>
 
 t_gnl				*create(void)
 {
@@ -133,11 +134,6 @@ int					*get_first(char **plateau)
 	dual[0] = i - 2;
 	dual[1] = j - 2;
 	dual[2] = 0;
-	ft_putstr_fd("get first : i / j : ", 3);
-	ft_putnbr_fd(dual[0], 3);
-	ft_putstr_fd(" / ", 3);
-	ft_putnbr_fd(dual[1], 3);
-	ft_putendl_fd("", 3);
 	return (dual);
 }
 
@@ -170,11 +166,6 @@ int					*get_second(char **plateau, int *size)
 	dual[0] = i + 2;
 	dual[1] = j + 2;
 	dual[2] = 0;
-	ft_putstr_fd("get second : i / j : ", 3);
-	ft_putnbr_fd(dual[0], 3);
-	ft_putstr_fd(" / ", 3);
-	ft_putnbr_fd(dual[1], 3);
-	ft_putendl_fd("", 3);
 	return (dual);
 }
 
@@ -225,128 +216,15 @@ int					*get_less(int *first_dual, int *second_dual, int *size, char **plateau)
 	return (second_dual);
 }
 
-#include <stdio.h>
-
 int					*get_insc(t_dual *dual, char **plateau)
 {
 	int				*rectangle;
 	int				*first_dual;
 	int				*second_dual;
-	char			**inscrit;
 
 	rectangle = malloc(sizeof(int) * 5);
 	first_dual = get_more(get_first(plateau), plateau);
 	second_dual = get_less(first_dual, get_second(plateau, dual->size), dual->size, plateau);
-
-	int i;
-	int j;
-	int k;
-	int l;
-
-	i = first_dual[0];
-	j = first_dual[1];
-
-	k = 0;
-	dprintf(3, "alloc : %d\n", (second_dual[0] - first_dual[0]) + 1);
-	inscrit = malloc(sizeof(char*) * (second_dual[0] - first_dual[0]) + 1);
-	while (i <= second_dual[0])
-	{
-		l = 0;
-		j = first_dual[1];
-		dprintf(3, "alloc : %d\n", (second_dual[1] - first_dual[1]) + 1);
-		inscrit[k] = malloc(sizeof(char) * (second_dual[1] - first_dual[1]) + 1);
-		// dprintf(3, "-> %d %p %s<-\n", k, inscrit[k], inscrit[k]);
-		while (j <= second_dual[1])
-		{
-			inscrit[k][l] = plateau[i][j];
-			// ft_putchar_fd(inscrit[k][l], 3);
-			// ft_putstr_fd("[", 3);
-			// ft_putnbr_fd(k, 3);
-			// ft_putstr_fd("]", 3);
-			// ft_putstr_fd("[", 3);
-			// ft_putnbr_fd(l, 3);
-			// ft_putstr_fd("]", 3);
-			// ft_putstr_fd(" <- ", 3);
-			// ft_putchar_fd(plateau[i][j], 3);
-			// ft_putstr_fd("[", 3);
-			// ft_putnbr_fd(i, 3);
-			// ft_putstr_fd("]", 3);
-			// ft_putstr_fd("[", 3);
-			// ft_putnbr_fd(j, 3);
-			// ft_putstr_fd("]", 3);
-			// ft_putendl_fd("", 3);
-			j += 1;
-			l += 1;
-		}
-			// 		ft_putstr_fd("[", 3);
-			// ft_putnbr_fd(k, 3);
-			// ft_putstr_fd("]", 3);
-			// ft_putstr_fd("[", 3);
-			// ft_putnbr_fd(l, 3);
-			// ft_putstr_fd("]", 3);
-		inscrit[k][l] = '\0';
-		dprintf(3, "-2> %d %p %s<-\n", k, inscrit[k], inscrit[k]);
-		k += 1;
-		i += 1;
-	}
-	// ft_putstr_fd(">>>>", 3);
-	// ft_putnbr_fd(k, 3);
-	dprintf(3, "== %p <-\n", &inscrit[k]);
-	&inscrit[k] = NULL;
-	dprintf(3, "== %p <-\n", &inscrit[k]);
-	i = 0;
-	// ft_putstr_fd(inscrit[i], 3);
-	while (inscrit[i])
-	{
-		j = 0;
-		// 			ft_putstr_fd("[", 3);
-		// 	ft_putnbr_fd(i, 3);
-		// 	ft_putstr_fd("]", 3);
-		// 	ft_putstr_fd("[", 3);
-		// 	ft_putnbr_fd(j, 3);
-		// 	ft_putstr_fd("]", 3);
-		// ft_putchar_fd(inscrit[i][j], 3);
-		// ft_putendl_fd(" <-", 3);
-		dprintf(3, "-> %d %p %s<-\n", i, inscrit[i], inscrit[i]);
-		while (inscrit[i][j])
-		{
-			// ft_putstr_fd("i : ", 3);
-			// ft_putnbr_fd(i, 3);
-			// ft_putendl_fd("", 3);
-			// ft_putstr_fd("j : ", 3);
-			// ft_putnbr_fd(j, 3);
-			// ft_putendl_fd("", 3);
-			ft_putchar_fd(inscrit[i][j], 3);
-			j += 1;
-		}
-		ft_putendl_fd("", 3);
-		i += 1;
-	}
-
-	ft_putendl_fd("GIGA DUMP :", 3);
-
-	// int i;
-	// int j;
-
-	i = first_dual[0];
-	j = first_dual[1];
-
-	while (i <= second_dual[0])
-	{
-		j = first_dual[1];
-		while (j <= second_dual[1])
-		{
-			ft_putchar_fd(plateau[i][j], 3);
-			j += 1;
-		}
-		ft_putendl_fd("", 3);
-		i += 1;
-	}
-	ft_putnbr_fd(i, 3);
-	ft_putstr_fd(":", 3);
-	ft_putnbr_fd(j, 3);
-	ft_putendl_fd("", 3);
-
 
 	rectangle[0] = first_dual[0];
 	rectangle[1] = first_dual[1];
@@ -356,33 +234,115 @@ int					*get_insc(t_dual *dual, char **plateau)
 	return (rectangle);
 }
 
-void				truc_much(t_dual *dual, char **plateau, int fd)
+char				**get_array(int *rectangle, char **plateau)
+{
+	int				cmp[4] = {rectangle[0], 0, 0, 0};
+	char			**array;
+
+	array = malloc(sizeof(char*) * (rectangle[2] - rectangle[0] + 2));
+	while (cmp[0] <= rectangle[2])
+	{
+		cmp[1] = rectangle[1];
+		cmp[3] = 0;
+		array[cmp[2]] = malloc(sizeof(char) * (rectangle[3] - rectangle[1] + 2));
+		while (cmp[1] <= rectangle[3])
+		{
+			array[cmp[2]][cmp[3]] = plateau[cmp[0]][cmp[1]];
+			cmp[3] += 1;
+			cmp[1] += 1;
+		}
+		array[cmp[2]][cmp[3]] = '\0';
+		cmp[2] += 1;
+		cmp[0] += 1;
+	}
+	array[cmp[2]] = NULL;
+	return (array);
+}
+
+int				make_move(char **piece, char **array, int x, int y)
+{
+	int				piece_x;
+	int				piece_y;
+	int				plat_x;
+	int				plat_y;
+	int				cmp;
+
+	piece_x = 0;
+	plat_x = x;
+	cmp = 0;
+	while (piece[piece_x])
+	{
+		plat_y = y;
+		piece_y = 0;
+		while (piece[piece_x][piece_y])
+		{
+			if (array[plat_x][plat_y] == 'O' && piece[piece_x][piece_y] != '.')
+			{
+				array[plat_x][plat_y] = piece[piece_x][piece_y];
+				cmp += 1;
+				if (cmp > 1)
+					return (0);
+			}
+			else if (piece[piece_x][piece_y] != '.')
+				array[plat_x][plat_y] = piece[piece_x][piece_y];
+			plat_y += 1;
+			piece_y += 1;
+		}
+		piece_x += 1;
+		plat_x += 1;
+	}
+	if (cmp == 1)
+		return (1);
+	else
+		return (0);
+}
+
+void				print_array(char **array)
+{
+	int				i;
+	int				j;
+
+	i = 0;
+	j = 0;
+	while (array[i])
+	{
+		j = 0;
+		while (array[i][j])
+		{
+			dprintf(3, "%c", array[i][j]);
+			j += 1;
+		}
+		ft_putendl_fd("", 3);
+		i += 1;
+	}
+	ft_putendl_fd("", 3);
+}
+
+void				truc_much(t_dual *dual, char **plateau, char **piece)
 {
 	int				*rectangle;
+	char			**array;
 
 	rectangle = get_insc(dual, plateau);
 
-	ft_putstr_fd("-> ", fd);
-	ft_putnbr_fd(rectangle[0], fd);
-	ft_putstr_fd(" | -> ", fd);
-	ft_putnbr_fd(rectangle[1], fd);
-	ft_putstr_fd(" | -> ", fd);
-	ft_putnbr_fd(rectangle[2], fd);
-	ft_putstr_fd(" | -> ", fd);
-	ft_putnbr_fd(rectangle[3], fd);
-	ft_putstr_fd(" | -> ", fd);
-	ft_putnbr_fd(rectangle[4], fd);
-	ft_putendl_fd("", fd);
-
-// 	static int check;
-
-// 	if (!check)
-// 		check = 1;
-// 	else
-// 	{
-// 		char str[1];
-// 		read(0, &str, 1);
-// 	}
+	array = get_array(rectangle, plateau);
+	dprintf(3, "make move[%d][%d] : %d\n", 0, 0, make_move(piece, array, 0, 0));
+	print_array(array);
+	array = get_array(rectangle, plateau);
+	dprintf(3, "make move[%d][%d] : %d\n", 1, 0, make_move(piece, array, 1, 0));
+	print_array(array);
+	array = get_array(rectangle, plateau);
+	dprintf(3, "make move[%d][%d] : %d\n", 0, 1, make_move(piece, array, 0, 1));
+	print_array(array);
+	array = get_array(rectangle, plateau);
+	dprintf(3, "make move[%d][%d] : %d\n", 1, 1, make_move(piece, array, 1, 1));
+	print_array(array);
+	// array = get_array(rectangle, plateau);
+	// dprintf(3, "make move[%d][%d] : %d\n", 2, 0, make_move(piece, array, 2, 1));
+	// print_array(array);
+	array = get_array(rectangle, plateau);
+	dprintf(3, "make move[%d][%d] : %d\n", 1, 2, make_move(piece, array, 1, 2));
+	print_array(array);
 }
 
 void				read_filler(t_gnl *gnl, t_dual *dual, int fd)
@@ -409,7 +369,7 @@ void				read_filler(t_gnl *gnl, t_dual *dual, int fd)
 			piece = get_piece(dual->piece);
 			print_piece_fd(piece, fd);
 			ft_putendl_fd("<-->", fd);
-			truc_much(dual, plateau, fd);
+			truc_much(dual, plateau, piece);
 			ft_putendl_fd("8 14", 1);
 		}
 		else
