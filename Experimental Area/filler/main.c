@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/23 10:41:21 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/23 23:04:31 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,10 @@ int					*get_first(char **plateau)
 		}
 		i += 1;
 	}
+	dprintf(3, "i : %d, j : %d", i, j);
 	dual[0] = i - 2;
+	if (dual[0] < 0)
+		dual[0] = 0;
 	dual[1] = j - 2;
 	dual[2] = 0;
 	return (dual);
@@ -181,15 +184,17 @@ int					*get_more(int *first_dual, char** plateau)
 	while (plateau[actual_dual[0]])
 	{
 		actual_dual[1] = 0;
+		dprintf(3, "plateau[%d][%d]\n", actual_dual[0], actual_dual[1]);
 		while (plateau[actual_dual[0]][actual_dual[1]])
 		{
+			dprintf(3, "DUMP\n");
 			if (plateau[actual_dual[0]][actual_dual[1]] == 'O' && actual_dual[1] - 1 < first_dual[1])
 				first_dual[1] = actual_dual[1] - 1;
 			actual_dual[1] += 1;
 		}
 		actual_dual[0] += 1;
 	}
-
+	dprintf(3, "CHECK\n");
 	return (first_dual);
 }
 
@@ -223,9 +228,11 @@ int					*get_insc(t_dual *dual, char **plateau)
 	int				*second_dual;
 
 	rectangle = malloc(sizeof(int) * 5);
+	dprintf(3, "TEST 1\n");
 	first_dual = get_more(get_first(plateau), plateau);
+	dprintf(3, "TEST 2\n");
 	second_dual = get_less(first_dual, get_second(plateau, dual->size), dual->size, plateau);
-
+	dprintf(3, "TEST 3\n");
 	rectangle[0] = first_dual[0] - dual->piece[0] + 1;
 	if (rectangle[0] <= 0)
 		rectangle[0] = 0;
@@ -349,8 +356,8 @@ void				truc_much(t_dual *dual, char **plateau, char **piece)
 	i = 0;
 	j = 0;
 	nbr = 0;
-	// dprintf(3, "?? %d ??\n", rectangle[2] - rectangle[0] + 2 - dual->piece[0]);
-	// dprintf(3, "?? %d ??\n", rectangle[3] - rectangle[1] + 2 - dual->piece[1]);
+	dprintf(3, "?? %d ??\n", rectangle[2] - rectangle[0] + 2 - dual->piece[0]);
+	dprintf(3, "?? %d ??\n", rectangle[3] - rectangle[1] + 2 - dual->piece[1]);
 
 	result = malloc(sizeof(t_result));
 	head = result;
@@ -392,18 +399,21 @@ void				truc_much(t_dual *dual, char **plateau, char **piece)
 	}
 
 	dprintf(3, "THE CHEAT\n");
+	// result->next = head;
+
 
 	result = head;
-	while (i < nbr)
-	{
-		// dprintf(3, "%d,%d / %d\n", result->x, result->y, nbr);
-		result = result->next;
-		i += 1;
-	}
+	// while (i < nbr)
+	// {
+	// 	// dprintf(3, "%d,%d / %d\n", result->x, result->y, nbr);
+	// 	result = result->next;
+	// 	i += 1;
+	// }
+
 	// if (result->x + rectangle[0] > dual->size[0])
 
 	// dprintf(3, "--> result->x : %d | result->y : %d\n", result->x + rectangle[0], result->y + rectangle[1]);
-	while (result->y + rectangle[1] + dual->piece[1] >= dual->size[1])
+	while (result->y + rectangle[1] + dual->piece[1] >= dual->size[1] && result->x + rectangle[0] + dual->piece[0] >= dual->size[0])
 		result = result->next;
 
 	ft_printf("%d %d\n", result->x + rectangle[0], result->y + rectangle[1]);
