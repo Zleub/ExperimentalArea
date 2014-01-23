@@ -1,1 +1,3 @@
-seed = 7279
+seed = 8984
+O: error on input
+./filler: Segfault at 173

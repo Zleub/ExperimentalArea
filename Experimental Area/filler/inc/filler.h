@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/02 17:27:11 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/15 15:46:34 by Arno             ###   ########.fr       */
+/*   Updated: 2014/01/23 01:42:53 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,12 @@ typedef struct		s_dual
 	int				*size;
 	int				*piece;
 }					t_dual;
+
+typedef struct		s_result
+{
+	int				x;
+	int				y;
+	struct s_result	*next;
+}					t_result;
 
 #endif

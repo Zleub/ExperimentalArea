@@ -1,0 +1,1453 @@
+shackle : 0x7fa943403a70
+	shackle->name : a2ping
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943418f30
+shackle : 0x7fa943418f30
+	shackle->name : afm2afm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943418f60
+shackle : 0x7fa943418f60
+	shackle->name : afm2pl
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943418f90
+shackle : 0x7fa943418f90
+	shackle->name : afm2tfm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943418fc0
+shackle : 0x7fa943418fc0
+	shackle->name : aleph
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943418ff0
+shackle : 0x7fa943418ff0
+	shackle->name : allcm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419020
+shackle : 0x7fa943419020
+	shackle->name : allec
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419050
+shackle : 0x7fa943419050
+	shackle->name : allneeded
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419080
+shackle : 0x7fa943419080
+	shackle->name : amstex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434190b0
+shackle : 0x7fa9434190b0
+	shackle->name : arlatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434190e0
+shackle : 0x7fa9434190e0
+	shackle->name : asy
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419110
+shackle : 0x7fa943419110
+	shackle->name : authorindex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419140
+shackle : 0x7fa943419140
+	shackle->name : autoinst
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419170
+shackle : 0x7fa943419170
+	shackle->name : bbox
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434191a0
+shackle : 0x7fa9434191a0
+	shackle->name : bg5+latex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434191d0
+shackle : 0x7fa9434191d0
+	shackle->name : bg5+pdflatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419200
+shackle : 0x7fa943419200
+	shackle->name : bg5conv
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419230
+shackle : 0x7fa943419230
+	shackle->name : bg5latex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419260
+shackle : 0x7fa943419260
+	shackle->name : bg5pdflatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419290
+shackle : 0x7fa943419290
+	shackle->name : biber
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434192c0
+shackle : 0x7fa9434192c0
+	shackle->name : bibexport
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434192f0
+shackle : 0x7fa9434192f0
+	shackle->name : bibtex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419320
+shackle : 0x7fa943419320
+	shackle->name : bibtex8
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419350
+shackle : 0x7fa943419350
+	shackle->name : bibtexu
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419380
+shackle : 0x7fa943419380
+	shackle->name : bundledoc
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434193b0
+shackle : 0x7fa9434193b0
+	shackle->name : cachepic
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434193e0
+shackle : 0x7fa9434193e0
+	shackle->name : cef5conv
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419410
+shackle : 0x7fa943419410
+	shackle->name : cef5latex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419440
+shackle : 0x7fa943419440
+	shackle->name : cef5pdflatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419470
+shackle : 0x7fa943419470
+	shackle->name : cefconv
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434194a0
+shackle : 0x7fa9434194a0
+	shackle->name : ceflatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434194d0
+shackle : 0x7fa9434194d0
+	shackle->name : cefpdflatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419500
+shackle : 0x7fa943419500
+	shackle->name : cefsconv
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419530
+shackle : 0x7fa943419530
+	shackle->name : cefslatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419560
+shackle : 0x7fa943419560
+	shackle->name : cefspdflatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419590
+shackle : 0x7fa943419590
+	shackle->name : cfftot1
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434195c0
+shackle : 0x7fa9434195c0
+	shackle->name : checkcites
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434195f0
+shackle : 0x7fa9434195f0
+	shackle->name : chktex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419620
+shackle : 0x7fa943419620
+	shackle->name : chkweb
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419650
+shackle : 0x7fa943419650
+	shackle->name : context
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419680
+shackle : 0x7fa943419680
+	shackle->name : convbkmk
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434196b0
+shackle : 0x7fa9434196b0
+	shackle->name : cslatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434196e0
+shackle : 0x7fa9434196e0
+	shackle->name : csplain
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419710
+shackle : 0x7fa943419710
+	shackle->name : ctangle
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419740
+shackle : 0x7fa943419740
+	shackle->name : ctanify
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419770
+shackle : 0x7fa943419770
+	shackle->name : ctanupload
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434197a0
+shackle : 0x7fa9434197a0
+	shackle->name : ctie
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434197d0
+shackle : 0x7fa9434197d0
+	shackle->name : ctxtools
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419800
+shackle : 0x7fa943419800
+	shackle->name : cweave
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419830
+shackle : 0x7fa943419830
+	shackle->name : de-macro
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419860
+shackle : 0x7fa943419860
+	shackle->name : detex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419890
+shackle : 0x7fa943419890
+	shackle->name : devnag
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434198c0
+shackle : 0x7fa9434198c0
+	shackle->name : deweb
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434198f0
+shackle : 0x7fa9434198f0
+	shackle->name : disdvi
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419920
+shackle : 0x7fa943419920
+	shackle->name : dosepsbin
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419950
+shackle : 0x7fa943419950
+	shackle->name : dt2dv
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419980
+shackle : 0x7fa943419980
+	shackle->name : dv2dt
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434199b0
+shackle : 0x7fa9434199b0
+	shackle->name : dvi2fax
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa9434199e0
+shackle : 0x7fa9434199e0
+	shackle->name : dvi2tty
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419a10
+shackle : 0x7fa943419a10
+	shackle->name : dviasm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419a40
+shackle : 0x7fa943419a40
+	shackle->name : dvibook
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419a70
+shackle : 0x7fa943419a70
+	shackle->name : dviconcat
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419aa0
+shackle : 0x7fa943419aa0
+	shackle->name : dvicopy
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419ad0
+shackle : 0x7fa943419ad0
+	shackle->name : dvidvi
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419b00
+shackle : 0x7fa943419b00
+	shackle->name : dvigif
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419b30
+shackle : 0x7fa943419b30
+	shackle->name : dvihp
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419b60
+shackle : 0x7fa943419b60
+	shackle->name : dvilj
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419b90
+shackle : 0x7fa943419b90
+	shackle->name : dvilj2p
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419bc0
+shackle : 0x7fa943419bc0
+	shackle->name : dvilj4
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419bf0
+shackle : 0x7fa943419bf0
+	shackle->name : dvilj4l
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419c20
+shackle : 0x7fa943419c20
+	shackle->name : dvilj6
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419c50
+shackle : 0x7fa943419c50
+	shackle->name : dvilualatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419c80
+shackle : 0x7fa943419c80
+	shackle->name : dviluatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419cb0
+shackle : 0x7fa943419cb0
+	shackle->name : dvipdfm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419ce0
+shackle : 0x7fa943419ce0
+	shackle->name : dvipdfmx
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419d10
+shackle : 0x7fa943419d10
+	shackle->name : dvipdft
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419d40
+shackle : 0x7fa943419d40
+	shackle->name : dvipng
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419d70
+shackle : 0x7fa943419d70
+	shackle->name : dvipos
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419da0
+shackle : 0x7fa943419da0
+	shackle->name : dvips
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419dd0
+shackle : 0x7fa943419dd0
+	shackle->name : dvired
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419e00
+shackle : 0x7fa943419e00
+	shackle->name : dviselect
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419e30
+shackle : 0x7fa943419e30
+	shackle->name : dvisvgm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419e60
+shackle : 0x7fa943419e60
+	shackle->name : dvitodvi
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419e90
+shackle : 0x7fa943419e90
+	shackle->name : dvitomp
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419ec0
+shackle : 0x7fa943419ec0
+	shackle->name : dvitype
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419ef0
+shackle : 0x7fa943419ef0
+	shackle->name : e2pall
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419f20
+shackle : 0x7fa943419f20
+	shackle->name : ebb
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419f50
+shackle : 0x7fa943419f50
+	shackle->name : ebong
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419f80
+shackle : 0x7fa943419f80
+	shackle->name : eplain
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419fb0
+shackle : 0x7fa943419fb0
+	shackle->name : epsffit
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa943419fe0
+shackle : 0x7fa943419fe0
+	shackle->name : epspdf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a010
+shackle : 0x7fa94341a010
+	shackle->name : epspdftk
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a040
+shackle : 0x7fa94341a040
+	shackle->name : epstopdf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a070
+shackle : 0x7fa94341a070
+	shackle->name : eptex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a0a0
+shackle : 0x7fa94341a0a0
+	shackle->name : etex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a0d0
+shackle : 0x7fa94341a0d0
+	shackle->name : euptex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a100
+shackle : 0x7fa94341a100
+	shackle->name : exceltex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a130
+shackle : 0x7fa94341a130
+	shackle->name : extconv
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a160
+shackle : 0x7fa94341a160
+	shackle->name : extractbb
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a190
+shackle : 0x7fa94341a190
+	shackle->name : extractres
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a1c0
+shackle : 0x7fa94341a1c0
+	shackle->name : fig4latex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a1f0
+shackle : 0x7fa94341a1f0
+	shackle->name : findhyph
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a220
+shackle : 0x7fa94341a220
+	shackle->name : fixdlsrps
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a250
+shackle : 0x7fa94341a250
+	shackle->name : fixfmps
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a280
+shackle : 0x7fa94341a280
+	shackle->name : fixpsditps
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a2b0
+shackle : 0x7fa94341a2b0
+	shackle->name : fixpspps
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a2e0
+shackle : 0x7fa94341a2e0
+	shackle->name : fixscribeps
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a310
+shackle : 0x7fa94341a310
+	shackle->name : fixtpps
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a340
+shackle : 0x7fa94341a340
+	shackle->name : fixwfwps
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a370
+shackle : 0x7fa94341a370
+	shackle->name : fixwpps
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a3a0
+shackle : 0x7fa94341a3a0
+	shackle->name : fixwwps
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a3d0
+shackle : 0x7fa94341a3d0
+	shackle->name : fmtutil
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a400
+shackle : 0x7fa94341a400
+	shackle->name : fmtutil-sys
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a430
+shackle : 0x7fa94341a430
+	shackle->name : fontinst
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a460
+shackle : 0x7fa94341a460
+	shackle->name : fragmaster
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a490
+shackle : 0x7fa94341a490
+	shackle->name : gbklatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a4c0
+shackle : 0x7fa94341a4c0
+	shackle->name : gbkpdflatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a4f0
+shackle : 0x7fa94341a4f0
+	shackle->name : getafm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a520
+shackle : 0x7fa94341a520
+	shackle->name : gftodvi
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a550
+shackle : 0x7fa94341a550
+	shackle->name : gftopk
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a580
+shackle : 0x7fa94341a580
+	shackle->name : gftype
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a5b0
+shackle : 0x7fa94341a5b0
+	shackle->name : gsftopk
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a5e0
+shackle : 0x7fa94341a5e0
+	shackle->name : hbf2gf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a610
+shackle : 0x7fa94341a610
+	shackle->name : ht
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a640
+shackle : 0x7fa94341a640
+	shackle->name : htcontext
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a670
+shackle : 0x7fa94341a670
+	shackle->name : htlatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a6a0
+shackle : 0x7fa94341a6a0
+	shackle->name : htmex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a6d0
+shackle : 0x7fa94341a6d0
+	shackle->name : httex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a700
+shackle : 0x7fa94341a700
+	shackle->name : httexi
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a730
+shackle : 0x7fa94341a730
+	shackle->name : htxelatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a760
+shackle : 0x7fa94341a760
+	shackle->name : htxetex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a790
+shackle : 0x7fa94341a790
+	shackle->name : includeres
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a7c0
+shackle : 0x7fa94341a7c0
+	shackle->name : inimf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a7f0
+shackle : 0x7fa94341a7f0
+	shackle->name : initex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a820
+shackle : 0x7fa94341a820
+	shackle->name : installfont-tl
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a850
+shackle : 0x7fa94341a850
+	shackle->name : jadetex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a880
+shackle : 0x7fa94341a880
+	shackle->name : kpseaccess
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a8b0
+shackle : 0x7fa94341a8b0
+	shackle->name : kpsepath
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a8e0
+shackle : 0x7fa94341a8e0
+	shackle->name : kpsereadlink
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a910
+shackle : 0x7fa94341a910
+	shackle->name : kpsestat
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a940
+shackle : 0x7fa94341a940
+	shackle->name : kpsetool
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a970
+shackle : 0x7fa94341a970
+	shackle->name : kpsewhere
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a9a0
+shackle : 0x7fa94341a9a0
+	shackle->name : kpsewhich
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341a9d0
+shackle : 0x7fa94341a9d0
+	shackle->name : kpsexpand
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341aa00
+shackle : 0x7fa94341aa00
+	shackle->name : lacheck
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341aa30
+shackle : 0x7fa94341aa30
+	shackle->name : lamed
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341aa60
+shackle : 0x7fa94341aa60
+	shackle->name : latex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341aa90
+shackle : 0x7fa94341aa90
+	shackle->name : latex2man
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341aac0
+shackle : 0x7fa94341aac0
+	shackle->name : latexdiff
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341aaf0
+shackle : 0x7fa94341aaf0
+	shackle->name : latexdiff-vc
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ab20
+shackle : 0x7fa94341ab20
+	shackle->name : latexfileversion
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ab60
+shackle : 0x7fa94341ab60
+	shackle->name : latexmk
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ab90
+shackle : 0x7fa94341ab90
+	shackle->name : latexrevise
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341abc0
+shackle : 0x7fa94341abc0
+	shackle->name : listbib
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341abf0
+shackle : 0x7fa94341abf0
+	shackle->name : listings-ext.sh
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ac20
+shackle : 0x7fa94341ac20
+	shackle->name : lualatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ac50
+shackle : 0x7fa94341ac50
+	shackle->name : luatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ac80
+shackle : 0x7fa94341ac80
+	shackle->name : luatools
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341acb0
+shackle : 0x7fa94341acb0
+	shackle->name : m-tx
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ace0
+shackle : 0x7fa94341ace0
+	shackle->name : mag
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ad10
+shackle : 0x7fa94341ad10
+	shackle->name : makeglossaries
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ad40
+shackle : 0x7fa94341ad40
+	shackle->name : makeindex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ad70
+shackle : 0x7fa94341ad70
+	shackle->name : makejvf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ada0
+shackle : 0x7fa94341ada0
+	shackle->name : man
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341add0
+shackle : 0x7fa94341add0
+	shackle->name : match_parens
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ae00
+shackle : 0x7fa94341ae00
+	shackle->name : mathspic
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ae30
+shackle : 0x7fa94341ae30
+	shackle->name : mendex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ae60
+shackle : 0x7fa94341ae60
+	shackle->name : mex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ae90
+shackle : 0x7fa94341ae90
+	shackle->name : mf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341aec0
+shackle : 0x7fa94341aec0
+	shackle->name : mf-nowin
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341aef0
+shackle : 0x7fa94341aef0
+	shackle->name : mf2pt1
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341af20
+shackle : 0x7fa94341af20
+	shackle->name : mfplain
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341af50
+shackle : 0x7fa94341af50
+	shackle->name : mft
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341af80
+shackle : 0x7fa94341af80
+	shackle->name : mk4ht
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341afb0
+shackle : 0x7fa94341afb0
+	shackle->name : mkgrkindex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341afe0
+shackle : 0x7fa94341afe0
+	shackle->name : mkindex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b010
+shackle : 0x7fa94341b010
+	shackle->name : mkjobtexmf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b040
+shackle : 0x7fa94341b040
+	shackle->name : mkluatexfontdb
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b070
+shackle : 0x7fa94341b070
+	shackle->name : mkocp
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b0a0
+shackle : 0x7fa94341b0a0
+	shackle->name : mkofm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b0d0
+shackle : 0x7fa94341b0d0
+	shackle->name : mkt1font
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b100
+shackle : 0x7fa94341b100
+	shackle->name : mktexfmt
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b130
+shackle : 0x7fa94341b130
+	shackle->name : mktexlsr
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b160
+shackle : 0x7fa94341b160
+	shackle->name : mktexmf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b190
+shackle : 0x7fa94341b190
+	shackle->name : mktexpk
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b1c0
+shackle : 0x7fa94341b1c0
+	shackle->name : mktextfm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b1f0
+shackle : 0x7fa94341b1f0
+	shackle->name : mllatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b220
+shackle : 0x7fa94341b220
+	shackle->name : mltex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b250
+shackle : 0x7fa94341b250
+	shackle->name : mmafm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b280
+shackle : 0x7fa94341b280
+	shackle->name : mmpfb
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b2b0
+shackle : 0x7fa94341b2b0
+	shackle->name : mpost
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b2e0
+shackle : 0x7fa94341b2e0
+	shackle->name : mptopdf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b310
+shackle : 0x7fa94341b310
+	shackle->name : mtxrun
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b340
+shackle : 0x7fa94341b340
+	shackle->name : musixflx
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b370
+shackle : 0x7fa94341b370
+	shackle->name : musixtex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b3a0
+shackle : 0x7fa94341b3a0
+	shackle->name : odvicopy
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b3d0
+shackle : 0x7fa94341b3d0
+	shackle->name : odvitype
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b400
+shackle : 0x7fa94341b400
+	shackle->name : ofm2opl
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b430
+shackle : 0x7fa94341b430
+	shackle->name : omfonts
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b460
+shackle : 0x7fa94341b460
+	shackle->name : opl2ofm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b490
+shackle : 0x7fa94341b490
+	shackle->name : ot2kpx
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b4c0
+shackle : 0x7fa94341b4c0
+	shackle->name : otangle
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b4f0
+shackle : 0x7fa94341b4f0
+	shackle->name : otfinfo
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b520
+shackle : 0x7fa94341b520
+	shackle->name : otftotfm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b550
+shackle : 0x7fa94341b550
+	shackle->name : otp2ocp
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b580
+shackle : 0x7fa94341b580
+	shackle->name : outocp
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b5b0
+shackle : 0x7fa94341b5b0
+	shackle->name : ovf2ovp
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b5e0
+shackle : 0x7fa94341b5e0
+	shackle->name : ovp2ovf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b610
+shackle : 0x7fa94341b610
+	shackle->name : patgen
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b640
+shackle : 0x7fa94341b640
+	shackle->name : pbibtex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b670
+shackle : 0x7fa94341b670
+	shackle->name : pdf180
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b6a0
+shackle : 0x7fa94341b6a0
+	shackle->name : pdf270
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b6d0
+shackle : 0x7fa94341b6d0
+	shackle->name : pdf90
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b700
+shackle : 0x7fa94341b700
+	shackle->name : pdfannotextractor
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b740
+shackle : 0x7fa94341b740
+	shackle->name : pdfatfi
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b770
+shackle : 0x7fa94341b770
+	shackle->name : pdfbook
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b7a0
+shackle : 0x7fa94341b7a0
+	shackle->name : pdfclose
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b7d0
+shackle : 0x7fa94341b7d0
+	shackle->name : pdfcrop
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b800
+shackle : 0x7fa94341b800
+	shackle->name : pdfcslatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b830
+shackle : 0x7fa94341b830
+	shackle->name : pdfcsplain
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b860
+shackle : 0x7fa94341b860
+	shackle->name : pdfetex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b890
+shackle : 0x7fa94341b890
+	shackle->name : pdfflip
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b8c0
+shackle : 0x7fa94341b8c0
+	shackle->name : pdfjadetex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b8f0
+shackle : 0x7fa94341b8f0
+	shackle->name : pdfjam
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b920
+shackle : 0x7fa94341b920
+	shackle->name : pdfjam-pocketmod
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b960
+shackle : 0x7fa94341b960
+	shackle->name : pdfjam-slides3up
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b9a0
+shackle : 0x7fa94341b9a0
+	shackle->name : pdfjam-slides6up
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341b9e0
+shackle : 0x7fa94341b9e0
+	shackle->name : pdfjoin
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ba10
+shackle : 0x7fa94341ba10
+	shackle->name : pdflatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ba40
+shackle : 0x7fa94341ba40
+	shackle->name : pdfmex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ba70
+shackle : 0x7fa94341ba70
+	shackle->name : pdfnup
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341baa0
+shackle : 0x7fa94341baa0
+	shackle->name : pdfopen
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bad0
+shackle : 0x7fa94341bad0
+	shackle->name : pdfpun
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bb00
+shackle : 0x7fa94341bb00
+	shackle->name : pdftex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bb30
+shackle : 0x7fa94341bb30
+	shackle->name : pdftosrc
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bb60
+shackle : 0x7fa94341bb60
+	shackle->name : pdfxmltex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bb90
+shackle : 0x7fa94341bb90
+	shackle->name : pdvitype
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bbc0
+shackle : 0x7fa94341bbc0
+	shackle->name : pedigree
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bbf0
+shackle : 0x7fa94341bbf0
+	shackle->name : perltex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bc20
+shackle : 0x7fa94341bc20
+	shackle->name : pfb2pfa
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bc50
+shackle : 0x7fa94341bc50
+	shackle->name : pk2bm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bc80
+shackle : 0x7fa94341bc80
+	shackle->name : pkfix
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bcb0
+shackle : 0x7fa94341bcb0
+	shackle->name : pkfix-helper
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bce0
+shackle : 0x7fa94341bce0
+	shackle->name : pktogf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bd10
+shackle : 0x7fa94341bd10
+	shackle->name : pktype
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bd40
+shackle : 0x7fa94341bd40
+	shackle->name : platex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bd70
+shackle : 0x7fa94341bd70
+	shackle->name : pltotf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bda0
+shackle : 0x7fa94341bda0
+	shackle->name : pmx2pdf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bdd0
+shackle : 0x7fa94341bdd0
+	shackle->name : pmxab
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341be00
+shackle : 0x7fa94341be00
+	shackle->name : pooltype
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341be30
+shackle : 0x7fa94341be30
+	shackle->name : ppltotf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341be60
+shackle : 0x7fa94341be60
+	shackle->name : prepmx
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341be90
+shackle : 0x7fa94341be90
+	shackle->name : ps2eps
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bec0
+shackle : 0x7fa94341bec0
+	shackle->name : ps2frag
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bef0
+shackle : 0x7fa94341bef0
+	shackle->name : ps2pk
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bf20
+shackle : 0x7fa94341bf20
+	shackle->name : ps4pdf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bf50
+shackle : 0x7fa94341bf50
+	shackle->name : psbook
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bf80
+shackle : 0x7fa94341bf80
+	shackle->name : pslatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bfb0
+shackle : 0x7fa94341bfb0
+	shackle->name : psmerge
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341bfe0
+shackle : 0x7fa94341bfe0
+	shackle->name : psnup
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c010
+shackle : 0x7fa94341c010
+	shackle->name : psresize
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c040
+shackle : 0x7fa94341c040
+	shackle->name : psselect
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c070
+shackle : 0x7fa94341c070
+	shackle->name : pst2pdf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c0a0
+shackle : 0x7fa94341c0a0
+	shackle->name : pstopdf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c0d0
+shackle : 0x7fa94341c0d0
+	shackle->name : pstops
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c100
+shackle : 0x7fa94341c100
+	shackle->name : ptex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c130
+shackle : 0x7fa94341c130
+	shackle->name : ptftopl
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c160
+shackle : 0x7fa94341c160
+	shackle->name : purifyeps
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c190
+shackle : 0x7fa94341c190
+	shackle->name : repstopdf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c1c0
+shackle : 0x7fa94341c1c0
+	shackle->name : rpdfcrop
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c1f0
+shackle : 0x7fa94341c1f0
+	shackle->name : rubibtex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c220
+shackle : 0x7fa94341c220
+	shackle->name : rumakeindex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c250
+shackle : 0x7fa94341c250
+	shackle->name : rungs
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c280
+shackle : 0x7fa94341c280
+	shackle->name : scor2prt
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c2b0
+shackle : 0x7fa94341c2b0
+	shackle->name : showchar
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c2e0
+shackle : 0x7fa94341c2e0
+	shackle->name : simpdftex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c310
+shackle : 0x7fa94341c310
+	shackle->name : sjisconv
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c340
+shackle : 0x7fa94341c340
+	shackle->name : sjislatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c370
+shackle : 0x7fa94341c370
+	shackle->name : sjispdflatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c3a0
+shackle : 0x7fa94341c3a0
+	shackle->name : splitindex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c3d0
+shackle : 0x7fa94341c3d0
+	shackle->name : sty2dtx
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c400
+shackle : 0x7fa94341c400
+	shackle->name : svn-multi
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c430
+shackle : 0x7fa94341c430
+	shackle->name : synctex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c460
+shackle : 0x7fa94341c460
+	shackle->name : t1ascii
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c490
+shackle : 0x7fa94341c490
+	shackle->name : t1asm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c4c0
+shackle : 0x7fa94341c4c0
+	shackle->name : t1binary
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c4f0
+shackle : 0x7fa94341c4f0
+	shackle->name : t1disasm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c520
+shackle : 0x7fa94341c520
+	shackle->name : t1dotlessj
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c550
+shackle : 0x7fa94341c550
+	shackle->name : t1lint
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c580
+shackle : 0x7fa94341c580
+	shackle->name : t1mac
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c5b0
+shackle : 0x7fa94341c5b0
+	shackle->name : t1rawafm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c5e0
+shackle : 0x7fa94341c5e0
+	shackle->name : t1reencode
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c610
+shackle : 0x7fa94341c610
+	shackle->name : t1testpage
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c640
+shackle : 0x7fa94341c640
+	shackle->name : t1unmac
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c670
+shackle : 0x7fa94341c670
+	shackle->name : T1Wrap
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c6a0
+shackle : 0x7fa94341c6a0
+	shackle->name : t4ht
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c6d0
+shackle : 0x7fa94341c6d0
+	shackle->name : tangle
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c700
+shackle : 0x7fa94341c700
+	shackle->name : teckit_compile
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c730
+shackle : 0x7fa94341c730
+	shackle->name : tex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c760
+shackle : 0x7fa94341c760
+	shackle->name : tex2xindy
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c790
+shackle : 0x7fa94341c790
+	shackle->name : tex4ht
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c7c0
+shackle : 0x7fa94341c7c0
+	shackle->name : texconfig
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c7f0
+shackle : 0x7fa94341c7f0
+	shackle->name : texconfig-dialog
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c830
+shackle : 0x7fa94341c830
+	shackle->name : texconfig-sys
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c860
+shackle : 0x7fa94341c860
+	shackle->name : texcount
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c890
+shackle : 0x7fa94341c890
+	shackle->name : texdef
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c8c0
+shackle : 0x7fa94341c8c0
+	shackle->name : texdiff
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c8f0
+shackle : 0x7fa94341c8f0
+	shackle->name : texdirflatten
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c920
+shackle : 0x7fa94341c920
+	shackle->name : texdoc
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c950
+shackle : 0x7fa94341c950
+	shackle->name : texdoctk
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c980
+shackle : 0x7fa94341c980
+	shackle->name : texexec
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c9b0
+shackle : 0x7fa94341c9b0
+	shackle->name : texhash
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341c9e0
+shackle : 0x7fa94341c9e0
+	shackle->name : texindy
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ca10
+shackle : 0x7fa94341ca10
+	shackle->name : texlinks
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ca40
+shackle : 0x7fa94341ca40
+	shackle->name : texliveonfly
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ca70
+shackle : 0x7fa94341ca70
+	shackle->name : texloganalyser
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341caa0
+shackle : 0x7fa94341caa0
+	shackle->name : texlua
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cad0
+shackle : 0x7fa94341cad0
+	shackle->name : texluac
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cb00
+shackle : 0x7fa94341cb00
+	shackle->name : texmfstart
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cb30
+shackle : 0x7fa94341cb30
+	shackle->name : texsis
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cb60
+shackle : 0x7fa94341cb60
+	shackle->name : tftopl
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cb90
+shackle : 0x7fa94341cb90
+	shackle->name : thumbpdf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cbc0
+shackle : 0x7fa94341cbc0
+	shackle->name : tie
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cbf0
+shackle : 0x7fa94341cbf0
+	shackle->name : tlmgr
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cc20
+shackle : 0x7fa94341cc20
+	shackle->name : tpic2pdftex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cc50
+shackle : 0x7fa94341cc50
+	shackle->name : ttf2afm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cc80
+shackle : 0x7fa94341cc80
+	shackle->name : ttf2pk
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ccb0
+shackle : 0x7fa94341ccb0
+	shackle->name : ttf2tfm
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cce0
+shackle : 0x7fa94341cce0
+	shackle->name : ttfdump
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cd10
+shackle : 0x7fa94341cd10
+	shackle->name : ttftotype42
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cd40
+shackle : 0x7fa94341cd40
+	shackle->name : typeoutfileinfo
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cd70
+shackle : 0x7fa94341cd70
+	shackle->name : ulqda
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cda0
+shackle : 0x7fa94341cda0
+	shackle->name : upbibtex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cdd0
+shackle : 0x7fa94341cdd0
+	shackle->name : updmap
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ce00
+shackle : 0x7fa94341ce00
+	shackle->name : updmap-setup-kanji
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ce40
+shackle : 0x7fa94341ce40
+	shackle->name : updmap-sys
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ce70
+shackle : 0x7fa94341ce70
+	shackle->name : updvitype
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cea0
+shackle : 0x7fa94341cea0
+	shackle->name : uplatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341ced0
+shackle : 0x7fa94341ced0
+	shackle->name : uppltotf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cf00
+shackle : 0x7fa94341cf00
+	shackle->name : uptex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cf30
+shackle : 0x7fa94341cf30
+	shackle->name : uptftopl
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cf60
+shackle : 0x7fa94341cf60
+	shackle->name : urlbst
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cf90
+shackle : 0x7fa94341cf90
+	shackle->name : utf8mex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cfc0
+shackle : 0x7fa94341cfc0
+	shackle->name : vftovp
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341cff0
+shackle : 0x7fa94341cff0
+	shackle->name : vlna
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d020
+shackle : 0x7fa94341d020
+	shackle->name : vpe
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d050
+shackle : 0x7fa94341d050
+	shackle->name : vpl2ovp
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d080
+shackle : 0x7fa94341d080
+	shackle->name : vpl2vpl
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d0b0
+shackle : 0x7fa94341d0b0
+	shackle->name : vptovf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d0e0
+shackle : 0x7fa94341d0e0
+	shackle->name : weave
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d110
+shackle : 0x7fa94341d110
+	shackle->name : wovp2ovf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d140
+shackle : 0x7fa94341d140
+	shackle->name : xasy
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d170
+shackle : 0x7fa94341d170
+	shackle->name : xdv2pdf
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d1a0
+shackle : 0x7fa94341d1a0
+	shackle->name : xdvi
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d1d0
+shackle : 0x7fa94341d1d0
+	shackle->name : xdvi-xaw
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d200
+shackle : 0x7fa94341d200
+	shackle->name : xdvipdfmx
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d230
+shackle : 0x7fa94341d230
+	shackle->name : xelatex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d260
+shackle : 0x7fa94341d260
+	shackle->name : xetex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d290
+shackle : 0x7fa94341d290
+	shackle->name : xindy
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d2c0
+shackle : 0x7fa94341d2c0
+	shackle->name : xindy.mem
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d2f0
+shackle : 0x7fa94341d2f0
+	shackle->name : xindy.run
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d320
+shackle : 0x7fa94341d320
+	shackle->name : xmltex
+	shackle->path : /usr/texbin
+	shackle->next : 0x7fa94341d350
+shackle : 0x7fa94341d350
+	shackle->name : (null)
+	shackle->path : (null)
+	shackle->next : 0x0
+-> 

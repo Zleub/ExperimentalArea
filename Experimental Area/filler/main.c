@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/22 10:31:00 by Arno             ###   ########.fr       */
+/*   Updated: 2014/01/23 10:41:21 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,9 +227,17 @@ int					*get_insc(t_dual *dual, char **plateau)
 	second_dual = get_less(first_dual, get_second(plateau, dual->size), dual->size, plateau);
 
 	rectangle[0] = first_dual[0] - dual->piece[0] + 1;
+	if (rectangle[0] <= 0)
+		rectangle[0] = 0;
 	rectangle[1] = first_dual[1] - dual->piece[1] + 1;
+	if (rectangle[1] <= 0)
+		rectangle[1] = 0;
 	rectangle[2] = second_dual[0] + dual->piece[0] - 1;
+	if (rectangle[2] >= dual->size[0])
+		rectangle[2] = dual->size[0] - 1;
 	rectangle[3] = second_dual[1] + dual->piece[1] - 1;
+	if (rectangle[3] >= dual->size[1])
+		rectangle[3] = dual->size[1] - 1;
 	rectangle[4] = 0;
 	return (rectangle);
 }
@@ -239,6 +247,8 @@ char				**get_array(int *rectangle, char **plateau)
 	int				cmp[4] = {rectangle[0], 0, 0, 0};
 	char			**array;
 
+	// (void)plateau;
+	// dprintf(3, "THIS IS RECTANGLE[0] : %d\nTHIS IS RECTANGLE[1] : %d\nTHIS IS RECTANGLE[2] : %d\nTHIS IS RECTANGLE[3] : %d\n\n", rectangle[0], rectangle[1], rectangle[2], rectangle[3]);
 	array = malloc(sizeof(char*) * (rectangle[2] - rectangle[0] + 2));
 	while (cmp[0] <= rectangle[2])
 	{
@@ -247,6 +257,9 @@ char				**get_array(int *rectangle, char **plateau)
 		array[cmp[2]] = malloc(sizeof(char) * (rectangle[3] - rectangle[1] + 2));
 		while (cmp[1] <= rectangle[3])
 		{
+			// array[cmp[2]][cmp[3]] = '.';
+			// if (plateau[cmp[0]][cmp[1]] == 'O' || plateau[cmp[0]][cmp[1]] == 'o')
+			// dprintf(3, "cmp[0] : %d | cmp[1] : %d | cmp[2] : %d | cmp[3] : %d\n", cmp[0], cmp[1], cmp[2], cmp[3]);
 			array[cmp[2]][cmp[3]] = plateau[cmp[0]][cmp[1]];
 			cmp[3] += 1;
 			cmp[1] += 1;
@@ -274,6 +287,8 @@ int				make_move(char **piece, char **array, int x, int y)
 	{
 		plat_y = y;
 		piece_y = 0;
+			// dprintf(3, "plat_x : %d, plat_y : %d, piece_x : %d, piece_y : %d\n", plat_x, plat_y, piece_x, piece_y);
+
 		while (piece[piece_x][piece_y])
 		{
 			if (array[plat_x][plat_y] == 'O' && piece[piece_x][piece_y] != '.')
@@ -328,12 +343,14 @@ void				truc_much(t_dual *dual, char **plateau, char **piece)
 	t_result		*head;
 	t_result		*result;
 
+		dprintf(3, "THE CHEAT 111\n");
+
 	rectangle = get_insc(dual, plateau);
 	i = 0;
 	j = 0;
 	nbr = 0;
-	dprintf(3, "?? %d ??\n", rectangle[2] - rectangle[0] + 2 - dual->piece[0]);
-	dprintf(3, "?? %d ??\n", rectangle[3] - rectangle[1] + 2 - dual->piece[1]);
+	// dprintf(3, "?? %d ??\n", rectangle[2] - rectangle[0] + 2 - dual->piece[0]);
+	// dprintf(3, "?? %d ??\n", rectangle[3] - rectangle[1] + 2 - dual->piece[1]);
 
 	result = malloc(sizeof(t_result));
 	head = result;
@@ -342,11 +359,14 @@ void				truc_much(t_dual *dual, char **plateau, char **piece)
 		j = 0;
 		while (j < rectangle[3] - rectangle[1] + 2 - dual->piece[1])
 		{
+			// dprintf(3, "i : %d, j : %d\n", i, j);
+			// 	dprintf(3, "THIS IS RECTANGLE[0] : %d\nTHIS IS RECTANGLE[1] : %d\nTHIS IS RECTANGLE[2] : %d\nTHIS IS RECTANGLE[3] : %d\n\n", rectangle[0], rectangle[1], rectangle[2], rectangle[3]);
+
 			array = get_array(rectangle, plateau);
 			if (make_move(piece, array, i, j))
 			{
 				dprintf(3, "make move[%d][%d]\n", i, j);
-				print_array(array);
+				// print_array(array);
 				result->x = i;
 				result->y = j;
 				result->next = malloc(sizeof(t_result));
@@ -368,8 +388,10 @@ void				truc_much(t_dual *dual, char **plateau, char **piece)
 	}
 	else
 	{
-		nbr = nbr / 2 + 1;
+		nbr = nbr / 2;
 	}
+
+	dprintf(3, "THE CHEAT\n");
 
 	result = head;
 	while (i < nbr)
@@ -378,8 +400,14 @@ void				truc_much(t_dual *dual, char **plateau, char **piece)
 		result = result->next;
 		i += 1;
 	}
-	sleep (1);
+	// if (result->x + rectangle[0] > dual->size[0])
+
+	// dprintf(3, "--> result->x : %d | result->y : %d\n", result->x + rectangle[0], result->y + rectangle[1]);
+	while (result->y + rectangle[1] + dual->piece[1] >= dual->size[1])
+		result = result->next;
+
 	ft_printf("%d %d\n", result->x + rectangle[0], result->y + rectangle[1]);
+	dprintf(3, "result : %d %d\n", result->x + rectangle[0], result->y + rectangle[1]);
 }
 
 void				read_filler(t_gnl *gnl, t_dual *dual, int fd)
@@ -397,14 +425,14 @@ void				read_filler(t_gnl *gnl, t_dual *dual, int fd)
 			get_next_line(0, &gnl->str);
 			free(gnl->str);
 			plateau = get_plat(dual->size);
-			print_piece_fd(plateau, fd);
+			// print_piece_fd(plateau, fd);
 		}
 		else if (!ft_strncmp(gnl->str, "Piece", 5))
 		{
 			dual->piece = get_dual(gnl);
 			print_dual_fd(dual->size, dual->piece, fd);
 			piece = get_piece(dual->piece);
-			print_piece_fd(piece, fd);
+			// print_piece_fd(piece, fd);
 			ft_putendl_fd("<-->", fd);
 			truc_much(dual, plateau, piece);
 			// ft_putendl_fd("8 14", 1);

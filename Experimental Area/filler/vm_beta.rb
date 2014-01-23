@@ -130,7 +130,7 @@ class Plateau
 
 		fd.write "    "
 		for i in 0..(@map_col - 1)
-			fd.write(i % 10).to_s
+			fd.write (i % 10).to_s
 		end
 		fd.write "\n"
 
