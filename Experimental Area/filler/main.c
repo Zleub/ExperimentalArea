@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/23 23:04:31 by Arno             ###   ########.fr       */
+/*   Updated: 2014/01/24 09:21:25 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ int					*get_first(char **plateau)
 		}
 		i += 1;
 	}
-	dprintf(3, "i : %d, j : %d", i, j);
 	dual[0] = i - 2;
 	if (dual[0] < 0)
 		dual[0] = 0;
@@ -155,11 +154,6 @@ int					*get_second(char **plateau, int *size)
 		j = size[1] - 1;
 		while (plateau[i][j] && k == 0)
 		{
-			// ft_putstr_fd("i -> ", 3);
-			// ft_putnbr_fd(i, 3);
-			// ft_putstr_fd(" . j -> ", 3);
-			// ft_putnbr_fd(j, 3);
-			// ft_putendl_fd("", 3);
 			if (plateau[i][j] == 'O')
 				k = 1;
 			j -= 1;
@@ -184,17 +178,14 @@ int					*get_more(int *first_dual, char** plateau)
 	while (plateau[actual_dual[0]])
 	{
 		actual_dual[1] = 0;
-		dprintf(3, "plateau[%d][%d]\n", actual_dual[0], actual_dual[1]);
 		while (plateau[actual_dual[0]][actual_dual[1]])
 		{
-			dprintf(3, "DUMP\n");
 			if (plateau[actual_dual[0]][actual_dual[1]] == 'O' && actual_dual[1] - 1 < first_dual[1])
 				first_dual[1] = actual_dual[1] - 1;
 			actual_dual[1] += 1;
 		}
 		actual_dual[0] += 1;
 	}
-	dprintf(3, "CHECK\n");
 	return (first_dual);
 }
 
@@ -204,7 +195,7 @@ int					*get_less(int *first_dual, int *second_dual, int *size, char **plateau)
 	int				stop;
 
 	actual_dual = malloc(sizeof(int) * 3);
-	actual_dual[0] = second_dual[0];
+	actual_dual[0] = second_dual[0] - 1;
 	stop = 0;
 	while (actual_dual[0] >= first_dual[0] && plateau[actual_dual[0]])
 	{
@@ -212,12 +203,13 @@ int					*get_less(int *first_dual, int *second_dual, int *size, char **plateau)
 		while (actual_dual[1] >= first_dual[1] && plateau[actual_dual[0]][actual_dual[1]])
 		{
 			if (plateau[actual_dual[0]][actual_dual[1]] == 'O' && actual_dual[1] + 1 > second_dual[1])
+			{
 				second_dual[1] = actual_dual[1] + 1;
+			}
 			actual_dual[1] -= 1;
 		}
 		actual_dual[0] -= 1;
 	}
-
 	return (second_dual);
 }
 
@@ -228,11 +220,8 @@ int					*get_insc(t_dual *dual, char **plateau)
 	int				*second_dual;
 
 	rectangle = malloc(sizeof(int) * 5);
-	dprintf(3, "TEST 1\n");
 	first_dual = get_more(get_first(plateau), plateau);
-	dprintf(3, "TEST 2\n");
 	second_dual = get_less(first_dual, get_second(plateau, dual->size), dual->size, plateau);
-	dprintf(3, "TEST 3\n");
 	rectangle[0] = first_dual[0] - dual->piece[0] + 1;
 	if (rectangle[0] <= 0)
 		rectangle[0] = 0;
@@ -254,8 +243,6 @@ char				**get_array(int *rectangle, char **plateau)
 	int				cmp[4] = {rectangle[0], 0, 0, 0};
 	char			**array;
 
-	// (void)plateau;
-	// dprintf(3, "THIS IS RECTANGLE[0] : %d\nTHIS IS RECTANGLE[1] : %d\nTHIS IS RECTANGLE[2] : %d\nTHIS IS RECTANGLE[3] : %d\n\n", rectangle[0], rectangle[1], rectangle[2], rectangle[3]);
 	array = malloc(sizeof(char*) * (rectangle[2] - rectangle[0] + 2));
 	while (cmp[0] <= rectangle[2])
 	{
@@ -264,9 +251,6 @@ char				**get_array(int *rectangle, char **plateau)
 		array[cmp[2]] = malloc(sizeof(char) * (rectangle[3] - rectangle[1] + 2));
 		while (cmp[1] <= rectangle[3])
 		{
-			// array[cmp[2]][cmp[3]] = '.';
-			// if (plateau[cmp[0]][cmp[1]] == 'O' || plateau[cmp[0]][cmp[1]] == 'o')
-			// dprintf(3, "cmp[0] : %d | cmp[1] : %d | cmp[2] : %d | cmp[3] : %d\n", cmp[0], cmp[1], cmp[2], cmp[3]);
 			array[cmp[2]][cmp[3]] = plateau[cmp[0]][cmp[1]];
 			cmp[3] += 1;
 			cmp[1] += 1;
@@ -294,8 +278,6 @@ int				make_move(char **piece, char **array, int x, int y)
 	{
 		plat_y = y;
 		piece_y = 0;
-			// dprintf(3, "plat_x : %d, plat_y : %d, piece_x : %d, piece_y : %d\n", plat_x, plat_y, piece_x, piece_y);
-
 		while (piece[piece_x][piece_y])
 		{
 			if (array[plat_x][plat_y] == 'O' && piece[piece_x][piece_y] != '.')
@@ -344,21 +326,17 @@ void				truc_much(t_dual *dual, char **plateau, char **piece)
 {
 	int				i;
 	int				j;
+	int				k;
 	int				nbr;
 	int				*rectangle;
 	char			**array;
 	t_result		*head;
 	t_result		*result;
 
-		dprintf(3, "THE CHEAT 111\n");
-
 	rectangle = get_insc(dual, plateau);
 	i = 0;
 	j = 0;
 	nbr = 0;
-	dprintf(3, "?? %d ??\n", rectangle[2] - rectangle[0] + 2 - dual->piece[0]);
-	dprintf(3, "?? %d ??\n", rectangle[3] - rectangle[1] + 2 - dual->piece[1]);
-
 	result = malloc(sizeof(t_result));
 	head = result;
 	while (i < rectangle[2] - rectangle[0] + 2 - dual->piece[0])
@@ -366,14 +344,9 @@ void				truc_much(t_dual *dual, char **plateau, char **piece)
 		j = 0;
 		while (j < rectangle[3] - rectangle[1] + 2 - dual->piece[1])
 		{
-			// dprintf(3, "i : %d, j : %d\n", i, j);
-			// 	dprintf(3, "THIS IS RECTANGLE[0] : %d\nTHIS IS RECTANGLE[1] : %d\nTHIS IS RECTANGLE[2] : %d\nTHIS IS RECTANGLE[3] : %d\n\n", rectangle[0], rectangle[1], rectangle[2], rectangle[3]);
-
 			array = get_array(rectangle, plateau);
 			if (make_move(piece, array, i, j))
 			{
-				dprintf(3, "make move[%d][%d]\n", i, j);
-				// print_array(array);
 				result->x = i;
 				result->y = j;
 				result->next = malloc(sizeof(t_result));
@@ -382,70 +355,71 @@ void				truc_much(t_dual *dual, char **plateau, char **piece)
 				result->y = -1;
 				nbr += 1;
 			}
+			k = 0;
+			while (array[k])
+				free(array[k++]);
+			free(array);
 			j += 1;
 		}
 		i += 1;
 	}
 
-	i = 0;
-	j = 0;
-	if (nbr % 2 == 0)
+	result->next = head;
+	result = head;
+
+	int tmp = 0;
+	while (tmp == 0 || result != head)
 	{
-		nbr /= 2;
-	}
-	else
-	{
-		nbr = nbr / 2;
+		result = result->next;
+		tmp += 1;
 	}
 
-	dprintf(3, "THE CHEAT\n");
-	// result->next = head;
+	// i = 0;
+	// j = 0;
+	// if (nbr % 2 == 0)
+	// {
+	// 	nbr /= 2;
+	// }
+	// else
+	// {
+	// 	nbr = nbr / 2 + 1;
+	// }
 
 
 	result = head;
 	// while (i < nbr)
 	// {
-	// 	// dprintf(3, "%d,%d / %d\n", result->x, result->y, nbr);
 	// 	result = result->next;
 	// 	i += 1;
 	// }
 
-	// if (result->x + rectangle[0] > dual->size[0])
-
-	// dprintf(3, "--> result->x : %d | result->y : %d\n", result->x + rectangle[0], result->y + rectangle[1]);
-	while (result->y + rectangle[1] + dual->piece[1] >= dual->size[1] && result->x + rectangle[0] + dual->piece[0] >= dual->size[0])
+	while ((result->y + rectangle[1] + dual->piece[1] > dual->size[1]
+			|| result->x + rectangle[0] + dual->piece[0] > dual->size[0])
+			&& result != result->next)
 		result = result->next;
 
 	ft_printf("%d %d\n", result->x + rectangle[0], result->y + rectangle[1]);
-	dprintf(3, "result : %d %d\n", result->x + rectangle[0], result->y + rectangle[1]);
 }
 
-void				read_filler(t_gnl *gnl, t_dual *dual, int fd)
+void				read_filler(t_gnl *gnl, t_dual *dual)
 {
 	char			**piece;
 	char			**plateau;
 
 	while (get_next_line(0, &gnl->str))
 	{
-		// piece = NULL;
-		// plateau = NULL;
 		if (!ft_strncmp(gnl->str, "Plateau", 7))
 		{
 			dual->size = get_dual(gnl);
 			get_next_line(0, &gnl->str);
 			free(gnl->str);
 			plateau = get_plat(dual->size);
-			// print_piece_fd(plateau, fd);
 		}
 		else if (!ft_strncmp(gnl->str, "Piece", 5))
 		{
 			dual->piece = get_dual(gnl);
-			print_dual_fd(dual->size, dual->piece, fd);
 			piece = get_piece(dual->piece);
-			// print_piece_fd(piece, fd);
-			ft_putendl_fd("<-->", fd);
 			truc_much(dual, plateau, piece);
-			// ft_putendl_fd("8 14", 1);
 		}
 		else
 		{
@@ -465,7 +439,7 @@ int					main(void)
 	dual = malloc(sizeof(t_dual));
 	fd = open("dump", O_CREAT | O_TRUNC | O_WRONLY, 755);
 	head = create();
-	read_filler(head, dual, fd);
+	read_filler(head, dual);
 
 	t_gnl			*tmp;
 	tmp = head;
@@ -477,5 +451,11 @@ int					main(void)
 	}
 
 	close (fd);
+	// int i = 0;
+	// while (i == 0)
+	// {
+	// 	sleep(10);
+	// 	i = 1;
+	// }
 	return (0);
 }
