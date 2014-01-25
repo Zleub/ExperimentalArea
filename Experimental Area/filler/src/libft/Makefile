@@ -75,12 +75,12 @@ CCFLAGS = -Werror -Wall -Wextra -Wuninitialized -g3 -O3
 
 all: $(NAME)
 
-%.o: %.c
-	$(CC) $(CCFLAGS) -I $(HEADDIR) -o $@ -c $<
-
 $(NAME): $(OBJ)
 	ar rc $@ $^
 	ranlib $@
+
+%.o: %.c
+	$(CC) $(CCFLAGS) -I $(HEADDIR) -o $@ -c $<
 
 clean:
 	rm -f $(OBJ)

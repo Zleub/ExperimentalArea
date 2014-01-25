@@ -7,7 +7,7 @@
 #    By: hcao, abanlin                               +#+  +:+       +#+         #
 #                                                  +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 14:37:26 by abanlin            #+#    #+#              #
-#    Updated: 2013/11/20 14:37:26 by abanlin           ###   ########.fr        #
+#    Updated: 2014/01/23 19:58:14 by nbahri           ###   ########.fr        #
 #                                                                               #
 # ***************************************************************************** #
 
@@ -130,7 +130,7 @@ class Plateau
 
 		fd.write "    "
 		for i in 0..(@map_col - 1)
-			fd.write (i % 10).to_s
+			fd.write(i % 10).to_s
 		end
 		fd.write "\n"
 
@@ -168,7 +168,7 @@ class Plateau
 		x = 0
 		for i in 0..(@piece_row - 1)
 			for l in 0..(@piece_col - 1)
-				fd.write "#{@piece_content[x]}"
+				fd.write @piece_content[x].chr
 				x = x + 1
 			end
 			fd.write "\n"
@@ -508,6 +508,7 @@ if __FILE__ == $0
 					end
 
 					if (init.verbose > 0 && player.live > 0)
+                      system ("clear")
 						map.show_mapcontent($stdout, player.piece_char.downcase, nb[0].to_i, nb[1].to_i)
 					end
 				end

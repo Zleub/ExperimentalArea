@@ -6,28 +6,16 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/02 17:27:11 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/24 05:51:48 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/25 12:36:43 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLER_H
 # define FILLER_H
-# define SHEUM "i) {i -= 1; if (i == 0"
 
 # include <ft_printf.h>
 # include <gnl.h>
 # include <libft.h>
-
-// # include <stdlib.h>
-
-// # include <curses.h>
-// # include <term.h>
-// # include <termcap.h>
-
-// # include <signal.h>
-// # include <sys/ioctl.h>
-// # include <ft_select.h>
-# include <fcntl.h>
 
 typedef struct		s_gnl
 {
@@ -47,5 +35,19 @@ typedef struct		s_result
 	int				y;
 	struct s_result	*next;
 }					t_result;
+
+t_gnl	*create(void);
+int		*get_dual(t_gnl *head);
+char	**get_piece(int *piece_size);
+char	**get_plat(int *plateau_size);
+int		*get_first(char **plateau);
+int		*get_second(char **plateau, int *size);
+int		*get_more(int *first_dual, char** plateau);
+int		*get_less(int *first_dual, int *second_dual, int *size, char **plateau);
+int		*get_insc(t_dual *dual, char **plateau);
+char	**get_array(int *rectangle, char **plateau);
+int		make_move(char **piece, char **array, int x, int y);
+void	free_array(char **array);
+void	give_answer(t_result *head, t_dual *duo, int *coor, int nbr);
 
 #endif
