@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 11:44:35 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/25 12:36:07 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/26 01:10:06 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int					*get_more(int *first_dual, char** plateau)
 		actual_dual[1] = 0;
 		while (plateau[actual_dual[0]][actual_dual[1]])
 		{
-			if (plateau[actual_dual[0]][actual_dual[1]] == 'O' && actual_dual[1] - 1 < first_dual[1])
+			if (plateau[actual_dual[0]][actual_dual[1]] == 'O'
+					&& actual_dual[1] - 1 < first_dual[1])
 				first_dual[1] = actual_dual[1] - 1;
 			actual_dual[1] += 1;
 		}
@@ -90,26 +91,28 @@ int					*get_more(int *first_dual, char** plateau)
 	return (first_dual);
 }
 
-int					*get_less(int *first_dual, int *second_dual, int *size, char **plateau)
+int					*get_less(int *dual_1, int *dual_2, int *size, char **map)
 {
 	int				*actual_dual;
 	int				stop;
 
 	actual_dual = malloc(sizeof(int) * 3);
-	actual_dual[0] = second_dual[0] - 1;
+	actual_dual[0] = dual_2[0] - 1;
 	stop = 0;
-	while (actual_dual[0] >= first_dual[0] && plateau[actual_dual[0]])
+	while (actual_dual[0] >= dual_1[0] && map[actual_dual[0]])
 	{
 		actual_dual[1] = size[1] - 1;
-		while (actual_dual[1] >= first_dual[1] && plateau[actual_dual[0]][actual_dual[1]])
+		while (actual_dual[1] >= dual_1[1]
+				&& map[actual_dual[0]][actual_dual[1]])
 		{
-			if (plateau[actual_dual[0]][actual_dual[1]] == 'O' && actual_dual[1] + 1 > second_dual[1])
+			if (map[actual_dual[0]][actual_dual[1]] == 'O'
+					&& actual_dual[1] + 1 > dual_2[1])
 			{
-				second_dual[1] = actual_dual[1] + 1;
+				dual_2[1] = actual_dual[1] + 1;
 			}
 			actual_dual[1] -= 1;
 		}
 		actual_dual[0] -= 1;
 	}
-	return (second_dual);
+	return (dual_2);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initial.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 11:36:05 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/25 11:52:28 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/26 01:11:29 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,12 @@ int					*get_dual(t_gnl *head)
 	size = NULL;
 	str = head->str;
 	size = malloc(sizeof(int) * 3);
-
 	while (!ft_isdigit(*str))
 	{
 		str++;
 	}
 	size[0] = ft_atoi(str);
-	while(ft_isdigit(*str))
+	while (ft_isdigit(*str))
 		str++;
 	size[1] = ft_atoi(str);
 	size[2] = 0;

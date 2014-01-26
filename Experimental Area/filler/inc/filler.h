@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   filler.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/02 17:27:11 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/25 12:36:43 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/26 01:10:08 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@
 # include <ft_printf.h>
 # include <gnl.h>
 # include <libft.h>
+
+# define ARRAY_CHAR array[cmp_array[2]][cmp_array[3]]
+# define PIECE_CHAR piece[cmp_array[0]][cmp_array[1]]
+
 
 typedef struct		s_gnl
 {

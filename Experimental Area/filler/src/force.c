@@ -3,52 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   force.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/25 12:31:46 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/25 12:32:00 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/26 01:07:03 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <filler.h>
 
-int					*get_insc(t_dual *dual, char **plateau)
+int					*get_insc(t_dual *dual, char **map)
 {
 	int				*rectangle;
-	int				*first_dual;
-	int				*second_dual;
+	int				*dual1;
+	int				*dual2;
 
 	rectangle = malloc(sizeof(int) * 5);
-	first_dual = get_more(get_first(plateau), plateau);
-	second_dual = get_less(first_dual, get_second(plateau, dual->size), dual->size, plateau);
-	rectangle[0] = first_dual[0] - dual->piece[0] + 1;
+	dual1 = get_more(get_first(map), map);
+	dual2 = get_less(dual1, get_second(map, dual->size), dual->size, map);
+	rectangle[0] = dual1[0] - dual->piece[0] + 1;
 	if (rectangle[0] <= 0)
 		rectangle[0] = 0;
-	rectangle[1] = first_dual[1] - dual->piece[1] + 1;
+	rectangle[1] = dual1[1] - dual->piece[1] + 1;
 	if (rectangle[1] <= 0)
 		rectangle[1] = 0;
-	rectangle[2] = second_dual[0] + dual->piece[0] - 1;
+	rectangle[2] = dual2[0] + dual->piece[0] - 1;
 	if (rectangle[2] >= dual->size[0])
 		rectangle[2] = dual->size[0] - 1;
-	rectangle[3] = second_dual[1] + dual->piece[1] - 1;
+	rectangle[3] = dual2[1] + dual->piece[1] - 1;
 	if (rectangle[3] >= dual->size[1])
 		rectangle[3] = dual->size[1] - 1;
 	rectangle[4] = 0;
 	return (rectangle);
 }
 
-char				**get_array(int *rectangle, char **plateau)
+char				**get_array(int *rect, char **plateau)
 {
-	int				cmp[4] = {rectangle[0], 0, 0, 0};
+	int				cmp[4] = {rect[0], 0, 0, 0};
 	char			**array;
 
-	array = malloc(sizeof(char*) * (rectangle[2] - rectangle[0] + 2));
-	while (cmp[0] <= rectangle[2])
+	array = malloc(sizeof(char*) * (rect[2] - rect[0] + 2));
+	while (cmp[0] <= rect[2])
 	{
-		cmp[1] = rectangle[1];
+		cmp[1] = rect[1];
 		cmp[3] = 0;
-		array[cmp[2]] = malloc(sizeof(char) * (rectangle[3] - rectangle[1] + 2));
-		while (cmp[1] <= rectangle[3])
+		array[cmp[2]] = malloc(sizeof(char) * (rect[3] - rect[1] + 2));
+		while (cmp[1] <= rect[3])
 		{
 			array[cmp[2]][cmp[3]] = plateau[cmp[0]][cmp[1]];
 			cmp[3] += 1;
@@ -62,7 +62,7 @@ char				**get_array(int *rectangle, char **plateau)
 	return (array);
 }
 
-int				make_move(char **piece, char **array, int x, int y)
+int					make_move(char **piece, char **array, int x, int y)
 {
 	int				cmp_array[5];
 
@@ -72,11 +72,12 @@ int				make_move(char **piece, char **array, int x, int y)
 	{
 		cmp_array[3] = y;
 		cmp_array[1] = 0;
-		while (piece[cmp_array[0]][cmp_array[1]])
+		while (PIECE_CHAR)
 		{
-			if (array[cmp_array[2]][cmp_array[3]] == 'O' && piece[cmp_array[0]][cmp_array[1]] == '*')
+			if (ARRAY_CHAR == 'O' && PIECE_CHAR == '*')
 				cmp_array[4] += 1;
-			else if ((array[cmp_array[2]][cmp_array[3]] == 'X' || array[cmp_array[2]][cmp_array[3]] == 'x') && piece[cmp_array[0]][cmp_array[1]] == '*')
+			else if ((ARRAY_CHAR == 'X' || ARRAY_CHAR == 'x')
+						&& PIECE_CHAR == '*')
 				return (0);
 			cmp_array[3] += 1;
 			cmp_array[1] += 1;
