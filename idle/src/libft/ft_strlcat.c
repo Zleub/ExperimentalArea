@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/16 20:42:37 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/27 14:28:47 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t				ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t		_size;
-	size_t		len;
-	char		*_dst;
-	const char	*_src;
+	size_t			_size;
+	size_t			len;
+	char			*_dst;
+	const char		*_src;
 
 	_size = size;
 	_dst = dst;

@@ -11,7 +11,7 @@
 #******************************************************************************#
 NAME = libft.a
 LIB	= ft
-HEADDIR = ./includes
+HEADDIR = ../../inc
 
 SRC = 	ft_memset.c \
 	ft_bzero.c \
@@ -69,18 +69,18 @@ SRC = 	ft_memset.c \
 OBJ = $(subst .c,.o,$(SRC))
 
 CC = gcc
-CCFLAGS = -Werror -Wall -Wextra
+CCFLAGS = -Werror -Wall -Wextra -Wuninitialized -g3 -O3
 
 .PHONY: all clean fclean re
 
 all: $(NAME)
 
-%.o: %.c
-	$(CC) $(CCFLAGS) -I $(HEADDIR) -o $@ -c $<
-
 $(NAME): $(OBJ)
 	ar rc $@ $^
 	ranlib $@
+
+%.o: %.c
+	$(CC) $(CCFLAGS) -I $(HEADDIR) -o $@ -c $<
 
 clean:
 	rm -f $(OBJ)

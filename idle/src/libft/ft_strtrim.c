@@ -6,17 +6,17 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 00:16:25 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/16 20:41:40 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/12 18:20:35 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_strtrim(char const *s)
+char				*ft_strtrim(char const *s)
 {
-	char	*tmp;
-	size_t		i;
-	size_t		j;
+	char			*tmp;
+	size_t			i;
+	size_t			j;
 
 	if (s == NULL)
 		return (NULL);

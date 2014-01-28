@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 04:32:44 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/28 07:45:54 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,22 @@
 char	*ft_strcat(char *s1, const char* s2)
 {
 	char	*p;
+	char	*tmp;
 
-	p = s1;
+	p = (char*)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	tmp = p;
 	while (*s1)
+	{
+		*p = *s1;
+		p++;
 		s1++;
-	s1 = ft_strcpy(s1, s2);
-	s1--;
-	while (*s1)
-		s1++;
-	*s1 = '\0';
-	return (p);
+	}
+	while (*s2)
+	{
+		*p = *s2;
+		p++;
+		s2++;
+	}
+	*p = '\0';
+	return (tmp);
 }

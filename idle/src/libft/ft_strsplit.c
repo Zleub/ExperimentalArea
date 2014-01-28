@@ -6,61 +6,90 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 00:10:23 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/16 20:41:54 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/29 02:27:12 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-static size_t	ft_word_nbr(char const *s, char c)
+static int			word_count(const char *s, char c)
 {
-	size_t		i;
+	int				i;
+	int				j;
 
 	i = 0;
-	while (*s)
+	j = 0;
+	while (s[i])
 	{
-		if (*s == c)
+		if (s[i] != c)
 		{
-			while (*s == c)
-				s++;
-			i = i + 1;
+			++j;
+			while (s[i] != c)
+			{
+				if (!s[i])
+					return (j);
+				++i;
+			}
 		}
-		else
-		{
-			while (*s != c)
-				s++;
-		}
+		++i;
 	}
-	if (s[ft_strlen(s) - 1] == c && s[ft_strlen(s)] == '\0')
-		return (i - 1);
-	else
-		return (i);
+	return (j);
 }
 
-char		**ft_strsplit(char const *s, char c)
+static int			word_len(const char *s, int i, int j, char c)
 {
-	char			**tab;
-	unsigned int	cmp[3];
-
-	if (s == NULL)
-		return (0);
-	tab = (char**)malloc(sizeof(char*) * ft_word_nbr(s, c) + 1);
-	if (!tab)
-		return (0);
-	cmp[0] = cmp[2] = 0;
-	tab[ft_word_nbr(s, c)] = 0;
-	while (cmp[2] < ft_word_nbr(s, c))
+	while (s[i] != c && s[i])
 	{
-		cmp[1] = 0;
-		while (s[cmp[0]] == c)
-			++cmp[0];
-		while (s[cmp[0]] != c)
-		{
-			++cmp[0];
-			++cmp[1];
-		}
-		tab[cmp[2]] = ft_strsub(s, cmp[0] - cmp[1], cmp[1]);
-		++cmp[2];
+		++i;
+		++j;
 	}
-	return (tab);
+	return (j);
+}
+
+char				*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	char			*new;
+	size_t			i;
+
+	i = start;
+	if (s == NULL)
+		return (NULL);
+	new = (char *)malloc(sizeof(char) * (len + 1));
+	if (new == NULL)
+		return (NULL);
+	while (i < (start + len))
+	{
+		new[i - start] = s[i];
+		i++;
+	}
+	new[i - start] = '\0';
+	return (new);
+}
+
+char				**ft_strsplit(char const *s, char c)
+{
+	char			**ret;
+	int				i;
+	int				k;
+	int				word;
+
+	if (!s)
+		return (0);
+	word = word_count(s, c);
+	ret = (char **)malloc(sizeof(char *) * word + 1);
+	if (!ret)
+		return (0);
+	i = 0;
+	k = 0;
+	ret[word] = 0;
+	while (k < word)
+	{
+		while (s[i] == c)
+			++i;
+		ret[k] = ft_strsub(s, i, word_len(s, i, 0, c));
+		while (s[i++] != c)
+			;
+		++k;
+	}
+	return (ret);
 }

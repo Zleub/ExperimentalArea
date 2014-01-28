@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/30 00:07:24 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/16 20:40:00 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/27 12:28:36 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(const char *str)
+#include <libft.h>
+
+int			ft_atoi(const char *str)
 {
 	int		i;
 	int		nbr;

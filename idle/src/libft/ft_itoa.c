@@ -6,17 +6,17 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/03 00:16:53 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/19 02:36:19 by adebray          ###   ########.fr       */
+/*   Updated: 2013/12/29 15:51:02 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-static void reverse(char *str, int length)
+static void		reverse(char *str, int length)
 {
-	int		i;
-	int		j;
-	char	tmp;
+	int			i;
+	int			j;
+	char		tmp;
 
 	i = 0;
 	j = length - 1;
@@ -30,14 +30,14 @@ static void reverse(char *str, int length)
 	}
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	char	*result;
-	int		sign;
-	int		i;
+	char		*result;
+	int			sign;
+	int			i;
 
-	if (n == -2147483647)
-		return ("-2147483647");
+	if (n == -2147483648)
+		return ("-2147483648");
 	sign = n < 0 ? 1 : 0;
 	i = 0;
 	result = malloc(sizeof(char *) * 12);
