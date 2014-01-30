@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/19 06:53:24 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/28 15:08:15 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdlib.h>
+
+#include <ft_printf.h>
+#include <errno.h>
+
+#include <gnl.h>
+#include <libft.h>
 
 typedef struct	s_heros
 {

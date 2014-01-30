@@ -6,13 +6,11 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/19 05:50:25 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/19 06:03:42 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/28 15:07:44 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <idle.h>
-#include <gnl.h>
-#include <libft.h>
 
 int						ft_chest_0(void)
 {

@@ -6,13 +6,11 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/19 06:06:31 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/19 06:42:34 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/28 15:07:52 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <idle.h>
-#include <gnl.h>
-#include <libft.h>
 
 int						playing(t_heros *heros, int h_life, int m_life)
 {

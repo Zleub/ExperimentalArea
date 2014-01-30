@@ -6,11 +6,10 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/19 05:53:24 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/19 06:53:14 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/28 15:08:04 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
 #include <idle.h>
 
 void				give_info(t_heros *heros, t_heros *monster, int i, LIFE)

@@ -6,13 +6,12 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/19 05:49:59 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/19 06:04:10 by adebray          ###   ########.fr       */
+/*   Updated: 2014/01/28 15:13:20 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <idle.h>
-#include <libft.h>
-#include <gnl.h>
+
 
 char					*trim_save(char *save_name)
 {
@@ -71,16 +70,23 @@ t_heros					*create_monster(void)
 	monster = NULL;
 	if(!str_array)
 	{
-		str_array = malloc(sizeof(char*) * 21);
+		str_array = malloc(sizeof(char*) * 25);
 		fd = open("./res/monsters.txt", O_RDONLY);
 		while (get_next_line(fd, &str_array[i]) > 0)
 			i = i + 1;
 		close(fd);
 	}
+	ft_printf("TEST\n");
+	ft_printf("1.errno : %d\n", errno);
 	monster = malloc(sizeof(t_heros));
+	ft_printf("2.errno : %d\n", errno);
 	monster->name = str_array[get_rand(20)];
+	ft_printf("3.errno : %d\n", errno);
 	hash = hashich(monster->name);
+	ft_printf("4.errno : %d\n", errno);
 	monster->strengh = hash % 21;
+	ft_printf("5.errno : %d\n", errno);
 	monster->defense = hash / 21 % 21;
+	ft_printf("6.errno : %d\n", errno);
 	return (monster);
 }

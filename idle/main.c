@@ -3,18 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/28 09:44:16 by Arno             ###   ########.fr       */
+/*   Updated: 2014/01/28 15:07:39 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <idle.h>
-#include <gnl.h>
-#include <libft.h>
-#include <ft_printf.h>
-#include <errno.h>
 
 void					load_game(t_heros *heros)
 {
@@ -93,6 +89,8 @@ t_heros					*load_heros(t_heros *heros)
 	ft_printf("DEBUG 9 / str = %s\n", str);
 	heros->defense = ft_atoi(str);
 	free(str);
+	// get_next_line(fd, &str);
+	// free(str);
 	close(fd);
 	return (heros);
 }
