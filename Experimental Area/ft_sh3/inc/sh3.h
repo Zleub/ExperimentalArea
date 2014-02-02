@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   sh3.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/30 00:07:24 by adebray           #+#    #+#             */
-/*   Updated: 2014/02/02 05:39:23 by Arno             ###   ########.fr       */
+/*   Created: 2014/01/02 17:27:11 by adebray           #+#    #+#             */
+/*   Updated: 2014/02/02 05:56:09 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int			ft_atoi(const char *str)
-{
-	int		i;
-	int		nbr;
-	int		sign;
+#ifndef SH3_H
+# define SH3_H
 
-	nbr = 0;
-	sign = 1;
-	i = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		nbr = 10 * nbr + (str[i] - '0');
-		i++;
-	}
-	return (nbr * sign);
-}
+#include <libft.h>
+#include <gnl.h>
+#include <ft_printf.h>
+
+#include <stdlib.h>
+#include <term.h>
+
+typedef struct		s_gnl
+{
+	char			*str;
+	struct s_gnl	*next;
+}					t_gnl;
+
+#endif
