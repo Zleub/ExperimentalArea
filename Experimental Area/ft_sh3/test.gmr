@@ -5,6 +5,6 @@ mot			=	terminal , {terminal} ;
 sujet		=	"je" | "tu" | "il" | "elle" | "on" |
 				 "nous" | "vous" | "ils" | "elles" ;
 verbe		=	"manger" ;
-complement	=	mot , " " , {mot , " "} , "\n" ;
-rule		=	sujet , verbe , complement ;
+complement	=	mot , " " , {mot , " "} ;
+rule		=	sujet , " ", verbe , " ", complement , "\n" ;
 grammar		=	{rule} ;

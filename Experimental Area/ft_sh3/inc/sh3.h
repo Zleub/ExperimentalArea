@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh3.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/02 17:27:11 by adebray           #+#    #+#             */
-/*   Updated: 2014/02/02 05:56:09 by Arno             ###   ########.fr       */
+/*   Updated: 2014/02/02 16:02:26 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,23 @@ typedef struct		s_gnl
 	char			*str;
 	struct s_gnl	*next;
 }					t_gnl;
+
+enum				e_tree_type
+{
+	NODE, LEAF
+}					;
+
+enum				e_tree_status
+{
+	ONCE, LOOP, LIST, CAT
+}					;
+
+typedef struct		s_tree
+{
+	char			type;
+	char			status;
+	char			*str;
+	struct s_tree	**next;
+}					t_tree;
 
 #endif
