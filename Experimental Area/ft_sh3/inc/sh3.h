@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh3.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/02 17:27:11 by adebray           #+#    #+#             */
-/*   Updated: 2014/02/02 16:02:26 by adebray          ###   ########.fr       */
+/*   Updated: 2014/02/03 09:33:06 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ typedef struct		s_tree
 	char			type;
 	char			status;
 	char			*str;
-	struct s_tree	**next;
+	struct s_tree	*leaf;
+	struct s_tree	*next;
 }					t_tree;
 
 #endif

@@ -97,18 +97,60 @@ char	*ft_strndup(const char *s1, int n)
 	if (dup == NULL)
 		return (NULL);
 	else
+	{
 		while (n-- && s1[i] != '\0')
 		{
 			dup[i] = s1[i];
 			i = i + 1;
 		}
 		dup[i] = '\0';
-	return (dup);
+		return (dup);
+	}
 }
 
-t_tree		**function_to_create_leaf_child_node(t_tree *tree)
+void			function_to_create_leaf_child_node(t_tree *tree, char *tmp)
 {
+	char	dquote;
+	int		i;
+	int		j;
+	char	buf[4096];
+	t_tree	*leaf_head;
 
+	dquote = 0;
+	leaf_head = NULL;
+	if (!tree->leaf)
+	{
+		i = 0;
+		while (tmp[i])
+		{
+			/* tmp == '=' */
+			if (tmp[i] == '"')
+			{
+				dquote = 1;
+				tree->leaf = (t_tree *)malloc(sizeof(t_tree));
+				if (!leaf_head)
+					leaf_head = tree->leaf;
+				tree->leaf->next = NULL;
+				tree->leaf->str = NULL;
+				i += 1;
+				j = 0;
+				ft_strclr(buf);
+				while (dquote)
+				{
+					buf[j] = tmp[i];
+					if (tmp[i] == '"')
+						dquote = 0;
+					j += 1;
+					i += 1;
+				}
+				tree->leaf->str = ft_strndup(buf, j - 1);
+				ft_printf("tree leaf str = %s - %p\n", tree->leaf->str, tree->leaf);
+				tree->leaf = tree->leaf->next;
+			}
+			i += 1;
+		}
+		tree->leaf = leaf_head;
+	}
 }
 
 int			main(void)
@@ -141,11 +183,10 @@ int			main(void)
 				gnl = gnl->next;
 				gnl->next = NULL;
 
-				/* CAREFUL TO REALLOC HERE ONCE LEAF / CHILD NODE CREATED */
-				tree->next = (t_tree**)malloc(sizeof(t_tree*));
-				tree->next[0] = (t_tree*)malloc(sizeof(t_tree));
-				tree = tree->next[0];
-				tree->next[0] = NULL;
+				tree->next = (t_tree*)malloc(sizeof(t_tree));
+				tree = tree->next;
+				tree->next = NULL;
+				tree->leaf = NULL;
 			}
 			gnl->str = ft_strdup(tmp);
 
@@ -157,11 +198,9 @@ int			main(void)
 				i += 1;
 			tree->str = ft_strndup(tmp, i);
 
-			tree->next = function_to_create_leaf_child_node(tree, tmp);
+			function_to_create_leaf_child_node(tree, tmp);
 
-
-
-			ft_printf("type : %d, status : %d, str : %s - %p\n", tree->type, tree->status, tree->str, tree);
+			ft_printf("type : %d, status : %d, str : %s leaf str : %s leaf str next : %s - %p\n", tree->type, tree->status, tree->str, tree->leaf->str, tree->leaf->next->str, tree->leaf);
 
 			start = 0;
 		}
