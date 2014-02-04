@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/02 11:12:01 by adebray           #+#    #+#             */
-/*   Updated: 2014/02/02 16:06:38 by adebray          ###   ########.fr       */
+/*   Updated: 2014/02/04 14:30:52 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ int			test(void)
 		return (-1);
 	while (read(0, str, 3))
 	{
-		ft_printf("%d%d%d%d\n", str[0], str[1], str[2], str[3]);
+		// ft_printf("%d%d%d%d\n", str[0], str[1], str[2], str[3]);
 		ft_striter(str, &is_lang);
-		ft_printf("\n");
+		// ft_printf("\n");
 		ft_strclr(str);
 	}
 	tswitch(0);
@@ -108,44 +108,113 @@ char	*ft_strndup(const char *s1, int n)
 	}
 }
 
-void			function_to_create_leaf_child_node(t_tree *tree, char *tmp)
+void			function_to_create_leaf_child_node(t_tree *tree, char *str)
 {
+	char	equals;
 	char	dquote;
+	char	crush;
 	int		i;
 	int		j;
 	char	buf[4096];
 	t_tree	*leaf_head;
 
+	t_tree	*tmp = tree;
+
 	dquote = 0;
+	equals = 0;
+	crush = 0;
 	leaf_head = NULL;
 	if (!tree->leaf)
 	{
 		i = 0;
-		while (tmp[i])
+		while (str[i])
 		{
-			/* tmp == '=' */
-			if (tmp[i] == '"')
+			if (str[i] == '=')
+				equals = 1;
+			else if (str[i] == '{')
+				crush = 1;
+			else if (str[i] == '}')
+				crush = 1;
+			else if (str[i] == '"' && equals == 1)
 			{
 				dquote = 1;
-				tree->leaf = (t_tree *)malloc(sizeof(t_tree));
-				if (!leaf_head)
+				if (!tree->leaf)
+				{
+					tree->leaf = create_node();
 					leaf_head = tree->leaf;
-				tree->leaf->next = NULL;
-				tree->leaf->str = NULL;
+				}
 				i += 1;
 				j = 0;
 				ft_strclr(buf);
 				while (dquote)
 				{
-					buf[j] = tmp[i];
-					if (tmp[i] == '"')
+					buf[j] = str[i];
+					if (str[i] == '"')
 						dquote = 0;
 					j += 1;
 					i += 1;
 				}
 				tree->leaf->str = ft_strndup(buf, j - 1);
-				ft_printf("tree leaf str = %s - %p\n", tree->leaf->str, tree->leaf);
+				tree->leaf->type = LEAF;
+				if (crush == 1)
+					tree->leaf->status = LOOP;
+				else
+					tree->leaf->status = ONCE;
+				// ft_printf("1. -> tree leaf str = %s - %p\n", tree->leaf->str, tree->leaf);
+				tree->leaf->next = create_node();
 				tree->leaf = tree->leaf->next;
+
+			}
+			else if (ft_isalpha(str[i]) && equals == 1)
+			{
+				if (!tree->leaf)
+				{
+					tree->leaf = create_node();
+					leaf_head = tree->leaf;
+				}
+				j = 0;
+				ft_strclr(buf);
+				while (ft_isalpha(str[i]))
+				{
+					buf[j] = str[i];
+					if (str[i] == '"')
+						dquote = 0;
+					j += 1;
+					i += 1;
+				}
+				tree->leaf->str = ft_strndup(buf, j);
+				tree->leaf->type = NODE;
+				if (crush == 1)
+					tree->leaf->status = LOOP;
+				else
+					tree->leaf->status = ONCE;
+				ft_printf("! ! ! ! DEGU DEBUG %p\n", tmp);
+				while (tmp)
+				{
+					ft_printf("DEGU DEBUG %p\n", tmp);
+					ft_printf("DEGU DEBUG tmp->str : %s VS %s : tree->leaf->str\n", tmp->str, tree->leaf->str);
+					if (!ft_strcmp(tmp->str, tree->leaf->str))
+					{
+						tree->leaf->leaf = tmp->leaf;
+					}
+					tmp = tmp->next;
+				}
+				tree->leaf->next = create_node();
+				tree->leaf = tree->leaf->next;
+			}
+			else if (str[i] == '|' && equals == 1)
+			{
+				if (tree->status == CAT)
+					tree->status = MIX;
+				else if (tree->status != MIX)
+					tree->status = LIST;
+			}
+			else if (str[i] == ',' && equals == 1)
+			{
+				if (tree->status == LIST)
+					tree->status = MIX;
+				else if (tree->status != MIX)
+					tree->status = CAT;
 			}
 			i += 1;
 		}
@@ -171,7 +240,7 @@ int			main(void)
 	start = 1;
 	gnl = (t_gnl*)malloc(sizeof(t_gnl));
 	head = gnl;
-	tree = (t_tree*)malloc(sizeof(t_tree));
+	tree = create_node();
 	tree_head = tree;
 	while (get_next_line(fd, &tmp) > 0)
 	{
@@ -183,10 +252,8 @@ int			main(void)
 				gnl = gnl->next;
 				gnl->next = NULL;
 
-				tree->next = (t_tree*)malloc(sizeof(t_tree));
+				tree->next = create_node();
 				tree = tree->next;
-				tree->next = NULL;
-				tree->leaf = NULL;
 			}
 			gnl->str = ft_strdup(tmp);
 
@@ -198,10 +265,30 @@ int			main(void)
 				i += 1;
 			tree->str = ft_strndup(tmp, i);
 
+			tree->leaf = NULL;
 			function_to_create_leaf_child_node(tree, tmp);
 
-			ft_printf("type : %d, status : %d, str : %s leaf str : %s leaf str next : %s - %p\n", tree->type, tree->status, tree->str, tree->leaf->str, tree->leaf->next->str, tree->leaf);
 
+			ft_printf("tree : %p\n", tree);
+			ft_printf("tree->str : %s\n", tree->str);
+			ft_printf("\ttree->type : %d\n", tree->type);
+			ft_printf("\ttree->status : %d\n", tree->status);
+			ft_printf("\ttree->leaf : %p\n", tree->leaf);
+			t_tree *tmp = tree->leaf;
+			t_tree *tmp2 = tree->leaf->leaf;
+			while (tmp)
+			{
+				ft_printf("\t\ttree->leaf->str : %s\n", tmp->str);
+				ft_printf("\t\t\ttree->leaf->type : %d\n", tmp->type);
+				ft_printf("\t\t\ttree->leaf->status : %d\n", tmp->status);
+				while (tmp2)
+				{
+					ft_printf("\t\t\ttree->leaf->leaf : %p\n", tmp2);
+					ft_printf("\t\t\ttree->leaf->leaf->str : %s\n", tmp2->str);
+					tmp2 = tmp2->next;
+				}
+				tmp = tmp->next;
+			}
 			start = 0;
 		}
 		else

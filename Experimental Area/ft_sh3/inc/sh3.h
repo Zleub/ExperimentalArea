@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sh3.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/02 17:27:11 by adebray           #+#    #+#             */
-/*   Updated: 2014/02/03 09:33:06 by Arno             ###   ########.fr       */
+/*   Updated: 2014/02/03 19:49:46 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ enum				e_tree_type
 
 enum				e_tree_status
 {
-	ONCE, LOOP, LIST, CAT
+	ONCE, LOOP, LIST, CAT, MIX
 }					;
 
 typedef struct		s_tree
@@ -44,5 +44,7 @@ typedef struct		s_tree
 	struct s_tree	*leaf;
 	struct s_tree	*next;
 }					t_tree;
+
+t_tree				*create_node(void);
 
 #endif

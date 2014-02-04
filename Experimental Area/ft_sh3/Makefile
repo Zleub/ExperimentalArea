@@ -3,28 +3,29 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+         #
+#    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2014/01/31 10:41:15 by Arno             ###   ########.fr        #
+#    Updated: 2014/02/03 19:46:49 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME = ft_sh3
-LIBNAME = ./src/libsh3.a
-LIBFT = ./src/libft/libft.a
-PRINTF = ./src/ft_printf/libftprintf.a
+NAME		= ft_sh3
+LIBNAME		= ./src/libsh3.a
+LIBFT		= ./src/libft/libft.a
+PRINTF		= ./src/ft_printf/libftprintf.a
 
-SRCDIR = ./src/
-HEADDIR = ./inc/
+SRCDIR		= ./src/
+HEADDIR		= ./inc/
 
-SRC = ./src/gnl.c
+SRC			=	./src/gnl.c \
+				./src/init.c
 
-OBJ = $(subst .c,.o,$(SRC))
+OBJ			= $(subst .c,.o,$(SRC))
 
-CC = gcc
-CCFLAGS = -Werror -Wall -Wextra -Wuninitialized -g3 -O3
-LIBFLAG = -L./src/ -L./src/libft -L./src/ft_printf -lsh3 -lft -lftprintf -ltermcap
-HEADFLAG = -I$(HEADDIR)
+CC			= gcc
+CCFLAGS		= -Werror -Wall -Wextra -Wuninitialized -g3 -O3
+LIBFLAG		= -L./src/ -L./src/libft -L./src/ft_printf -lsh3 -lft -lftprintf -ltermcap
+HEADFLAG	= -I$(HEADDIR)
 
 .PHONY: all clean fclean re $(LIBFT) $(PRINTF)
 

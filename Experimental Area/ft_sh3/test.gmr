@@ -6,5 +6,5 @@ sujet		=	"je" | "tu" | "il" | "elle" | "on" |
 				 "nous" | "vous" | "ils" | "elles" ;
 verbe		=	"manger" ;
 complement	=	mot , " " , {mot , " "} ;
-rule		=	sujet , " ", verbe , " ", complement , "\n" ;
+rule		=	sujet , " ", verbe , " " , complement , "\n" ;
 grammar		=	{rule} ;
