@@ -108,7 +108,7 @@ char	*ft_strndup(const char *s1, int n)
 	}
 }
 
-void			function_to_create_leaf_child_node(t_tree *tree, char *str)
+void			function_to_create_leaf_child_node(t_tree *tree, t_tree *tree_head, char *str)
 {
 	char	equals;
 	char	dquote;
@@ -118,7 +118,7 @@ void			function_to_create_leaf_child_node(t_tree *tree, char *str)
 	char	buf[4096];
 	t_tree	*leaf_head;
 
-	t_tree	*tmp = tree;
+	t_tree	*tmp = tree_head;
 
 	dquote = 0;
 	equals = 0;
@@ -188,17 +188,25 @@ void			function_to_create_leaf_child_node(t_tree *tree, char *str)
 					tree->leaf->status = LOOP;
 				else
 					tree->leaf->status = ONCE;
-				ft_printf("! ! ! ! DEGU DEBUG %p\n", tmp);
+				// ft_printf("! ! ! ! DEGU DEBUG %p\n", tmp);
 				while (tmp)
 				{
-					ft_printf("DEGU DEBUG %p\n", tmp);
-					ft_printf("DEGU DEBUG tmp->str : %s VS %s : tree->leaf->str\n", tmp->str, tree->leaf->str);
+					// ft_printf("DEGU DEBUG %p\n", tmp);
+					// ft_printf("DEGU DEBUG tmp->str : %s VS %s : tree->leaf->str\n", tmp->str, tree->leaf->str);
 					if (!ft_strcmp(tmp->str, tree->leaf->str))
 					{
+						// ft_printf("SIGNAL\n");
+						// ft_printf("%p : %p\n", tree->leaf->leaf, tmp->leaf);
 						tree->leaf->leaf = tmp->leaf;
+						// tree->leaf->type = tmp->type;
+						// if (tree->leaf->status == LOOP)
+						// 	ft_printf("HERE THE LOOP OF tree->leaf->str %s IS GONE\n", tree->leaf->str);
+						// tree->leaf->status = tmp->status;
+						// ft_printf("%p : %p\n", tree->leaf->leaf, tmp->leaf);
 					}
 					tmp = tmp->next;
 				}
+				tmp = tree_head;
 				tree->leaf->next = create_node();
 				tree->leaf = tree->leaf->next;
 			}
@@ -266,28 +274,29 @@ int			main(void)
 			tree->str = ft_strndup(tmp, i);
 
 			tree->leaf = NULL;
-			function_to_create_leaf_child_node(tree, tmp);
+			function_to_create_leaf_child_node(tree, tree_head, tmp);
 
 
-			ft_printf("tree : %p\n", tree);
-			ft_printf("tree->str : %s\n", tree->str);
-			ft_printf("\ttree->type : %d\n", tree->type);
-			ft_printf("\ttree->status : %d\n", tree->status);
-			ft_printf("\ttree->leaf : %p\n", tree->leaf);
+			// ft_printf("tree : <%p>\n", tree);
+			ft_printf("tree->str : '%s'\n", tree->str);
+			ft_printf("\ttree->type : '%d'\n", tree->type);
+			ft_printf("\ttree->status : '%d'\n", tree->status);
 			t_tree *tmp = tree->leaf;
 			t_tree *tmp2 = tree->leaf->leaf;
 			while (tmp)
 			{
-				ft_printf("\t\ttree->leaf->str : %s\n", tmp->str);
-				ft_printf("\t\t\ttree->leaf->type : %d\n", tmp->type);
-				ft_printf("\t\t\ttree->leaf->status : %d\n", tmp->status);
+				// ft_printf("\t\ttree->leaf : <%p>\n", tmp);
+				ft_printf("\t\ttree->leaf->str : '%s'\n", tmp->str);
+				ft_printf("\t\t\ttree->leaf->type : '%d'\n", tmp->type);
+				ft_printf("\t\t\ttree->leaf->status : '%d'\n", tmp->status);
 				while (tmp2)
 				{
-					ft_printf("\t\t\ttree->leaf->leaf : %p\n", tmp2);
-					ft_printf("\t\t\ttree->leaf->leaf->str : %s\n", tmp2->str);
+					// ft_printf("\t\t\t\ttree->leaf->leaf : <%p>\n", tmp2);
+					ft_printf("\t\t\t\ttree->leaf->leaf->str : '%s'\n", tmp2->str);
 					tmp2 = tmp2->next;
 				}
 				tmp = tmp->next;
+				tmp2 = tmp->leaf;
 			}
 			start = 0;
 		}
