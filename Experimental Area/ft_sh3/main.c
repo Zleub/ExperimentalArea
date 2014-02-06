@@ -128,7 +128,7 @@ void	print_tree(t_tree *tree, int i)
 	tmp = i;
 	while (tmp--)
 	{
-		ft_printf("\t\e[38;5;%um", tree);
+		ft_printf("\t\e[38;5;%um", (unsigned int)tree % 255 + 1);
 	}
 		ft_printf("tree : <%p>\n", tree);
 
@@ -140,11 +140,32 @@ void	print_tree(t_tree *tree, int i)
 	tmp = i;
 	while (tmp--)
 		ft_printf("\t");
-	ft_printf("tree->type : '%d'\n", tree->type);
+	ft_printf("tree->type : '%d'", tree->type);
+	if (tree->type == NODE)
+		ft_printf(" - NODE\n");
+	else if (tree->type == LEAF)
+		ft_printf(" - LEAF\n");
+	else
+		ft_printf("\n");
 	tmp = i;
 	while (tmp--)
 		ft_printf("\t");
-	ft_printf("tree->status : '%d'\n", tree->status);
+	ft_printf("tree->status : '%d'", tree->status);
+	if (tree->status == ONCE)
+		ft_printf(" - ONCE\n");
+	else if (tree->status == LOOP)
+		ft_printf(" - LOOP\n");
+	else if (tree->status == LIST)
+		ft_printf(" - LIST\n");
+	else if (tree->status == CAT)
+		ft_printf(" - CAT\n");
+	else if (tree->status == MIX)
+		ft_printf(" - MIX\n");
+	else
+		ft_printf("\n");
+
+
+
 
 	if (tree->leaf)
 		print_tree(tree->leaf, i + 1);
