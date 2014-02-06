@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/02 11:12:01 by adebray           #+#    #+#             */
-/*   Updated: 2014/02/04 14:30:52 by adebray          ###   ########.fr       */
+/*   Updated: 2014/02/06 10:20:14 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ int			test(void)
 
 	if(tswitch(1) == -1)
 		return (-1);
-	while (read(0, str, 3))
+	while (read(0, str, 4))
 	{
-		// ft_printf("%d%d%d%d\n", str[0], str[1], str[2], str[3]);
-		ft_striter(str, &is_lang);
+		ft_printf("%d-%d-%d-%d\n", str[0], str[1], str[2], str[3]);
+		// ft_striter(str, &is_lang);
 		// ft_printf("\n");
 		ft_strclr(str);
 	}
@@ -106,6 +106,51 @@ char	*ft_strndup(const char *s1, int n)
 		dup[i] = '\0';
 		return (dup);
 	}
+}
+
+unsigned int		ft_hashich(char *line)
+{
+	unsigned int	hashich;
+	int				c;
+
+	hashich = 5381;
+	while ((c = *line++))
+		hashich = ((hashich << 5) + hashich) ^ c;
+	if (hashich > 256)
+		return (hashich % 256);
+	return (hashich);
+}
+
+void	print_tree(t_tree *tree, int i)
+{
+	int tmp;
+
+	tmp = i;
+	while (tmp--)
+	{
+		ft_printf("\t\e[38;5;%um", tree);
+	}
+		ft_printf("tree : <%p>\n", tree);
+
+	ft_printf("\e[39m");
+	tmp = i;
+	while (tmp--)
+		ft_printf("\t");
+	ft_printf("* tree->str : '%s'\n", tree->str);
+	tmp = i;
+	while (tmp--)
+		ft_printf("\t");
+	ft_printf("tree->type : '%d'\n", tree->type);
+	tmp = i;
+	while (tmp--)
+		ft_printf("\t");
+	ft_printf("tree->status : '%d'\n", tree->status);
+
+	if (tree->leaf)
+		print_tree(tree->leaf, i + 1);
+
+	if (tree->next)
+		print_tree(tree->next, i);
 }
 
 void			function_to_create_leaf_child_node(t_tree *tree, t_tree *tree_head, char *str)
@@ -197,6 +242,7 @@ void			function_to_create_leaf_child_node(t_tree *tree, t_tree *tree_head, char 
 					{
 						// ft_printf("SIGNAL\n");
 						// ft_printf("%p : %p\n", tree->leaf->leaf, tmp->leaf);
+						/*** NOT WORKING BECAUSE OF STRCMP tree->leaf = tmp; */
 						tree->leaf->leaf = tmp->leaf;
 						// tree->leaf->type = tmp->type;
 						// if (tree->leaf->status == LOOP)
@@ -252,18 +298,13 @@ int			main(void)
 	tree_head = tree;
 	while (get_next_line(fd, &tmp) > 0)
 	{
-		if (tmp[0] != '\t')
+		if (tmp[0] != '\t') /* Get next line is not starting with a table */
 		{
 			if (!start)
 			{
-				gnl->next = (t_gnl*)malloc(sizeof(t_gnl));
-				gnl = gnl->next;
-				gnl->next = NULL;
-
 				tree->next = create_node();
 				tree = tree->next;
 			}
-			gnl->str = ft_strdup(tmp);
 
 			tree->type = NODE;
 			tree->status = ONCE;
@@ -276,28 +317,6 @@ int			main(void)
 			tree->leaf = NULL;
 			function_to_create_leaf_child_node(tree, tree_head, tmp);
 
-
-			// ft_printf("tree : <%p>\n", tree);
-			ft_printf("tree->str : '%s'\n", tree->str);
-			ft_printf("\ttree->type : '%d'\n", tree->type);
-			ft_printf("\ttree->status : '%d'\n", tree->status);
-			t_tree *tmp = tree->leaf;
-			t_tree *tmp2 = tree->leaf->leaf;
-			while (tmp)
-			{
-				// ft_printf("\t\ttree->leaf : <%p>\n", tmp);
-				ft_printf("\t\ttree->leaf->str : '%s'\n", tmp->str);
-				ft_printf("\t\t\ttree->leaf->type : '%d'\n", tmp->type);
-				ft_printf("\t\t\ttree->leaf->status : '%d'\n", tmp->status);
-				while (tmp2)
-				{
-					// ft_printf("\t\t\t\ttree->leaf->leaf : <%p>\n", tmp2);
-					ft_printf("\t\t\t\ttree->leaf->leaf->str : '%s'\n", tmp2->str);
-					tmp2 = tmp2->next;
-				}
-				tmp = tmp->next;
-				tmp2 = tmp->leaf;
-			}
 			start = 0;
 		}
 		else
@@ -306,19 +325,11 @@ int			main(void)
 			while (tmp[i] == '\t')
 				i += 1;
 			tmp = ft_strsub(tmp, i, ft_strlen(tmp) - i);
-			// ft_printf("tmp : %s\n", tmp);
-			gnl->str = ft_mstrcat(gnl->str, tmp);
+			ft_printf("tmp : %s\n", tmp);
 		}
 	}
 
-	// gnl = head;
-	// i = 0;
-	// while(gnl)
-	// {
-	// 	ft_printf("%d dump : %s\n", i, gnl->str);
-	// 	gnl = gnl->next;
-	// 	i += 1;
-	// }
+	print_tree(tree_head, 0);
 	return (0);
 }
 
