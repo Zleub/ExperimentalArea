@@ -1,0 +1,29 @@
+#ant number
+17
+#def room
+alpha 2 0
+beta 2 3
+craft 3 3
+daemon 0 2
+##start
+elephant 1 2
+force 4 1
+guid 5 2
+hex 4 0
+i 2 1
+juice 1 1
+##end
+kill 0 4
+lengh 1 5
+#def pipe
+alpha-i
+i-juice
+i-elephant
+i-force
+force-hex
+hex-craft
+craft-kill
+kill-daemon
+daemon-beta
+beta-guid
+guid-lengh

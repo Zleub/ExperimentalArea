@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/14 19:41:35 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/02 09:37:41 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/02 16:58:31 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,12 @@ int		get_lemin_nb(void)
 
 	i = 0;
 	if (get_next_line(0, &tmp) > 0)
-		i = ft_atoi(tmp);
+	{
+		if (tmp[0] == '#')
+			i = get_lemin_nb();
+		else
+			i = ft_atoi(tmp);
+	}
 	return (i);
 }
 
@@ -90,10 +95,42 @@ int		is_room(char *str)
 		return (0);
 }
 
+char	*get_room(char *tmp)
+{
+	int		i;
+	int		j;
+
+	i = j = 0;
+	while (ft_isspace(tmp[i]))
+		i += 1;
+	j = i;
+	while (!ft_isspace(tmp[i]))
+		i += 1;
+	tmp[i] = '\0';
+	return (ft_strdup(&tmp[j]));
+}
+
 void	fill_data(char *str, t_data *data)
 {
+	char	*tmp;
+
 	if (str[0] == '#' && str[1] != '#')
 		;
+	else if (str[0] == '#' && str[1] == '#')
+	{
+		if (!ft_strcmp(&str[2], "start"))
+		{
+			if (get_next_line(0, &tmp) > 0)
+				data->start = get_room(tmp);
+			data->room_nb += 1;
+		}
+		else if (!ft_strcmp(&str[2], "end"))
+		{
+			if (get_next_line(0, &tmp) > 0)
+				data->end = get_room(tmp);
+			data->room_nb += 1;
+		}
+	}
 	else if (is_room(str))
 		data->room_nb += 1;
 	else
@@ -137,6 +174,7 @@ void	get_lemin(void)
 	fill_gnl(&head, data);
 	// check_data(data);
 
+	ft_printf("\nThis is after parse dump thing\n");
 	ft_printf("data :\n");
 	print_data(data);
 	ft_printf("gnl :\n");
