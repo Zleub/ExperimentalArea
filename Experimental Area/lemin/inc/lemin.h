@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/14 21:41:20 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/02 10:11:42 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/03 01:31:39 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,12 @@ typedef struct		s_gnl
 	struct s_gnl	*prev;
 	struct s_gnl	*next;
 }					t_gnl;
+
+typedef struct		s_room
+{
+	char			*str;
+	struct s_room	*next;
+}					t_room;
 
 typedef struct		s_pipe
 {
