@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/14 19:41:35 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/03 15:55:10 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/04 19:06:06 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,29 +66,6 @@ void	print_data(t_data *head)
 	ft_printf("\tlemin_nb = %d\n", head->lemin_nb);
 }
 
-t_pipe	*create_pipe(void)
-{
-	t_pipe	*tmp;
-
-	tmp = (t_pipe*)malloc(sizeof(t_pipe));
-	tmp->src = NULL;
-	tmp->dst = NULL;
-	return (tmp);
-}
-
-void	print_pipe(t_pipe *head)
-{
-	int		i;
-
-	i = 0;
-	ft_printf("%s\n", head->src);
-	while (head->dst[i])
-	{
-		print_pipe(head->dst[i]);
-		i += 1;
-	}
-}
-
 t_room	*create_room(void)
 {
 	t_room *tmp;
@@ -103,9 +80,49 @@ void	print_room(t_room *head)
 {
 	if (head)
 	{
-		ft_printf("\t%s\n", head->str);
+		ft_printf("\t'%s'\n", head->str);
 		if (head->next)
 			print_room(head->next);
+	}
+}
+
+t_pipe	*create_pipe(void)
+{
+	int		i;
+	t_pipe	*tmp;
+
+	i = 0;
+	tmp = (t_pipe*)malloc(sizeof(t_pipe));
+	tmp->src = NULL;
+	tmp->dst = NULL;
+	// tmp->dst = (t_pipe**)malloc(sizeof(t_pipe*) * data->room_nb);
+	// while (tmp->dst[i])
+	// {
+	// 	ft_printf("ft_checkup i : %d\n", i);
+	// 	tmp->dst[i] = NULL;
+	// 	i += 1;
+	// }
+	return (tmp);
+}
+
+void	print_pipe(t_pipe *head)
+{
+	int		i;
+
+	i = 0;
+	if (head)
+	{
+		ft_printf("me : %p\n", head);
+		ft_printf("\t'%s'\n", head->src);
+		if (head->dst)
+		{
+			while (head->dst[i])
+			{
+				// ft_printf("myself : %p\n\n", head->dst[i]);
+				print_pipe(head->dst[i]);
+				i += 1;
+			}
+		}
 	}
 }
 
@@ -222,28 +239,81 @@ void	start_end(char *str, t_data *data, t_room **head)
 	}
 }
 
-void		get_pipe(char *str, t_pipe *head)
+void		search_room(char *str, t_data *data, t_pipe *head)
 {
 	int		i;
-	// int		j;
 
-	i = ft_strlen(str);
-	if (head)
-		;
-	else
+	// ft_printf("ft_strncmp(str '%s', head->src '%s', ft_strlen(head->src)) '%d'\n", str, head->src, ft_strlen(head->src));
+	if (ft_strncmp(str, head->src, ft_strlen(head->src)))
 	{
-		while (str[i])
+		i = 0;
+		if (head->dst)
 		{
-			if (ft_isspace(str[i]))
+			while (head->dst[i])
 			{
-				while (ft_isspace(str[i]))
-					i -= 1;
+				search_room(str, data, head->dst[i]);
+				i += 1;
 			}
-			str[i] = '\0';
-			i -= 1;
 		}
 	}
-	ft_printf("DU<P DYMP .%s.%d\n", str, ft_strlen(str));
+	else
+	{
+		ft_printf("Here i am : &str[i] = '%s' && head->src = '%s'\n", &str[i], head->src);
+		if (head->dst)
+		{
+			ft_printf("if head->dst\n");
+		}
+		else
+		{
+			head->dst = (t_pipe**)malloc(sizeof(t_pipe*) * data->room_nb);
+			i = 0;
+			while (head->dst[i])
+			{
+				head->dst[i] = create_pipe();
+				i += 1;
+			}
+		}
+	}
+}
+
+void		get_pipe(char *str, t_data *data, t_pipe **head)
+{
+	int		i;
+	int		j;
+
+	if (*head)
+	{
+		i = 0;
+		while (ft_isspace(str[i]))
+		{
+			i += 1;
+		}
+		search_room(&str[i], data, *head);
+
+	}
+	else
+	{
+		i = ft_strlen(str) - 1;
+		*head = create_pipe();
+		(*head)->dst = (t_pipe**)malloc(sizeof(t_pipe*) * data->room_nb);
+		j = 0;
+		while ((*head)->dst[j])
+		{
+			(*head)->dst[j] = create_pipe();
+			j += 1;
+		}
+		while (str[i] != '-')
+		{
+			(*head)->dst[0]->src = ft_strdup(&str[i]);
+			i -= 1;
+		}
+		str[i] = '\0';
+		while (!ft_isspace(str[i]))
+		{
+			i -= 1;
+		}
+		(*head)->src = ft_strdup(&str[i + 1]);
+	}
 }
 
 void	fill_data(char *str, t_data *data, t_room **head_room, t_pipe **head_pipe)
@@ -272,7 +342,7 @@ void	fill_data(char *str, t_data *data, t_room **head_room, t_pipe **head_pipe)
 	}
 	else if (is_pipe(str))
 	{
-		get_pipe(str, *head_pipe);
+		get_pipe(str, data, head_pipe);
 	}
 	else
 		ft_printf("else -> %s\n", str);
@@ -310,7 +380,9 @@ void	fill_gnl(t_gnl **head, t_data *data)
 	}
 	free_last_gnl(tmp);
 
-	ft_printf("\nPrintroom\n");
+	ft_printf("\npipe :\n");
+	print_pipe(head_pipe);
+	ft_printf("\nroom :\n");
 	print_room(head_room);
 }
 
@@ -323,7 +395,6 @@ void	get_lemin(void)
 	fill_gnl(&head, data);
 	// check_data(data);
 
-	ft_printf("\nThis is after parse dump thing\n");
 	ft_printf("data :\n");
 	print_data(data);
 	ft_printf("gnl :\n");
