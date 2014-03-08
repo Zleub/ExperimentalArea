@@ -508,6 +508,7 @@ if __FILE__ == $0
 					end
 
 					if (init.verbose > 0 && player.live > 0)
+			system("sleep 0.5")
                       system ("clear")
 						map.show_mapcontent($stdout, player.piece_char.downcase, nb[0].to_i, nb[1].to_i)
 					end
