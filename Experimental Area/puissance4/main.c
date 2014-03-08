@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 22:35:44 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/08 14:42:18 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/08 22:51:33 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,105 @@ void				check_input(t_pui4 *pui4)
 	}
 }
 
+int					check_case(int i, int j, t_pui4 *pui4)
+{
+	int				ret;
+	int				m;
+	int				n;
+
+	ft_printf("check_case");
+	m = n = -1;
+	while (m < 2)
+	{
+		while (n < 2)
+		{
+			if (i + m > -1 && j + m > -1 && i + m < pui4->y && j + n < pui4->x && pui4->array[i + m][j + n] == pui4->array[i][j])
+				ret = check_case(i + m, j + n, pui4);
+			n += 1;
+		}
+		m += 1;
+	}
+	return (ret);
+}
+
+void				general_play(t_pui4 *pui4)
+{
+	int				i;
+	int				j;
+	int				tmp;
+
+	ft_printf("general_play");
+	i = 0;
+	while (i < pui4->y)
+	{
+		j = 0;
+		while (j < pui4->x)
+		{
+			ft_printf("general_play %d %d", i, j);
+			if (pui4->array[i][j] != '.')
+			{
+				tmp = check_case(i, j, pui4);
+				ft_printf("my ponderation is %d", tmp);
+			}
+			j += 1;
+		}
+		i += 1;
+	}
+}
+
+void				game_round(t_pui4 *pui4)
+{
+	int				cmp;
+	char			in_game;
+
+	(void)pui4;
+	if (pui4->ia == 1)
+		cmp = 1;
+	else
+		cmp = 0;
+	in_game = 0;
+	while (in_game != -1)
+	{
+		cmp += 1;
+		if (cmp % 2 == 0)
+		{
+			check_input(pui4);
+			print_col(pui4->x);
+			print_array(pui4);
+		}
+		else
+			general_play(pui4);
+	}
+}
+
+void				initial_play(t_pui4 *pui4)
+{
+	int				middle;
+
+	middle = pui4->x / 2;
+	place_piece(middle, pui4->ia, pui4);
+}
+
+void				game_start(t_pui4 *pui4)
+{
+	if (pui4->ia == 1)
+	{
+		initial_play(pui4);
+		print_col(pui4->x);
+		print_array(pui4);
+	}
+	else
+	{
+		print_col(pui4->x);
+		print_array(pui4);
+		check_input(pui4);
+		print_col(pui4->x);
+		print_array(pui4);
+	}
+	game_round(pui4);
+}
+
+
 int					main(int argc, char **argv)
 {
 	t_pui4			*pui4;
@@ -158,13 +257,6 @@ int					main(int argc, char **argv)
 	pui4->array = malloc_tab(pui4->x, pui4->y);
 	get_rand(pui4);
 	ft_printf("player : %d, ia : %d\n", pui4->player, pui4->ia);
-	print_col(pui4->x);
-	print_array(pui4);
-	while (42)
-	{
-		check_input(pui4);
-		print_col(pui4->x);
-		print_array(pui4);
-	}
+	game_start(pui4);
 	return (0);
 }
