@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/14 19:41:35 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/04 19:06:06 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/11 15:11:24 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,13 @@ void	print_pipe(t_pipe *head)
 	i = 0;
 	if (head)
 	{
-		ft_printf("me : %p\n", head);
-		ft_printf("\t'%s'\n", head->src);
+		ft_printf("head : %p -> '%s'\n", head, head->src);
 		if (head->dst)
 		{
 			while (head->dst[i])
 			{
-				// ft_printf("myself : %p\n\n", head->dst[i]);
-				print_pipe(head->dst[i]);
+				ft_printf("child %d : %p -> '%s'\n",i,  head->dst[i], head->dst[i]->src);
+				// print_pipe(head->dst[i]);
 				i += 1;
 			}
 		}
@@ -243,10 +242,11 @@ void		search_room(char *str, t_data *data, t_pipe *head)
 {
 	int		i;
 
-	// ft_printf("ft_strncmp(str '%s', head->src '%s', ft_strlen(head->src)) '%d'\n", str, head->src, ft_strlen(head->src));
+	i = 0;
 	if (ft_strncmp(str, head->src, ft_strlen(head->src)))
 	{
-		i = 0;
+	ft_printf("ft_strncmp(str '%s', head->src '%s', ft_strlen(head->src)) '%d'\n", str, head->src, ft_strlen(head->src));
+
 		if (head->dst)
 		{
 			while (head->dst[i])
@@ -258,7 +258,7 @@ void		search_room(char *str, t_data *data, t_pipe *head)
 	}
 	else
 	{
-		ft_printf("Here i am : &str[i] = '%s' && head->src = '%s'\n", &str[i], head->src);
+		ft_printf("else\nHere i am : &str[i] = '%s' && head->src = '%s'\n", &str[i], head->src);
 		if (head->dst)
 		{
 			ft_printf("if head->dst\n");
@@ -269,7 +269,8 @@ void		search_room(char *str, t_data *data, t_pipe *head)
 			i = 0;
 			while (head->dst[i])
 			{
-				head->dst[i] = create_pipe();
+				ft_printf("while heaed->dst[i]\n");
+				// head->dst[i] = create_pipe();
 				i += 1;
 			}
 		}
@@ -281,6 +282,10 @@ void		get_pipe(char *str, t_data *data, t_pipe **head)
 	int		i;
 	int		j;
 
+	ft_printf("get_pipe\nstr = %s, %d\n", str, data->room_nb);
+		ft_printf("DUMP\n");
+	print_pipe(*head);
+	ft_printf("\n\n");
 	if (*head)
 	{
 		i = 0;
@@ -296,24 +301,29 @@ void		get_pipe(char *str, t_data *data, t_pipe **head)
 		i = ft_strlen(str) - 1;
 		*head = create_pipe();
 		(*head)->dst = (t_pipe**)malloc(sizeof(t_pipe*) * data->room_nb);
+		if ((*head)->dst == NULL)
+			ft_printf("head->dst NULL\n");
 		j = 0;
 		while ((*head)->dst[j])
 		{
+			ft_printf("check j = %d\n", j);
 			(*head)->dst[j] = create_pipe();
 			j += 1;
 		}
+		ft_printf("check 2 '%s' vs '%s'\n", (*head)->dst[0]->src, &str[i]);
 		while (str[i] != '-')
-		{
-			(*head)->dst[0]->src = ft_strdup(&str[i]);
 			i -= 1;
-		}
+		(*head)->dst[0]->src = ft_strdup(&str[i + 1]);
 		str[i] = '\0';
-		while (!ft_isspace(str[i]))
+		ft_printf("check 3 '%s' vs '%s'\n", (*head)->dst[0]->src, str);
+		while (!ft_isspace(str[i]) && i >= 0)
 		{
 			i -= 1;
 		}
 		(*head)->src = ft_strdup(&str[i + 1]);
+		ft_printf("check 4 '%s'\n", (*head)->src);
 	}
+
 }
 
 void	fill_data(char *str, t_data *data, t_room **head_room, t_pipe **head_pipe)
