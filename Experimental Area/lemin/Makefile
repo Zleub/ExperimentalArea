@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2014/03/01 21:00:30 by adebray          ###   ########.fr        #
+#    Updated: 2014/03/13 15:07:32 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME		= lem-in
@@ -17,7 +17,13 @@ PRINTF		= ./src/ft_printf/libftprintf.a
 SRCDIR		= ./src/
 HEADDIR		= ./inc/
 
-SRC			=	./src/gnl.c
+SRC			=	./src/gnl.c				\
+				./src/is_something.c	\
+				./src/start_end.c		\
+				./src/t_data.c			\
+				./src/t_gnl.c			\
+				./src/t_pipe.c			\
+				./src/t_room.c
 
 OBJ			= $(subst .c,.o,$(SRC))
 
@@ -29,10 +35,10 @@ HEADFLAG	= -I$(HEADDIR)
 
 .PHONY: all clean fclean re $(LIBFT) $(PRINTF)
 
-all: $(LIBFT) $(PRINTF) $(LIBNAME) $(NAME)
+all: $(NAME)
 
-$(NAME): main.c
-	$(CC) $(CCFLAGS) $(HEADFLAG) $(LIBFLAG) $(SYSFLAG) -o $(NAME) main.c
+$(NAME): $(LIBFT) $(PRINTF) $(LIBNAME) main.c
+	$(CC) $(HEADFLAG) $(LIBFLAG) $(SYSFLAG) -o $(NAME) main.c
 
 $(LIBNAME): $(OBJ)
 	ar rc $@ $^

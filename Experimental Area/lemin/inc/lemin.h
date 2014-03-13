@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/14 21:41:20 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/03 01:31:39 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/13 14:41:38 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,24 @@ typedef struct		s_room
 typedef struct		s_pipe
 {
 	char			*src;
+	struct s_pipe	*next;
 	struct s_pipe	**dst;
 }					t_pipe;
+
+int		get_lemin_nb(void);
+t_data	*create_data(void);
+void	print_data(t_data *head);
+t_gnl	*create_gnl(void);
+void	print_gnl(t_gnl *head);
+t_pipe	*create_pipe(t_data *data);
+void	print_pipe(t_pipe *head, int c);
+t_room	*create_room(void);
+void	print_room(t_room *head);
+int		is_room(char *str);
+int		is_pipe(char *str);
+char	*get_room(char *tmp);
+void	get_start(t_data *data, t_room **head, t_room *room_tmp);
+void	get_end(t_data *data, t_room **head, t_room *room_tmp);
+void	start_end(char *str, t_data *data, t_room **head);
 
 #endif

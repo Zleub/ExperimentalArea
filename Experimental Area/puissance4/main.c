@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 22:35:44 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/08 22:51:33 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/12 04:57:23 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ int					check_case(int i, int j, t_pui4 *pui4)
 	int				m;
 	int				n;
 
-	ft_printf("check_case");
+	ft_printf("check_case ARNO");
 	m = n = -1;
 	while (m < 2)
 	{
