@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/14 19:41:35 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/20 16:22:35 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/20 21:27:46 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		data_valid(t_data *data)
 		return (1);
 }
 
-void	fill_data(char *str, t_data *data, t_room **head_room, t_pipe **head_pipe)
+int		fill_data(char *str, t_data *data, t_room **head_room, t_pipe **head_pipe)
 {
 	t_room *tmp_room;
 	t_pipe *tmp_pipe;
@@ -54,13 +54,25 @@ void	fill_data(char *str, t_data *data, t_room **head_room, t_pipe **head_pipe)
 	}
 	else if (is_pipe(str) && data_valid(data))
 	{
-		ft_printf("%s\n", str);
-		// ft_printf("-----\n");
-		// print_pipe(*head_pipe, 0);
-		// ft_printf("-----\n");
+		if (*head_pipe)
+		{
+			tmp_pipe = create_pipe(data);
+			tmp_pipe->next = (*head_pipe)->next;
+			tmp_pipe->src = str;
+			(*head_pipe)->next = tmp_pipe;
+		}
+		else
+		{
+			*head_pipe = create_pipe(data);
+			(*head_pipe)->src = ft_strdup(str);
+		}
+		ft_printf("PIPE-\n");
+		print_pipe(*head_pipe);
+		ft_printf("-----\n");
 	}
 	else
-		ft_printf("else -> %s\n", str);
+		return (-1);
+	return (0);
 }
 
 void	free_last_gnl(t_gnl *tmp)
@@ -88,7 +100,11 @@ void	fill_gnl(t_gnl **head, t_data *data)
 			free_last_gnl(tmp);
 			return ;
 		}
-		fill_data(tmp->str, data, &head_room, &head_pipe);
+		if (fill_data(tmp->str, data, &head_room, &head_pipe) == -1)
+		{
+			ft_printf("data error\n");
+			return ;
+		}
 		tmp->next = create_gnl();
 		tmp->next->prev = tmp;
 		tmp = tmp->next;
@@ -96,7 +112,7 @@ void	fill_gnl(t_gnl **head, t_data *data)
 	free_last_gnl(tmp);
 
 	ft_printf("\npipe :\n");
-	print_pipe(head_pipe, 0);
+	print_pipe(head_pipe);
 	ft_printf("\nroom :\n");
 	print_room(head_room);
 }

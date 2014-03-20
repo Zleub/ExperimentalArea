@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_data.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 13:05:59 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/20 16:29:30 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/20 21:22:05 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int		get_lemin_nb(void)
 	i = 0;
 	if (get_next_line(0, &tmp) > 0)
 	{
-		if (tmp[0] == '#' || tmp[9])
+		if (tmp[0] == '#')
 			i = get_lemin_nb();
+		else if (tmp[9])
+			i = 0;
 		else
 			i = ft_atoi(tmp);
 	}
