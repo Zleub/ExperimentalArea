@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/29 00:27:13 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/12 18:20:22 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/20 15:15:09 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 size_t				ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t			_size;
+	size_t			tmp_size;
 	size_t			len;
-	char			*_dst;
-	const char		*_src;
+	char			*tmp_dst;
+	const char		*tmp_src;
 
-	_size = size;
-	_dst = dst;
-	_src = src;
-	while (*_dst != '\0' && _size-- != 0)
-		_dst++;
-	len = _dst - dst;
-	_size = size - len;
-	if (_size == 0)
-		return (len + ft_strlen((char *)_src));
-	while (*_src != '\0')
+	tmp_size = size;
+	tmp_dst = dst;
+	tmp_src = src;
+	while (*tmp_dst != '\0' && tmp_size-- != 0)
+		tmp_dst++;
+	len = tmp_dst - dst;
+	tmp_size = size - len;
+	if (tmp_size == 0)
+		return (len + ft_strlen((char *)tmp_src));
+	while (*tmp_src != '\0')
 	{
-		if (_size != 1)
+		if (tmp_size != 1)
 		{
-			*_dst++ = *_src;
-			_size--;
+			*tmp_dst++ = *tmp_src;
+			tmp_size--;
 		}
-		_src++;
+		tmp_src++;
 	}
-	*_dst = '\0';
-	return (len + (_src - src));
+	*tmp_dst = '\0';
+	return (len + (tmp_src - src));
 }

@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/29 15:50:15 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/20 15:19:28 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		ft_isalnum(int c)
 {
-		if (ft_isalpha(c) == 1 || ft_isdigit(c) == 1)
-			return (1);
-		else
-			return (0);
+	if (ft_isalpha(c) == 1 || ft_isdigit(c) == 1)
+		return (1);
+	else
+		return (0);
 }

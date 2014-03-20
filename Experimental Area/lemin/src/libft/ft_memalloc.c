@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 00:16:39 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/20 15:18:27 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_memalloc(size_t size)
 
 	if (size == 0)
 		return (NULL);
-	tmp = (unsigned char*) malloc(sizeof(*tmp) * size);
+	tmp = (unsigned char*)malloc(sizeof(*tmp) * size);
 	if (!tmp)
 		return (NULL);
 	ft_bzero(tmp, size);

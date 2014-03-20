@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/27 00:23:42 by adebray           #+#    #+#             */
-/*   Updated: 2013/12/03 00:19:57 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/20 15:18:19 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memccpy(void *s1, const void *s2, int c, size_t n)
 {
 	unsigned char	*tmp2;
 
-	tmp2 = (unsigned char*) s2;
+	tmp2 = (unsigned char*)s2;
 	while (n--)
 	{
 		if (*tmp2 == c)

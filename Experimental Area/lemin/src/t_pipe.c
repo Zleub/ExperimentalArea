@@ -6,13 +6,13 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 13:07:41 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/13 14:24:14 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/20 16:10:10 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lemin.h>
 
-t_pipe	*create_pipe(t_data *data)
+t_pipe	*create_pipe(void)
 {
 	int		i;
 	t_pipe	*tmp;
@@ -20,13 +20,7 @@ t_pipe	*create_pipe(t_data *data)
 	i = 0;
 	tmp = (t_pipe*)malloc(sizeof(t_pipe));
 	tmp->src = NULL;
-	tmp->src = NULL;
-	tmp->dst = (t_pipe**)malloc(sizeof(t_pipe*) * data->room_nb);
-	while (i < data->room_nb)
-	{
-		tmp->dst[i] = NULL;
-		i += 1;
-	}
+	tmp->child = NULL;
 	return (tmp);
 }
 
@@ -43,17 +37,14 @@ void	print_pipe(t_pipe *head, int c)
 		while (j--)
 			ft_printf("\t");
 		ft_printf("• head : %p -> '%s'\n", head, head->src);
-		if (head->dst)
+		if (head->child)
 		{
-			while (head->dst[i])
-			{
-				j = c + 1;
-				while (j--)
-					ft_printf("\t");
-				ft_printf("-> child %d : %p -> '%s'\n",i,  head->dst[i], head->dst[i]->src);
-				print_pipe(head->dst[i], c + 1);
-				i += 1;
-			}
+			j = c + 1;
+			while (j--)
+				ft_printf("\t");
+			ft_printf("-> child %d : %p -> '%s'\n",i,  head->child, head->child->src);
+			print_pipe(head->child, c + 1);
+			i += 1;
 		}
 	}
 }

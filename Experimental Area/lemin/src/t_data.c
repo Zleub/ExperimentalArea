@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 13:05:59 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/13 13:16:24 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/20 16:29:30 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		get_lemin_nb(void)
 	i = 0;
 	if (get_next_line(0, &tmp) > 0)
 	{
-		if (tmp[0] == '#')
+		if (tmp[0] == '#' || tmp[9])
 			i = get_lemin_nb();
 		else
 			i = ft_atoi(tmp);
