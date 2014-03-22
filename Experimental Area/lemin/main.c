@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
+/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/14 19:41:35 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/22 13:20:52 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/22 18:58:45 by Arno             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,30 +111,32 @@ int		fill_data(char *str, t_data *data, t_room **head_room, t_pipe **head_pipe)
 		return (-1);
 	return (0);
 }
-t_pipe			*find_next(t_data *data, char *dst_pipe, t_pipe *head_pipe, t_room *head_path)
+void		find_next(t_data *data, t_pipe **dst_pipe, t_pipe *head_pipe, t_room *head_path)
 {
+	t_pipe		*tmp_pipe;
 	int			i;
 
-	i = 0;
-	while (head_pipe)
+	tmp_pipe = head_pipe;
+	while (tmp_pipe)
 	{
 		i = 0;
-		while (head_pipe->dst[i])
+		// ft_printf("%s\n", dst_pipe[i]->src);
+		while (dst_pipe[i])
 		{
-			ft_printf("!ft_strcmp(head_pipe->dst[%d]->src : %s, data-end %s\n", i, head_pipe->dst[i]->src, data->end);
-			if (ft_strcmp(head_pipe->dst[i]->src, data->end))
+			ft_printf("tmp_pipe %s vs dst_pipe %s\n", tmp_pipe->src, dst_pipe[i]->src);
+			if (!ft_strcmp(dst_pipe[i]->src, data->end))
 			{
-				ft_printf("is no end\n");
-				return (find_next(data, head_pipe->dst[i]->src, head_pipe, head_path));
-				i += 1;
+				ft_printf("found end\n");
+				exit(0);
 			}
-			else
+			if (!ft_strcmp(tmp_pipe->src, dst_pipe[i]->src))
 			{
-				ft_printf("return\n");
-				return (head_pipe);
+				ft_printf("Match next\n");
+				find_next(data, tmp_pipe->dst, head_pipe, head_path);
 			}
+			i += 1;
 		}
-		head_pipe = head_pipe->next;
+		tmp_pipe = tmp_pipe->next;
 	}
 }
 
@@ -149,15 +151,10 @@ t_room			*get_path(t_data *data, t_pipe *head_pipe)
 	tmp_path = NULL;
 	while (tmp_pipe)
 	{
-		i = 0;
-		while (tmp_pipe->dst[i])
+		if (!ft_strcmp(data->start, tmp_pipe->src))
 		{
-			if (!ft_strcmp(data->start, tmp_pipe->dst[i]->src))
-			{
-				ft_printf("got start\n");
-				find_next(data, tmp_pipe->dst[i]->src, head_pipe, head_path);
-			}
-			i += 1;
+			ft_printf("got start\n");
+			find_next(data, tmp_pipe->dst, head_pipe, head_path);
 		}
 		tmp_pipe = tmp_pipe->next;
 	}
