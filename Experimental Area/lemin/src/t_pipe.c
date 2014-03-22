@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_pipe.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: Arno <Arno@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 13:07:41 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/20 21:19:08 by Arno             ###   ########.fr       */
+/*   Updated: 2014/03/21 12:49:12 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,23 @@ t_pipe	*create_pipe(t_data *data)
 
 void	print_pipe(t_pipe *head)
 {
-	if (head)
+	int	i;
+
+	i = 0;
+	while (head)
 	{
 		ft_printf("head : %p -> '%s'\n", head, head->src);
-		if (head->dst[0])
+		if (head->dst[i])
 		{
-			// ft_printf("dst[0] : %p -> '%s'\n", head->dst[0], head->dst[0]->src);
-			print_pipe(head->dst[0]);
+			while (head->dst[i])
+			{
+				ft_printf("dst[%d] : %p -> '%s'\n", i, head->dst[i], head->dst[i]->src);
+
+			// 	print_pipe(head->dst[i]);
+				i += 1;
+			}
 		}
-		if (head->next)
-		{
-			// ft_printf("-> next : %p -> '%s'\n", head->next, head->next->src);
-			print_pipe(head->next);
-		}
+		head = head->next;
+		i = 0;
 	}
 }

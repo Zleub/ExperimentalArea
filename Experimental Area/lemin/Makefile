@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2014/03/13 15:07:32 by adebray          ###   ########.fr        #
+#    Updated: 2014/03/22 00:05:12 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME		= lem-in
@@ -28,7 +28,7 @@ SRC			=	./src/gnl.c				\
 OBJ			= $(subst .c,.o,$(SRC))
 
 CC			= gcc
-CCFLAGS		= -Werror -Wall -Wextra -Wuninitialized -g3 -O3
+CCFLAGS		= -Werror -Wall -Wextra -Wuninitialized -ggdb -O3
 LIBFLAG		= -L./src/ -llemin -L./src/libft -lft -L./src/ft_printf -lftprintf
 SYSFLAG		= -ltermcap
 HEADFLAG	= -I$(HEADDIR)
