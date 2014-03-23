@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/13 22:21:30 by tcharlat          #+#    #+#             */
-/*   Updated: 2014/03/02 11:25:11 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/23 12:07:01 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static t_read		*ft_newread(int fd)
 	return (red);
 }
 
-static int			ft_print(int n, t_read **tab, t_read **s, char** l)
+static int			ft_print(int n, t_read **tab, t_read **s, char **l)
 {
 	char			*tmpstr;
 	int				index;

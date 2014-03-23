@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 14:39:50 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/13 16:16:01 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/23 12:25:00 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,13 @@ void	get_start(t_data *data, t_room **head, t_room *room_tmp)
 	char	*char_tmp;
 
 	if (get_next_line(0, &char_tmp) > 0)
-		data->start = get_room(char_tmp);
+	{
+		ft_printf("%s\n", char_tmp);
+		if (char_tmp[0] == '#')
+			get_start(data, head, room_tmp);
+		else
+			data->start = get_room(char_tmp);
+	}
 	data->room_nb += 1;
 	if (*head)
 	{
@@ -38,7 +44,13 @@ void	get_end(t_data *data, t_room **head, t_room *room_tmp)
 	char	*char_tmp;
 
 	if (get_next_line(0, &char_tmp) > 0)
-		data->end = get_room(char_tmp);
+	{
+		ft_printf("%s\n", char_tmp);
+		if (char_tmp[0] == '#')
+			get_end(data, head, room_tmp);
+		else
+			data->end = get_room(char_tmp);
+	}
 	data->room_nb += 1;
 	if (*head)
 	{
@@ -61,11 +73,11 @@ void	start_end(char *str, t_data *data, t_room **head)
 	t_room	*room_tmp;
 
 	room_tmp = NULL;
-	if (!ft_strcmp(&str[2], "start"))
+	if (!ft_strcmp(str, "##start"))
 	{
 		get_start(data, head, room_tmp);
 	}
-	else if (!ft_strcmp(&str[2], "end"))
+	else if (!ft_strcmp(str, "##end"))
 	{
 		get_end(data, head, room_tmp);
 	}

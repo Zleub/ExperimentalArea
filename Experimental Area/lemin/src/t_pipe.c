@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/13 13:07:41 by adebray           #+#    #+#             */
-/*   Updated: 2014/03/21 12:49:12 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/23 12:05:32 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,8 @@ void	print_pipe(t_pipe *head)
 		{
 			while (head->dst[i])
 			{
-				ft_printf("dst[%d] : %p -> '%s'\n", i, head->dst[i], head->dst[i]->src);
-
-			// 	print_pipe(head->dst[i]);
+				ft_printf("dst[%d] : %p -> '%s'\n", i, head->dst[i],
+					head->dst[i]->src);
 				i += 1;
 			}
 		}

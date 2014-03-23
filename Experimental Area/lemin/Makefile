@@ -6,7 +6,7 @@
 #    By: adebray <adebray@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/12/16 20:25:00 by adebray           #+#    #+#              #
-#    Updated: 2014/03/22 00:05:12 by adebray          ###   ########.fr        #
+#    Updated: 2014/03/23 17:05:40 by adebray          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 NAME		= lem-in
@@ -23,7 +23,9 @@ SRC			=	./src/gnl.c				\
 				./src/t_data.c			\
 				./src/t_gnl.c			\
 				./src/t_pipe.c			\
-				./src/t_room.c
+				./src/t_room.c			\
+				./src/get.c				\
+				./src/make.c
 
 OBJ			= $(subst .c,.o,$(SRC))
 

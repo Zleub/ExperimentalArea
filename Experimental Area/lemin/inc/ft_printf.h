@@ -6,7 +6,7 @@
 /*   By: adebray <adebray@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/16 20:25:00 by adebray           #+#    #+#             */
-/*   Updated: 2014/01/12 18:16:53 by adebray          ###   ########.fr       */
+/*   Updated: 2014/03/23 12:30:00 by adebray          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 # include <stdarg.h>
 # include <unistd.h>
 
-typedef struct	s_flags
+typedef struct		s_flags
 {
-	char		minus;
-	char		plus;
-	char		zero;
-	char		space;
-	int			width;
-	int			cmp;
-}				t_flags;
+	char			minus;
+	char			plus;
+	char			zero;
+	char			space;
+	int				width;
+	int				cmp;
+}					t_flags;
 
 int					ft_printf(const char *format, ...);
 void				ft_putstr(char const *s);
